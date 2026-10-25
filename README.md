@@ -49,8 +49,8 @@ order --admit--> specification --plan--> plan --dispatch(port)--> delivery
 | --- | --- |
 | `quote`, `admit` | `computer-data-engineering-services-section/artifact-fabrication` (the specification record), `computer-content-address.../semiotic-content-address` (`semanticId`), `json-schema-services-section` (input schemas) |
 | `plan` | `artifact-fabrication` (the realization plan); the profile's producers are named, not imported |
-| `assay` | `signcell/cell`, `computer-content-address.../content-address` (`addressContent`), `research-claim-reproduction-service` (`reproduceStatedClaims`), `chart-specification-rendering-service` (validate, re-render), `prov-o-provenance-service` (compose, closure, PROV-O), `research-release-metadata-service` (consistency), `email-newsletter-engineering-services-section` (validate, render, serial manifest); through ports or result records: lean-check, CAIRN, `ebook-engineering-services-section` acceptance |
-| `receive` | `artifact-fabrication` (the receipt), `signcell/cell`, `prov-o-provenance-service` |
+| `assay` | `signcraft/membrane` (`tellingOf`) and `signcraft/settle` (`settleCells`, `documentOfSettlement`, `cones`) for witnessed cell issuance, canonical addresses and truth readings; `computer-content-address.../content-address` (`addressContent`), `research-claim-reproduction-service` (`reproduceStatedClaims`), `chart-specification-rendering-service` (validate, re-render), `prov-o-provenance-service` (compose, closure, PROV-O), `research-release-metadata-service` (consistency), `email-newsletter-engineering-services-section` (validate, render, serial manifest); through ports or result records: lean-check, CAIRN, `ebook-engineering-services-section` acceptance |
+| `receive` | `artifact-fabrication` (the receipt), `signcell/cell` (independent cell admission and addressed-evidence checks), `prov-o-provenance-service` |
 | operation faces | `javascript-node-services-section/operation` |
 | MetroPlat declarations | `relating/operation-declaration` (optional peer) |
 
@@ -72,7 +72,7 @@ None is built here. `dispatchFabricationWork` is a port, `carrierExecutor` adapt
 
 ## Dependencies
 
-Pinned to registry versions, except `prov-o-provenance-service`, pinned to the commit White Repopulation builds with because the published 0.1.0 lacks `compose-provenance-manifest`. Not dependencies, deliberately: `computer-systems-fabrication-engineering-services-section` and `ebook-engineering-services-section` (their closure is the whole platform, 732 packages; the source-binding of `qualifySourceBoundArtifactFabrication` is mirrored in `src/specify.mjs`, and the ebook acceptance is a port, with `ebook-engineering-services-section` an optional peer), and `relating` (an optional peer: the MetroPlat declarations in `src/metroplat-operations.mjs` bind to it where it is installed; `src/declare.mjs` builds them anywhere).
+Pinned to exact registry versions, including `prov-o-provenance-service` 0.2.0 with `compose-provenance-manifest`. Not dependencies, deliberately: `computer-systems-fabrication-engineering-services-section` and `ebook-engineering-services-section` (their closure is the whole platform, 732 packages; the source-binding of `qualifySourceBoundArtifactFabrication` is mirrored in `src/specify.mjs`, and the ebook acceptance is a port, with `ebook-engineering-services-section` an optional peer), and `relating` (an optional peer: the MetroPlat declarations in `src/metroplat-operations.mjs` bind to it where it is installed; `src/declare.mjs` builds them anywhere).
 
 ## Before live sale
 
@@ -80,7 +80,7 @@ Pinned to registry versions, except `prov-o-provenance-service`, pinned to the c
 - The executor: the host binding `carrierExecutor` to an agent-harness carrier and the work rail's allocation of a fabrication duty, and the harness's receiving of deliveries.
 - The market book (`record` port) bound to the inference market's outcomes, and the curiosity market's award delivery path.
 - A CAIRN corpus reader for `corpus-grounded`, a proofer for `ebook`, and a lean-check runner whose result record is the `check` deliverable.
-- Upstream: publish `prov-o-provenance-service` with `compose-provenance-manifest`; factor the source binding of `qualifySourceBoundArtifactFabrication` into the data layer so it can be imported without the platform; settle the provisional prices.
+- Upstream: factor the source binding of `qualifySourceBoundArtifactFabrication` into the data layer so it can be imported without the platform; settle the provisional prices.
 
 ## Tests
 
