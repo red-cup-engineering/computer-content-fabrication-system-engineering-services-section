@@ -6,6 +6,8 @@ NDJSON: `node scripts/assay-fabricated-artifact.mjs` reads `{ admission, deliver
 
 The per-kind acceptance. Each output is addressed (bytes by `addressContent`, JSON by `semanticId`); each assay the profile names runs; each verdict is a SignCell cell per artifact it is traced to: subject the artifact's `ni`, predicate the assay id, object the specification digest, told for by the assay's witness when it held and against when it did not. Recomputation uses the upstream service wherever it has a pure function: claims (`reproduceStatedClaims`), chart validation and re-rendering, PROV composition, closure and projection, release metadata consistency, newsletter validation and rendering. Lean, CAIRN and the ebook proofer are read through their result records or ports.
 
+Cell issuance and reading use SignCraft's original `tellingOf`, `settleCells`, `documentOfSettlement` and `cones` APIs. A separate finite settlement for each traced projection preserves the existing cell occurrence count and address order when two projections share an artifact `ni`. The document spine supplies the canonical cell address and `adjudicate` supplies its truth reading. An assay with no traced projection still has an empty address list and a null reading. This computation neither binds an executor nor grants collection, publication or subscription rights; delivery receiving retains its independent cell admission and evidence checks.
+
 ## Input
 
 `admission` (a `FabricationOrderAdmission`) and `delivery` (`FabricationDeliveryCandidate`: `artifactId`, `specificationDigest`, `producer`, `outputs` each with exactly one of `bytesBase64`, `text`, `json`, and `evidence`).

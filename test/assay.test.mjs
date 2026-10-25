@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { renderVegaLiteSpecAsSvg } from "@red-cup-engineering/chart-specification-rendering-service/render-vega-lite-spec-as-svg";
 import { renderMarkdown, renderPasteHtml } from "@red-cup-engineering/email-newsletter-engineering-services-section";
-import { address, truthReading } from "@red-cup-engineering/signcell/cell";
+import { address, cell as sourceCell, truthReading } from "@red-cup-engineering/signcell/cell";
+import cellPackage from "@red-cup-engineering/signcell/package.json" with { type: "json" };
 import { assayFabricatedArtifact } from "../src/assay.mjs";
 import { CHART_SPEC, EXAMPLE_INPUTS, admitted, deliveryOf, sha256Hex } from "./helpers.mjs";
 
@@ -46,6 +47,50 @@ test("svg-chart: an SVG that is not what the specification renders fails, and it
   assert.equal(cell.against.length, 1);
   assert.equal(address(cell), verdict.cells[0] ?? address(cell));
   assert.equal(truthReading(cell), "false");
+});
+
+test("Craft assay cells retain the independent Cell 0.12.3 address, witness and truth contract on both sides", async () => {
+  assert.equal(cellPackage.version, "0.12.3", "the independent delivery receiver's declared Cell remains the compatibility oracle");
+  for (const tamper of [false, true]) {
+    const admission = admitted("svg-chart", EXAMPLE_INPUTS["svg-chart"]);
+    const assay = await assayFabricatedArtifact({ admission, delivery: await chartDelivery(admission, tamper) });
+    const outputs = new Map(assay.outputs.map((output) => [output.projection, output.ni]));
+    let position = 0;
+    for (const verdict of assay.verdicts) {
+      const expectedAddresses = [];
+      for (const projection of verdict.projections) {
+        const actual = assay.cells[position++];
+        const witness = { assay: verdict.assay, ok: verdict.ok, reasons: verdict.reasons,
+          facts: (verdict.ok ? actual.for[0] : actual.against[0]).facts };
+        const expected = sourceCell(outputs.get(projection), verdict.assay, admission.specification.specificationDigest,
+          verdict.ok ? { for: [witness] } : { against: [witness] });
+        assert.deepEqual(actual, expected, "the projection keeps the original addressed proposition and its explicit witness side");
+        assert.equal(verdict.reading, truthReading(expected));
+        expectedAddresses.push(address(expected));
+      }
+      assert.deepEqual(verdict.cells, expectedAddresses, "the source projection order is preserved");
+    }
+    assert.equal(position, assay.cells.length);
+    assert.equal(verdictOf(assay, "svg-byte-deterministic").reading, tamper ? "false" : "true");
+  }
+});
+
+test("equal artifact NIs retain one assay cell occurrence for every traced projection", async () => {
+  const { kindProfiles } = await import("../src/kinds.mjs");
+  const profile = kindProfiles().get("research-paper");
+  const admission = admitted("research-paper", EXAMPLE_INPUTS["research-paper"]);
+  const delivery = deliveryOf(admission, profile.deliverables.map(({ projection, mediaType }) => text(projection, mediaType, "same bytes")));
+  const assay = await assayFabricatedArtifact({ admission, delivery });
+  assert.equal(assay.type, "FabricationAssayResult");
+  assert.equal(new Set(assay.outputs.map(({ ni }) => ni)).size, 1, "exercise equal addressed bytes across distinct projections");
+  assert.equal(assay.passed, false, "address equality does not make malformed content pass its assays");
+  assert.ok(assay.verdicts.some(({ projections }) => projections.length > 1));
+  for (const verdict of assay.verdicts) {
+    assert.equal(verdict.cells.length, verdict.projections.length);
+    assert.equal(assay.cells.filter((item) => item.predicate === verdict.assay).length, verdict.projections.length);
+    assert.equal(new Set(verdict.cells).size, verdict.projections.length === 0 ? 0 : 1);
+  }
+  assert.equal(assay.cells.length, assay.verdicts.reduce((total, verdict) => total + verdict.projections.length, 0));
 });
 
 test("svg-safe: script, event handlers, foreign objects and external references fail", async () => {
