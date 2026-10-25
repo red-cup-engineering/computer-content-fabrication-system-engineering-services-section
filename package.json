@@ -86,7 +86,7 @@
     "@red-cup-engineering/email-newsletter-engineering-services-section": "0.1.1",
     "@red-cup-engineering/javascript-node-services-section": "0.4.1",
     "@red-cup-engineering/json-schema-services-section": "0.5.1",
-    "@red-cup-engineering/prov-o-provenance-service": "github:red-cup-engineering/prov-o-provenance-service#6f067ec6cfb9d27b7fe508bdaa6d7672210e9888",
+    "@red-cup-engineering/prov-o-provenance-service": "0.2.0",
     "@red-cup-engineering/research-claim-reproduction-service": "0.1.0",
     "@red-cup-engineering/research-release-metadata-service": "0.1.0",
     "@red-cup-engineering/signcell": "0.12.3"
