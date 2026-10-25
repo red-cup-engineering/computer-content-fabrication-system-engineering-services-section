@@ -1,0 +1,824 @@
+{
+  "@context": {
+    "dcterms": "http://purl.org/dc/terms/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/activity/render-docx",
+      "@type": "prov:Activity",
+      "prov:endedAtTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2026-10-24T23:57:58.702Z"
+      },
+      "prov:qualifiedAssociation": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/association/KMf_WEchFhIWRIPsQ8HQOgxCy40K-eLo2MHtMVeafRk"
+      },
+      "prov:startedAtTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2026-10-24T23:57:56.033Z"
+      },
+      "prov:used": [
+        {
+          "@id": "ni:///sha-256;7PHX1e-oio6NxWpZjrBEQh6n-4Auoz22QtyEpb0sHd8"
+        },
+        {
+          "@id": "ni:///sha-256;80BGpYkI7BcJ60wYs1ZQasN-Sek2Epn_Uv930OPm_RQ"
+        },
+        {
+          "@id": "ni:///sha-256;AC-t541-T-nUKTaha0OoBmsJcBP2JV30Cxv7pmMe_5s"
+        },
+        {
+          "@id": "ni:///sha-256;EY_Mm6PeZw3wJOtZDePdKJ88OaJIGc6UVIFpiXbicWk"
+        },
+        {
+          "@id": "ni:///sha-256;LqUCsb5eKReNIGT0LsYGT-2zl9J1-e_voeRuZbUToME"
+        },
+        {
+          "@id": "ni:///sha-256;PM-QC3mWqmwbpUvcCjkypvuwKn9JBWblpoblN9IctLo"
+        },
+        {
+          "@id": "ni:///sha-256;QKgWaUVNfEoJ6xAIr5eOwxU58U_two8jLrvUpM6Ipao"
+        },
+        {
+          "@id": "ni:///sha-256;WflJAr_UeTIsOXW8LfmE5IKAbdxXGn_5HB7y332K5Nk"
+        },
+        {
+          "@id": "ni:///sha-256;Z1t0f6BPnWJ3VwmZajLdVgmtDEM8EvWc_tEvQBH4MJs"
+        },
+        {
+          "@id": "ni:///sha-256;fTrbeyWQvZdx9GW8lvR4XvBUFtaKR0mtbZvLOoZodwU"
+        },
+        {
+          "@id": "ni:///sha-256;j-VpNyfFxxof9X7qjSAOCYS-0XSrbJts1H66zL2OgL0"
+        },
+        {
+          "@id": "ni:///sha-256;jV1gkNN7v7KdGcUTxK_pL-54GxVlEZw2MXCGVR3zVaw"
+        },
+        {
+          "@id": "ni:///sha-256;qYLcwuoZqx4hcLg39DhupSIUULTlcSTXGqUJx-5DdRM"
+        },
+        {
+          "@id": "ni:///sha-256;r5ySKKr8RkqcUU4ih5Aco6tIMGfph92B1HKu0RDDM_M"
+        },
+        {
+          "@id": "ni:///sha-256;uj_87YYKRDFH1X5qv5WQnXI2LgCD8U61qeUjtRKgf_Q"
+        }
+      ],
+      "prov:wasAssociatedWith": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/agent/pandoc"
+      },
+      "rdfs:label": "pandoc 3.1.3 projection to docx"
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/activity/render-html",
+      "@type": "prov:Activity",
+      "prov:endedAtTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2026-10-24T23:57:56.032Z"
+      },
+      "prov:qualifiedAssociation": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/association/-OnOLKdHpMfvAT5-brV7dJnWXX3tQMb12Sk0w_2tWjs"
+      },
+      "prov:startedAtTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2026-10-24T23:57:53.515Z"
+      },
+      "prov:used": [
+        {
+          "@id": "ni:///sha-256;7PHX1e-oio6NxWpZjrBEQh6n-4Auoz22QtyEpb0sHd8"
+        },
+        {
+          "@id": "ni:///sha-256;80BGpYkI7BcJ60wYs1ZQasN-Sek2Epn_Uv930OPm_RQ"
+        },
+        {
+          "@id": "ni:///sha-256;AC-t541-T-nUKTaha0OoBmsJcBP2JV30Cxv7pmMe_5s"
+        },
+        {
+          "@id": "ni:///sha-256;EY_Mm6PeZw3wJOtZDePdKJ88OaJIGc6UVIFpiXbicWk"
+        },
+        {
+          "@id": "ni:///sha-256;LqUCsb5eKReNIGT0LsYGT-2zl9J1-e_voeRuZbUToME"
+        },
+        {
+          "@id": "ni:///sha-256;PM-QC3mWqmwbpUvcCjkypvuwKn9JBWblpoblN9IctLo"
+        },
+        {
+          "@id": "ni:///sha-256;QKgWaUVNfEoJ6xAIr5eOwxU58U_two8jLrvUpM6Ipao"
+        },
+        {
+          "@id": "ni:///sha-256;WflJAr_UeTIsOXW8LfmE5IKAbdxXGn_5HB7y332K5Nk"
+        },
+        {
+          "@id": "ni:///sha-256;Z1t0f6BPnWJ3VwmZajLdVgmtDEM8EvWc_tEvQBH4MJs"
+        },
+        {
+          "@id": "ni:///sha-256;fTrbeyWQvZdx9GW8lvR4XvBUFtaKR0mtbZvLOoZodwU"
+        },
+        {
+          "@id": "ni:///sha-256;j-VpNyfFxxof9X7qjSAOCYS-0XSrbJts1H66zL2OgL0"
+        },
+        {
+          "@id": "ni:///sha-256;jV1gkNN7v7KdGcUTxK_pL-54GxVlEZw2MXCGVR3zVaw"
+        },
+        {
+          "@id": "ni:///sha-256;qYLcwuoZqx4hcLg39DhupSIUULTlcSTXGqUJx-5DdRM"
+        },
+        {
+          "@id": "ni:///sha-256;r5ySKKr8RkqcUU4ih5Aco6tIMGfph92B1HKu0RDDM_M"
+        },
+        {
+          "@id": "ni:///sha-256;uj_87YYKRDFH1X5qv5WQnXI2LgCD8U61qeUjtRKgf_Q"
+        }
+      ],
+      "prov:wasAssociatedWith": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/agent/pandoc"
+      },
+      "rdfs:label": "pandoc 3.1.3 projection to html"
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/activity/render-jats",
+      "@type": "prov:Activity",
+      "prov:endedAtTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2026-10-24T23:58:01.130Z"
+      },
+      "prov:qualifiedAssociation": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/association/yDau0pe7-TGeyeWiOM9TxeANHl7FRAng4dgrYLuZu8g"
+      },
+      "prov:startedAtTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2026-10-24T23:57:58.703Z"
+      },
+      "prov:used": [
+        {
+          "@id": "ni:///sha-256;7PHX1e-oio6NxWpZjrBEQh6n-4Auoz22QtyEpb0sHd8"
+        },
+        {
+          "@id": "ni:///sha-256;80BGpYkI7BcJ60wYs1ZQasN-Sek2Epn_Uv930OPm_RQ"
+        },
+        {
+          "@id": "ni:///sha-256;AC-t541-T-nUKTaha0OoBmsJcBP2JV30Cxv7pmMe_5s"
+        },
+        {
+          "@id": "ni:///sha-256;EY_Mm6PeZw3wJOtZDePdKJ88OaJIGc6UVIFpiXbicWk"
+        },
+        {
+          "@id": "ni:///sha-256;LqUCsb5eKReNIGT0LsYGT-2zl9J1-e_voeRuZbUToME"
+        },
+        {
+          "@id": "ni:///sha-256;PM-QC3mWqmwbpUvcCjkypvuwKn9JBWblpoblN9IctLo"
+        },
+        {
+          "@id": "ni:///sha-256;QKgWaUVNfEoJ6xAIr5eOwxU58U_two8jLrvUpM6Ipao"
+        },
+        {
+          "@id": "ni:///sha-256;WflJAr_UeTIsOXW8LfmE5IKAbdxXGn_5HB7y332K5Nk"
+        },
+        {
+          "@id": "ni:///sha-256;Z1t0f6BPnWJ3VwmZajLdVgmtDEM8EvWc_tEvQBH4MJs"
+        },
+        {
+          "@id": "ni:///sha-256;fTrbeyWQvZdx9GW8lvR4XvBUFtaKR0mtbZvLOoZodwU"
+        },
+        {
+          "@id": "ni:///sha-256;j-VpNyfFxxof9X7qjSAOCYS-0XSrbJts1H66zL2OgL0"
+        },
+        {
+          "@id": "ni:///sha-256;jV1gkNN7v7KdGcUTxK_pL-54GxVlEZw2MXCGVR3zVaw"
+        },
+        {
+          "@id": "ni:///sha-256;qYLcwuoZqx4hcLg39DhupSIUULTlcSTXGqUJx-5DdRM"
+        },
+        {
+          "@id": "ni:///sha-256;r5ySKKr8RkqcUU4ih5Aco6tIMGfph92B1HKu0RDDM_M"
+        },
+        {
+          "@id": "ni:///sha-256;uj_87YYKRDFH1X5qv5WQnXI2LgCD8U61qeUjtRKgf_Q"
+        }
+      ],
+      "prov:wasAssociatedWith": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/agent/pandoc"
+      },
+      "rdfs:label": "pandoc 3.1.3 projection to jats"
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/activity/render-pdf",
+      "@type": "prov:Activity",
+      "prov:endedAtTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2026-10-24T23:58:07.454Z"
+      },
+      "prov:qualifiedAssociation": [
+        {
+          "@id": "https://561.group/knowledge/white-repopulation/build/association/d1P3kuhFAQvzQVV-37hdIVqGLtrBVwNkdfzIKzYL6NU"
+        },
+        {
+          "@id": "https://561.group/knowledge/white-repopulation/build/association/fKNZfMSyHmnPgRrakwofiooxhthKn7SQwxgEprIBDyU"
+        }
+      ],
+      "prov:startedAtTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2026-10-24T23:58:01.131Z"
+      },
+      "prov:used": [
+        {
+          "@id": "ni:///sha-256;7PHX1e-oio6NxWpZjrBEQh6n-4Auoz22QtyEpb0sHd8"
+        },
+        {
+          "@id": "ni:///sha-256;80BGpYkI7BcJ60wYs1ZQasN-Sek2Epn_Uv930OPm_RQ"
+        },
+        {
+          "@id": "ni:///sha-256;9yGAsi5kiD-w-gyWAnTAVcWbG-PofbeD9E_N4lvlu6Y"
+        },
+        {
+          "@id": "ni:///sha-256;AC-t541-T-nUKTaha0OoBmsJcBP2JV30Cxv7pmMe_5s"
+        },
+        {
+          "@id": "ni:///sha-256;EY_Mm6PeZw3wJOtZDePdKJ88OaJIGc6UVIFpiXbicWk"
+        },
+        {
+          "@id": "ni:///sha-256;LqUCsb5eKReNIGT0LsYGT-2zl9J1-e_voeRuZbUToME"
+        },
+        {
+          "@id": "ni:///sha-256;PM-QC3mWqmwbpUvcCjkypvuwKn9JBWblpoblN9IctLo"
+        },
+        {
+          "@id": "ni:///sha-256;QKgWaUVNfEoJ6xAIr5eOwxU58U_two8jLrvUpM6Ipao"
+        },
+        {
+          "@id": "ni:///sha-256;WflJAr_UeTIsOXW8LfmE5IKAbdxXGn_5HB7y332K5Nk"
+        },
+        {
+          "@id": "ni:///sha-256;Z1t0f6BPnWJ3VwmZajLdVgmtDEM8EvWc_tEvQBH4MJs"
+        },
+        {
+          "@id": "ni:///sha-256;fTrbeyWQvZdx9GW8lvR4XvBUFtaKR0mtbZvLOoZodwU"
+        },
+        {
+          "@id": "ni:///sha-256;j-VpNyfFxxof9X7qjSAOCYS-0XSrbJts1H66zL2OgL0"
+        },
+        {
+          "@id": "ni:///sha-256;jV1gkNN7v7KdGcUTxK_pL-54GxVlEZw2MXCGVR3zVaw"
+        },
+        {
+          "@id": "ni:///sha-256;jlLR7MLb2oJL6J4_lzGLweuAoU4PB8GkV0_-vgsC-UY"
+        },
+        {
+          "@id": "ni:///sha-256;qYLcwuoZqx4hcLg39DhupSIUULTlcSTXGqUJx-5DdRM"
+        },
+        {
+          "@id": "ni:///sha-256;r5ySKKr8RkqcUU4ih5Aco6tIMGfph92B1HKu0RDDM_M"
+        },
+        {
+          "@id": "ni:///sha-256;uj_87YYKRDFH1X5qv5WQnXI2LgCD8U61qeUjtRKgf_Q"
+        }
+      ],
+      "prov:wasAssociatedWith": [
+        {
+          "@id": "https://561.group/knowledge/white-repopulation/build/agent/pandoc"
+        },
+        {
+          "@id": "https://561.group/knowledge/white-repopulation/build/agent/xelatex"
+        }
+      ],
+      "rdfs:label": "pandoc 3.1.3 projection to pdf"
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/agent/agent%2Fclaude",
+      "@type": [
+        "prov:Agent",
+        "prov:SoftwareAgent"
+      ],
+      "dcterms:type": "ai-system",
+      "prov:actedOnBehalfOf": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/agent/agent%2Fmorgan-sennhauser"
+      },
+      "rdfs:label": "Claude (Anthropic)"
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/agent/agent%2Fcodex-6-1",
+      "@type": [
+        "prov:Agent",
+        "prov:SoftwareAgent"
+      ],
+      "dcterms:type": "ai-system",
+      "prov:actedOnBehalfOf": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/agent/agent%2Fmorgan-sennhauser"
+      },
+      "rdfs:label": "Codex 6.1"
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/agent/agent%2Flenticule-science",
+      "@type": [
+        "prov:Agent",
+        "prov:Organization"
+      ],
+      "rdfs:label": "Lenticule Science"
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/agent/agent%2Fmorgan-sennhauser",
+      "@type": [
+        "prov:Agent",
+        "prov:Person"
+      ],
+      "rdfs:label": "Morgan Sennhauser"
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/agent/pandoc",
+      "@type": [
+        "prov:Agent",
+        "prov:SoftwareAgent"
+      ],
+      "dcterms:type": "software",
+      "rdfs:label": "pandoc 3.1.3"
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/agent/xelatex",
+      "@type": [
+        "prov:Agent",
+        "prov:SoftwareAgent"
+      ],
+      "dcterms:type": "software",
+      "rdfs:label": "XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023/Debian)"
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/association/-OnOLKdHpMfvAT5-brV7dJnWXX3tQMb12Sk0w_2tWjs",
+      "@type": "prov:Association",
+      "prov:agent": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/agent/pandoc"
+      },
+      "prov:hadRole": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/role/renderer"
+      }
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/association/KMf_WEchFhIWRIPsQ8HQOgxCy40K-eLo2MHtMVeafRk",
+      "@type": "prov:Association",
+      "prov:agent": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/agent/pandoc"
+      },
+      "prov:hadRole": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/role/renderer"
+      }
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/association/d1P3kuhFAQvzQVV-37hdIVqGLtrBVwNkdfzIKzYL6NU",
+      "@type": "prov:Association",
+      "prov:agent": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/agent/xelatex"
+      },
+      "prov:hadRole": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/role/typesetter"
+      }
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/association/fKNZfMSyHmnPgRrakwofiooxhthKn7SQwxgEprIBDyU",
+      "@type": "prov:Association",
+      "prov:agent": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/agent/pandoc"
+      },
+      "prov:hadRole": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/role/renderer"
+      }
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/association/yDau0pe7-TGeyeWiOM9TxeANHl7FRAng4dgrYLuZu8g",
+      "@type": "prov:Association",
+      "prov:agent": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/agent/pandoc"
+      },
+      "prov:hadRole": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/role/renderer"
+      }
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/role/renderer",
+      "@type": "prov:Role",
+      "rdfs:label": "renderer"
+    },
+    {
+      "@id": "https://561.group/knowledge/white-repopulation/build/role/typesetter",
+      "@type": "prov:Role",
+      "rdfs:label": "typesetter"
+    },
+    {
+      "@id": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "223930"
+      },
+      "dcterms:format": "text/html",
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "ni:///sha-256;7PHX1e-oio6NxWpZjrBEQh6n-4Auoz22QtyEpb0sHd8"
+        },
+        {
+          "@id": "ni:///sha-256;80BGpYkI7BcJ60wYs1ZQasN-Sek2Epn_Uv930OPm_RQ"
+        },
+        {
+          "@id": "ni:///sha-256;AC-t541-T-nUKTaha0OoBmsJcBP2JV30Cxv7pmMe_5s"
+        },
+        {
+          "@id": "ni:///sha-256;EY_Mm6PeZw3wJOtZDePdKJ88OaJIGc6UVIFpiXbicWk"
+        },
+        {
+          "@id": "ni:///sha-256;LqUCsb5eKReNIGT0LsYGT-2zl9J1-e_voeRuZbUToME"
+        },
+        {
+          "@id": "ni:///sha-256;PM-QC3mWqmwbpUvcCjkypvuwKn9JBWblpoblN9IctLo"
+        },
+        {
+          "@id": "ni:///sha-256;QKgWaUVNfEoJ6xAIr5eOwxU58U_two8jLrvUpM6Ipao"
+        },
+        {
+          "@id": "ni:///sha-256;WflJAr_UeTIsOXW8LfmE5IKAbdxXGn_5HB7y332K5Nk"
+        },
+        {
+          "@id": "ni:///sha-256;Z1t0f6BPnWJ3VwmZajLdVgmtDEM8EvWc_tEvQBH4MJs"
+        },
+        {
+          "@id": "ni:///sha-256;fTrbeyWQvZdx9GW8lvR4XvBUFtaKR0mtbZvLOoZodwU"
+        },
+        {
+          "@id": "ni:///sha-256;j-VpNyfFxxof9X7qjSAOCYS-0XSrbJts1H66zL2OgL0"
+        },
+        {
+          "@id": "ni:///sha-256;jV1gkNN7v7KdGcUTxK_pL-54GxVlEZw2MXCGVR3zVaw"
+        },
+        {
+          "@id": "ni:///sha-256;qYLcwuoZqx4hcLg39DhupSIUULTlcSTXGqUJx-5DdRM"
+        },
+        {
+          "@id": "ni:///sha-256;r5ySKKr8RkqcUU4ih5Aco6tIMGfph92B1HKu0RDDM_M"
+        },
+        {
+          "@id": "ni:///sha-256;uj_87YYKRDFH1X5qv5WQnXI2LgCD8U61qeUjtRKgf_Q"
+        }
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/activity/render-html"
+      },
+      "rdfs:label": "build/white-repopulation.html"
+    },
+    {
+      "@id": "ni:///sha-256;7PHX1e-oio6NxWpZjrBEQh6n-4Auoz22QtyEpb0sHd8",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "26273"
+      },
+      "dcterms:format": "text/markdown",
+      "rdfs:label": "manuscript/03-birth-into-captivity.md"
+    },
+    {
+      "@id": "ni:///sha-256;80BGpYkI7BcJ60wYs1ZQasN-Sek2Epn_Uv930OPm_RQ",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "20646"
+      },
+      "dcterms:format": "application/yaml",
+      "rdfs:label": "references/references.yaml"
+    },
+    {
+      "@id": "ni:///sha-256;9yGAsi5kiD-w-gyWAnTAVcWbG-PofbeD9E_N4lvlu6Y",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "5502"
+      },
+      "dcterms:format": "text/x-lua",
+      "rdfs:label": "build/.filters/paper-declarations.lua"
+    },
+    {
+      "@id": "ni:///sha-256;AC-t541-T-nUKTaha0OoBmsJcBP2JV30Cxv7pmMe_5s",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "167761"
+      },
+      "dcterms:format": "application/vnd.citationstyles.style+xml",
+      "rdfs:label": "references/chicago-author-date.csl"
+    },
+    {
+      "@id": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "207328"
+      },
+      "dcterms:format": "application/jats+xml",
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "ni:///sha-256;7PHX1e-oio6NxWpZjrBEQh6n-4Auoz22QtyEpb0sHd8"
+        },
+        {
+          "@id": "ni:///sha-256;80BGpYkI7BcJ60wYs1ZQasN-Sek2Epn_Uv930OPm_RQ"
+        },
+        {
+          "@id": "ni:///sha-256;AC-t541-T-nUKTaha0OoBmsJcBP2JV30Cxv7pmMe_5s"
+        },
+        {
+          "@id": "ni:///sha-256;EY_Mm6PeZw3wJOtZDePdKJ88OaJIGc6UVIFpiXbicWk"
+        },
+        {
+          "@id": "ni:///sha-256;LqUCsb5eKReNIGT0LsYGT-2zl9J1-e_voeRuZbUToME"
+        },
+        {
+          "@id": "ni:///sha-256;PM-QC3mWqmwbpUvcCjkypvuwKn9JBWblpoblN9IctLo"
+        },
+        {
+          "@id": "ni:///sha-256;QKgWaUVNfEoJ6xAIr5eOwxU58U_two8jLrvUpM6Ipao"
+        },
+        {
+          "@id": "ni:///sha-256;WflJAr_UeTIsOXW8LfmE5IKAbdxXGn_5HB7y332K5Nk"
+        },
+        {
+          "@id": "ni:///sha-256;Z1t0f6BPnWJ3VwmZajLdVgmtDEM8EvWc_tEvQBH4MJs"
+        },
+        {
+          "@id": "ni:///sha-256;fTrbeyWQvZdx9GW8lvR4XvBUFtaKR0mtbZvLOoZodwU"
+        },
+        {
+          "@id": "ni:///sha-256;j-VpNyfFxxof9X7qjSAOCYS-0XSrbJts1H66zL2OgL0"
+        },
+        {
+          "@id": "ni:///sha-256;jV1gkNN7v7KdGcUTxK_pL-54GxVlEZw2MXCGVR3zVaw"
+        },
+        {
+          "@id": "ni:///sha-256;qYLcwuoZqx4hcLg39DhupSIUULTlcSTXGqUJx-5DdRM"
+        },
+        {
+          "@id": "ni:///sha-256;r5ySKKr8RkqcUU4ih5Aco6tIMGfph92B1HKu0RDDM_M"
+        },
+        {
+          "@id": "ni:///sha-256;uj_87YYKRDFH1X5qv5WQnXI2LgCD8U61qeUjtRKgf_Q"
+        }
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/activity/render-jats"
+      },
+      "rdfs:label": "build/white-repopulation.jats.xml"
+    },
+    {
+      "@id": "ni:///sha-256;EY_Mm6PeZw3wJOtZDePdKJ88OaJIGc6UVIFpiXbicWk",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "22675"
+      },
+      "dcterms:format": "text/markdown",
+      "rdfs:label": "manuscript/04-whose-future-increase.md"
+    },
+    {
+      "@id": "ni:///sha-256;LqUCsb5eKReNIGT0LsYGT-2zl9J1-e_voeRuZbUToME",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "34181"
+      },
+      "dcterms:format": "text/markdown",
+      "rdfs:label": "manuscript/02-the-future-white.md"
+    },
+    {
+      "@id": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "275770"
+      },
+      "dcterms:format": "application/pdf",
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "ni:///sha-256;7PHX1e-oio6NxWpZjrBEQh6n-4Auoz22QtyEpb0sHd8"
+        },
+        {
+          "@id": "ni:///sha-256;80BGpYkI7BcJ60wYs1ZQasN-Sek2Epn_Uv930OPm_RQ"
+        },
+        {
+          "@id": "ni:///sha-256;9yGAsi5kiD-w-gyWAnTAVcWbG-PofbeD9E_N4lvlu6Y"
+        },
+        {
+          "@id": "ni:///sha-256;AC-t541-T-nUKTaha0OoBmsJcBP2JV30Cxv7pmMe_5s"
+        },
+        {
+          "@id": "ni:///sha-256;EY_Mm6PeZw3wJOtZDePdKJ88OaJIGc6UVIFpiXbicWk"
+        },
+        {
+          "@id": "ni:///sha-256;LqUCsb5eKReNIGT0LsYGT-2zl9J1-e_voeRuZbUToME"
+        },
+        {
+          "@id": "ni:///sha-256;PM-QC3mWqmwbpUvcCjkypvuwKn9JBWblpoblN9IctLo"
+        },
+        {
+          "@id": "ni:///sha-256;QKgWaUVNfEoJ6xAIr5eOwxU58U_two8jLrvUpM6Ipao"
+        },
+        {
+          "@id": "ni:///sha-256;WflJAr_UeTIsOXW8LfmE5IKAbdxXGn_5HB7y332K5Nk"
+        },
+        {
+          "@id": "ni:///sha-256;Z1t0f6BPnWJ3VwmZajLdVgmtDEM8EvWc_tEvQBH4MJs"
+        },
+        {
+          "@id": "ni:///sha-256;fTrbeyWQvZdx9GW8lvR4XvBUFtaKR0mtbZvLOoZodwU"
+        },
+        {
+          "@id": "ni:///sha-256;j-VpNyfFxxof9X7qjSAOCYS-0XSrbJts1H66zL2OgL0"
+        },
+        {
+          "@id": "ni:///sha-256;jV1gkNN7v7KdGcUTxK_pL-54GxVlEZw2MXCGVR3zVaw"
+        },
+        {
+          "@id": "ni:///sha-256;jlLR7MLb2oJL6J4_lzGLweuAoU4PB8GkV0_-vgsC-UY"
+        },
+        {
+          "@id": "ni:///sha-256;qYLcwuoZqx4hcLg39DhupSIUULTlcSTXGqUJx-5DdRM"
+        },
+        {
+          "@id": "ni:///sha-256;r5ySKKr8RkqcUU4ih5Aco6tIMGfph92B1HKu0RDDM_M"
+        },
+        {
+          "@id": "ni:///sha-256;uj_87YYKRDFH1X5qv5WQnXI2LgCD8U61qeUjtRKgf_Q"
+        }
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/activity/render-pdf"
+      },
+      "rdfs:label": "build/white-repopulation.pdf"
+    },
+    {
+      "@id": "ni:///sha-256;PM-QC3mWqmwbpUvcCjkypvuwKn9JBWblpoblN9IctLo",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "355"
+      },
+      "dcterms:format": "text/markdown",
+      "rdfs:label": "manuscript/91-appendix-b-bibliography.md"
+    },
+    {
+      "@id": "ni:///sha-256;QKgWaUVNfEoJ6xAIr5eOwxU58U_two8jLrvUpM6Ipao",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "3612"
+      },
+      "dcterms:format": "text/markdown",
+      "rdfs:label": "manuscript/90-appendix-a-tables.md"
+    },
+    {
+      "@id": "ni:///sha-256;WflJAr_UeTIsOXW8LfmE5IKAbdxXGn_5HB7y332K5Nk",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "9713"
+      },
+      "dcterms:format": "image/svg+xml",
+      "rdfs:label": "figures/net-migration-share-of-growth.svg"
+    },
+    {
+      "@id": "ni:///sha-256;Z1t0f6BPnWJ3VwmZajLdVgmtDEM8EvWc_tEvQBH4MJs",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "39434"
+      },
+      "dcterms:format": "text/markdown",
+      "rdfs:label": "manuscript/05-transatlantic-population-circuits.md"
+    },
+    {
+      "@id": "ni:///sha-256;fTrbeyWQvZdx9GW8lvR4XvBUFtaKR0mtbZvLOoZodwU",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "3411"
+      },
+      "dcterms:format": "application/json",
+      "rdfs:label": "figures/net-migration-share-of-growth.vl.json"
+    },
+    {
+      "@id": "ni:///sha-256;j-VpNyfFxxof9X7qjSAOCYS-0XSrbJts1H66zL2OgL0",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "10404"
+      },
+      "dcterms:format": "image/svg+xml",
+      "rdfs:label": "figures/captive-birth-share-by-decade.svg"
+    },
+    {
+      "@id": "ni:///sha-256;jV1gkNN7v7KdGcUTxK_pL-54GxVlEZw2MXCGVR3zVaw",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "6055"
+      },
+      "dcterms:format": "application/json",
+      "rdfs:label": "figures/captive-birth-share-by-decade.vl.json"
+    },
+    {
+      "@id": "ni:///sha-256;jlLR7MLb2oJL6J4_lzGLweuAoU4PB8GkV0_-vgsC-UY",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "237"
+      },
+      "dcterms:format": "application/x-tex",
+      "rdfs:label": "build/.reproducibility-xelatex.tex"
+    },
+    {
+      "@id": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "122031"
+      },
+      "dcterms:format": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "ni:///sha-256;7PHX1e-oio6NxWpZjrBEQh6n-4Auoz22QtyEpb0sHd8"
+        },
+        {
+          "@id": "ni:///sha-256;80BGpYkI7BcJ60wYs1ZQasN-Sek2Epn_Uv930OPm_RQ"
+        },
+        {
+          "@id": "ni:///sha-256;AC-t541-T-nUKTaha0OoBmsJcBP2JV30Cxv7pmMe_5s"
+        },
+        {
+          "@id": "ni:///sha-256;EY_Mm6PeZw3wJOtZDePdKJ88OaJIGc6UVIFpiXbicWk"
+        },
+        {
+          "@id": "ni:///sha-256;LqUCsb5eKReNIGT0LsYGT-2zl9J1-e_voeRuZbUToME"
+        },
+        {
+          "@id": "ni:///sha-256;PM-QC3mWqmwbpUvcCjkypvuwKn9JBWblpoblN9IctLo"
+        },
+        {
+          "@id": "ni:///sha-256;QKgWaUVNfEoJ6xAIr5eOwxU58U_two8jLrvUpM6Ipao"
+        },
+        {
+          "@id": "ni:///sha-256;WflJAr_UeTIsOXW8LfmE5IKAbdxXGn_5HB7y332K5Nk"
+        },
+        {
+          "@id": "ni:///sha-256;Z1t0f6BPnWJ3VwmZajLdVgmtDEM8EvWc_tEvQBH4MJs"
+        },
+        {
+          "@id": "ni:///sha-256;fTrbeyWQvZdx9GW8lvR4XvBUFtaKR0mtbZvLOoZodwU"
+        },
+        {
+          "@id": "ni:///sha-256;j-VpNyfFxxof9X7qjSAOCYS-0XSrbJts1H66zL2OgL0"
+        },
+        {
+          "@id": "ni:///sha-256;jV1gkNN7v7KdGcUTxK_pL-54GxVlEZw2MXCGVR3zVaw"
+        },
+        {
+          "@id": "ni:///sha-256;qYLcwuoZqx4hcLg39DhupSIUULTlcSTXGqUJx-5DdRM"
+        },
+        {
+          "@id": "ni:///sha-256;r5ySKKr8RkqcUU4ih5Aco6tIMGfph92B1HKu0RDDM_M"
+        },
+        {
+          "@id": "ni:///sha-256;uj_87YYKRDFH1X5qv5WQnXI2LgCD8U61qeUjtRKgf_Q"
+        }
+      ],
+      "prov:wasGeneratedBy": {
+        "@id": "https://561.group/knowledge/white-repopulation/build/activity/render-docx"
+      },
+      "rdfs:label": "build/white-repopulation.docx"
+    },
+    {
+      "@id": "ni:///sha-256;qYLcwuoZqx4hcLg39DhupSIUULTlcSTXGqUJx-5DdRM",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "6478"
+      },
+      "dcterms:format": "application/yaml",
+      "rdfs:label": "paper.yaml"
+    },
+    {
+      "@id": "ni:///sha-256;r5ySKKr8RkqcUU4ih5Aco6tIMGfph92B1HKu0RDDM_M",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "4679"
+      },
+      "dcterms:format": "text/markdown",
+      "rdfs:label": "manuscript/06-conclusion.md"
+    },
+    {
+      "@id": "ni:///sha-256;uj_87YYKRDFH1X5qv5WQnXI2LgCD8U61qeUjtRKgf_Q",
+      "@type": "prov:Entity",
+      "dcterms:extent": {
+        "@type": "xsd:nonNegativeInteger",
+        "@value": "7340"
+      },
+      "dcterms:format": "text/markdown",
+      "rdfs:label": "manuscript/01-introduction.md"
+    }
+  ]
+}

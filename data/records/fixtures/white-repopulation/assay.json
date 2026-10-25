@@ -1,0 +1,446 @@
+{
+  "type": "FabricationAssayResult",
+  "version": 1,
+  "artifactId": "research-paper-e0db9341518726ee",
+  "kind": "research-paper",
+  "specificationDigest": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+  "outputs": [
+    {
+      "projection": "claims",
+      "mediaType": "application/json",
+      "ni": "ni:///sha-256;Krj_Eo3g_4mMuHQAFKdRnyTw-gh-hrhnDeuWoV-HnK8",
+      "size": 5488
+    },
+    {
+      "projection": "docx",
+      "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "ni": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+      "size": 122031
+    },
+    {
+      "projection": "html",
+      "mediaType": "text/html",
+      "ni": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+      "size": 223930
+    },
+    {
+      "projection": "jats",
+      "mediaType": "application/jats+xml",
+      "ni": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+      "size": 207328
+    },
+    {
+      "projection": "pdf",
+      "mediaType": "application/pdf",
+      "ni": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+      "size": 275770
+    },
+    {
+      "projection": "provenance",
+      "mediaType": "application/ld+json",
+      "ni": "ni:///sha-256;FDQmZSof3W6O8HlZksnUKSelObRii5SIEKgYy9vBvmg",
+      "size": 27252
+    }
+  ],
+  "verdicts": [
+    {
+      "assay": "claims-reproduce",
+      "ok": true,
+      "reasons": [],
+      "projections": [
+        "claims",
+        "pdf"
+      ],
+      "cells": [
+        "ni:///sha-256;h5T9MOz0quKSpWRLvhh3mbMFTrW45NttcZheomGuDmA",
+        "ni:///sha-256;MuORSouJ6jvG9QvPxSRyQ036g73dCVZUFEbNuiGni5I"
+      ],
+      "reading": "true"
+    },
+    {
+      "assay": "conformance-passes",
+      "ok": true,
+      "reasons": [],
+      "projections": [
+        "provenance"
+      ],
+      "cells": [
+        "ni:///sha-256;-K-V868uR51Qk-4ZqtOOD7bc-ZW8DMr6XMXyG9ODQqc"
+      ],
+      "reading": "true"
+    },
+    {
+      "assay": "render-receipt-closes",
+      "ok": true,
+      "reasons": [],
+      "projections": [
+        "docx",
+        "html",
+        "jats",
+        "pdf",
+        "provenance"
+      ],
+      "cells": [
+        "ni:///sha-256;YoX6DWpOqiMxESBPRxacmkWKH4hK3Wtr4hG9SWShy6I",
+        "ni:///sha-256;5WNnJBc9XJBQ5lSOeMLLPOe6DZAnd8eO10hDrEG7AFE",
+        "ni:///sha-256;sQiJ7aw96TiE9HQdn-E2NiWwNSGj59mPqWoD7jthGC4",
+        "ni:///sha-256;kFqcmjPdoN9VGgxq-2O7iVR3yXwu36hZW9uJLZNdbmw",
+        "ni:///sha-256;inai0HHSnL7CGkBam1d7U5fErDay13WTPnAYJLi3Kpw"
+      ],
+      "reading": "true"
+    },
+    {
+      "assay": "metadata-consistent",
+      "ok": true,
+      "reasons": [],
+      "projections": [
+        "docx",
+        "html",
+        "jats",
+        "pdf"
+      ],
+      "cells": [
+        "ni:///sha-256;71n0wztrO2BPzmQaM6Xk579SCJF6e-HwmFw8a5Mm_Ls",
+        "ni:///sha-256;LDHYa679XlyqFQ5zysVRmMmS_4ZT9o_VprWXFBzM5J4",
+        "ni:///sha-256;pk5a4iLkkfbjXZCL63XiRobdT_5mdDxj_AF6qhruN1w",
+        "ni:///sha-256;-pO-KHcG673HABdf9kJpWd51Mwq7i3ABtBuSBZyklCA"
+      ],
+      "reading": "true"
+    },
+    {
+      "assay": "references-resolve",
+      "ok": true,
+      "reasons": [],
+      "projections": [
+        "docx",
+        "html",
+        "jats",
+        "pdf"
+      ],
+      "cells": [
+        "ni:///sha-256;m5eD_CiRc91gIJVxMjzE18l7uzgmMYrwRoO0QWDN6hk",
+        "ni:///sha-256;bIL8UdlVfs_MgY78JlNIrGR2FVlQlH72bWN0eHUUrUU",
+        "ni:///sha-256;G32Vz6NkJbAXgbdfrJQcWt4u0WO0-tXwfuIX8ZwcUMc",
+        "ni:///sha-256;ZodBCO8KAbzNCecOl-ZO3XVQbyL75Ta06YzWpQgccWg"
+      ],
+      "reading": "true"
+    }
+  ],
+  "cells": [
+    {
+      "subject": "ni:///sha-256;Krj_Eo3g_4mMuHQAFKdRnyTw-gh-hrhnDeuWoV-HnK8",
+      "predicate": "claims-reproduce",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "claims-reproduce",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "total": 26,
+            "agreed": 26
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+      "predicate": "claims-reproduce",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "claims-reproduce",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "total": 26,
+            "agreed": 26
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;FDQmZSof3W6O8HlZksnUKSelObRii5SIEKgYy9vBvmg",
+      "predicate": "conformance-passes",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "conformance-passes",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "findings": 0
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+      "predicate": "render-receipt-closes",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "render-receipt-closes",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "documents": [
+              "pdf",
+              "html",
+              "docx",
+              "jats"
+            ],
+            "provenanceCanonicalNi": "ni:///sha-256;X4AJi292uZ2GS_att53mi53mUbqL-4gdiOOwByWxGuM",
+            "tripleCount": 281
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+      "predicate": "render-receipt-closes",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "render-receipt-closes",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "documents": [
+              "pdf",
+              "html",
+              "docx",
+              "jats"
+            ],
+            "provenanceCanonicalNi": "ni:///sha-256;X4AJi292uZ2GS_att53mi53mUbqL-4gdiOOwByWxGuM",
+            "tripleCount": 281
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+      "predicate": "render-receipt-closes",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "render-receipt-closes",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "documents": [
+              "pdf",
+              "html",
+              "docx",
+              "jats"
+            ],
+            "provenanceCanonicalNi": "ni:///sha-256;X4AJi292uZ2GS_att53mi53mUbqL-4gdiOOwByWxGuM",
+            "tripleCount": 281
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+      "predicate": "render-receipt-closes",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "render-receipt-closes",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "documents": [
+              "pdf",
+              "html",
+              "docx",
+              "jats"
+            ],
+            "provenanceCanonicalNi": "ni:///sha-256;X4AJi292uZ2GS_att53mi53mUbqL-4gdiOOwByWxGuM",
+            "tripleCount": 281
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;FDQmZSof3W6O8HlZksnUKSelObRii5SIEKgYy9vBvmg",
+      "predicate": "render-receipt-closes",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "render-receipt-closes",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "documents": [
+              "pdf",
+              "html",
+              "docx",
+              "jats"
+            ],
+            "provenanceCanonicalNi": "ni:///sha-256;X4AJi292uZ2GS_att53mi53mUbqL-4gdiOOwByWxGuM",
+            "tripleCount": 281
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+      "predicate": "metadata-consistent",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "metadata-consistent",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "files": [
+              ".zenodo.json",
+              "CITATION.cff",
+              "codemeta.json",
+              "scholarly-article.jsonld"
+            ]
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+      "predicate": "metadata-consistent",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "metadata-consistent",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "files": [
+              ".zenodo.json",
+              "CITATION.cff",
+              "codemeta.json",
+              "scholarly-article.jsonld"
+            ]
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+      "predicate": "metadata-consistent",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "metadata-consistent",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "files": [
+              ".zenodo.json",
+              "CITATION.cff",
+              "codemeta.json",
+              "scholarly-article.jsonld"
+            ]
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+      "predicate": "metadata-consistent",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "metadata-consistent",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "files": [
+              ".zenodo.json",
+              "CITATION.cff",
+              "codemeta.json",
+              "scholarly-article.jsonld"
+            ]
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+      "predicate": "references-resolve",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "references-resolve",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "cited": 58
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+      "predicate": "references-resolve",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "references-resolve",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "cited": 58
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+      "predicate": "references-resolve",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "references-resolve",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "cited": 58
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+      "predicate": "references-resolve",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "references-resolve",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "cited": 58
+          }
+        }
+      ],
+      "against": []
+    }
+  ],
+  "passed": true,
+  "assayDigest": "ni:///sha-256;vtZFs1EoOMd758LlYYcGbZdl9g8dUsceaDDgrBiVohI"
+}

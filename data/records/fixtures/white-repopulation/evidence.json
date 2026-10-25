@@ -1,0 +1,2382 @@
+{
+  "claims": {
+    "spec": {
+      "$schema": "https://561.group/schema/research-claim-reproduction/claim-spec.schema.json",
+      "specVersion": "1",
+      "description": "Every quantitative claim of White Repopulation, derived from data/records/. Tables and Appendix A are declared in tables.json.",
+      "records": {
+        "births": "data/records/2026-10-17-captive-birth-shares-source-series.json",
+        "migration": "data/records/us-net-migration-share-of-growth-1790-1860.json",
+        "cases": "data/records/2026-10-17-antebellum-property-law-case-register.json",
+        "virginia": "data/records/2026-10-17-virginia-racial-integrity-legislative-sequence.json"
+      },
+      "bindings": {
+        "captiveByDecade": {
+          "record": "births",
+          "path": "/source/captive_births_1790_1859_by_decade"
+        },
+        "meanPopulation1790s": {
+          "record": "births",
+          "path": "/source/mean_population_1790s"
+        },
+        "assumedRate1790s": {
+          "record": "births",
+          "path": "/assumed_cbr_1790s_per_thousand"
+        },
+        "observedByDecade": {
+          "record": "births",
+          "path": "/source/births_all_1800_1859_thousands",
+          "groupBy": {
+            "key": "/year",
+            "value": "/births_thousands",
+            "width": 10,
+            "scale": 1000,
+            "require": {
+              "from": 1800,
+              "to": 1859
+            }
+          }
+        },
+        "births1790sAssumed": {
+          "floorDivide": {
+            "numerator": {
+              "multiply": [
+                {
+                  "ref": "meanPopulation1790s"
+                },
+                {
+                  "ref": "assumedRate1790s"
+                },
+                10
+              ]
+            },
+            "denominator": 1000
+          }
+        },
+        "allByDecade": {
+          "concat": [
+            [
+              {
+                "ref": "births1790sAssumed"
+              }
+            ],
+            {
+              "ref": "observedByDecade"
+            }
+          ]
+        },
+        "captive_w1800to1849": {
+          "record": "births",
+          "path": "/source/captive_births_1790_1859_by_decade",
+          "slice": [
+            1,
+            6
+          ]
+        },
+        "numerator_w1800to1849": {
+          "sum": {
+            "ref": "captive_w1800to1849"
+          }
+        },
+        "denominator_w1800to1849": {
+          "sum": {
+            "slice": {
+              "array": {
+                "ref": "allByDecade"
+              },
+              "start": 1,
+              "end": 6
+            }
+          }
+        },
+        "captive_w1790to1849": {
+          "record": "births",
+          "path": "/source/captive_births_1790_1859_by_decade",
+          "slice": [
+            0,
+            6
+          ]
+        },
+        "numerator_w1790to1849": {
+          "sum": {
+            "ref": "captive_w1790to1849"
+          }
+        },
+        "denominator_w1790to1849": {
+          "sum": {
+            "slice": {
+              "array": {
+                "ref": "allByDecade"
+              },
+              "start": 0,
+              "end": 6
+            }
+          }
+        },
+        "captive_w1790to1859": {
+          "record": "births",
+          "path": "/source/captive_births_1790_1859_by_decade",
+          "slice": [
+            0,
+            7
+          ]
+        },
+        "numerator_w1790to1859": {
+          "sum": {
+            "ref": "captive_w1790to1859"
+          }
+        },
+        "denominator_w1790to1859": {
+          "sum": {
+            "slice": {
+              "array": {
+                "ref": "allByDecade"
+              },
+              "start": 0,
+              "end": 7
+            }
+          }
+        },
+        "decadeStarts": {
+          "range": {
+            "start": 1790,
+            "step": 10,
+            "count": {
+              "count": {
+                "array": {
+                  "ref": "captiveByDecade"
+                }
+              }
+            }
+          }
+        }
+      },
+      "claims": [
+        {
+          "id": "captive-share-1800-1849-numerator",
+          "manuscript": "03-birth-into-captivity",
+          "stated": 5167522,
+          "expression": {
+            "ref": "numerator_w1800to1849"
+          },
+          "basis": "sum of Hacker 2020 Table 1 col. 7 decades"
+        },
+        {
+          "id": "captive-share-1800-1849-denominator",
+          "manuscript": "03-birth-into-captivity",
+          "stated": 30038000,
+          "expression": {
+            "ref": "denominator_w1800to1849"
+          },
+          "basis": "Haines-Sutch annual births; 1790s assumed"
+        },
+        {
+          "id": "captive-share-1800-1849-pct",
+          "manuscript": "03-birth-into-captivity",
+          "stated": "17.20",
+          "expression": {
+            "percent": {
+              "numerator": {
+                "ref": "numerator_w1800to1849"
+              },
+              "denominator": {
+                "ref": "denominator_w1800to1849"
+              },
+              "places": 2,
+              "rounding": "half-even"
+            }
+          },
+          "basis": "numerator / denominator"
+        },
+        {
+          "id": "captive-share-1790-1849-numerator",
+          "manuscript": "03-birth-into-captivity",
+          "stated": 5571170,
+          "expression": {
+            "ref": "numerator_w1790to1849"
+          },
+          "basis": "sum of Hacker 2020 Table 1 col. 7 decades"
+        },
+        {
+          "id": "captive-share-1790-1849-denominator",
+          "manuscript": "03-birth-into-captivity",
+          "stated": 32524000,
+          "expression": {
+            "ref": "denominator_w1790to1849"
+          },
+          "basis": "Haines-Sutch annual births; 1790s assumed"
+        },
+        {
+          "id": "captive-share-1790-1849-pct",
+          "manuscript": "03-birth-into-captivity",
+          "stated": "17.13",
+          "expression": {
+            "percent": {
+              "numerator": {
+                "ref": "numerator_w1790to1849"
+              },
+              "denominator": {
+                "ref": "denominator_w1790to1849"
+              },
+              "places": 2,
+              "rounding": "half-even"
+            }
+          },
+          "basis": "numerator / denominator"
+        },
+        {
+          "id": "captive-share-1790-1859-numerator",
+          "manuscript": "03-birth-into-captivity",
+          "stated": 7437068,
+          "expression": {
+            "ref": "numerator_w1790to1859"
+          },
+          "basis": "sum of Hacker 2020 Table 1 col. 7 decades"
+        },
+        {
+          "id": "captive-share-1790-1859-denominator",
+          "manuscript": "03-birth-into-captivity",
+          "stated": 44218000,
+          "expression": {
+            "ref": "denominator_w1790to1859"
+          },
+          "basis": "Haines-Sutch annual births; 1790s assumed"
+        },
+        {
+          "id": "captive-share-1790-1859-pct",
+          "manuscript": "03-birth-into-captivity",
+          "stated": "16.82",
+          "expression": {
+            "percent": {
+              "numerator": {
+                "ref": "numerator_w1790to1859"
+              },
+              "denominator": {
+                "ref": "denominator_w1790to1859"
+              },
+              "places": 2,
+              "rounding": "half-even"
+            }
+          },
+          "basis": "numerator / denominator"
+        },
+        {
+          "id": "births-1790s-assumed",
+          "manuscript": "03-birth-into-captivity",
+          "stated": 2486000,
+          "expression": {
+            "ref": "births1790sAssumed"
+          },
+          "basis": {
+            "text": [
+              {
+                "ref": "assumedRate1790s"
+              },
+              "/1000 x ",
+              {
+                "format": {
+                  "value": {
+                    "ref": "meanPopulation1790s"
+                  },
+                  "group": true
+                }
+              },
+              " x 10 years"
+            ]
+          }
+        },
+        {
+          "id": {
+            "text": [
+              "sensitivity-cbr",
+              {
+                "ref": "rate"
+              },
+              "-",
+              {
+                "get": {
+                  "from": {
+                    "ref": "variant"
+                  },
+                  "key": "key"
+                }
+              }
+            ]
+          },
+          "manuscript": "03-birth-into-captivity",
+          "forEach": [
+            {
+              "over": {
+                "pointer": {
+                  "record": "births",
+                  "path": "/sensitivities"
+                }
+              },
+              "as": "row"
+            },
+            {
+              "over": {
+                "literal": [
+                  {
+                    "key": "share_1790_1849_pct",
+                    "end": 6
+                  },
+                  {
+                    "key": "share_1790_1859_pct",
+                    "end": 7
+                  }
+                ]
+              },
+              "as": "variant"
+            }
+          ],
+          "let": {
+            "rate": {
+              "get": {
+                "from": {
+                  "ref": "row"
+                },
+                "key": "rate"
+              }
+            },
+            "assumed": {
+              "floorDivide": {
+                "numerator": {
+                  "multiply": [
+                    {
+                      "ref": "meanPopulation1790s"
+                    },
+                    {
+                      "ref": "rate"
+                    },
+                    10
+                  ]
+                },
+                "denominator": 1000
+              }
+            },
+            "end": {
+              "get": {
+                "from": {
+                  "ref": "variant"
+                },
+                "key": "end"
+              }
+            }
+          },
+          "stated": {
+            "format": {
+              "value": {
+                "get": {
+                  "from": {
+                    "ref": "row"
+                  },
+                  "key": {
+                    "get": {
+                      "from": {
+                        "ref": "variant"
+                      },
+                      "key": "key"
+                    }
+                  }
+                }
+              },
+              "places": 2
+            }
+          },
+          "expression": {
+            "percent": {
+              "numerator": {
+                "sum": {
+                  "slice": {
+                    "array": {
+                      "ref": "captiveByDecade"
+                    },
+                    "start": 0,
+                    "end": {
+                      "ref": "end"
+                    }
+                  }
+                }
+              },
+              "denominator": {
+                "sum": {
+                  "slice": {
+                    "array": {
+                      "substitute": {
+                        "array": {
+                          "ref": "allByDecade"
+                        },
+                        "index": 0,
+                        "value": {
+                          "ref": "assumed"
+                        }
+                      }
+                    },
+                    "start": 0,
+                    "end": {
+                      "ref": "end"
+                    }
+                  }
+                }
+              },
+              "places": 2,
+              "rounding": "half-even"
+            }
+          },
+          "basis": {
+            "text": [
+              "1790s births at ",
+              {
+                "ref": "rate"
+              },
+              "/1000"
+            ]
+          }
+        },
+        {
+          "id": "migration-share-1790-1800",
+          "manuscript": "01-introduction; 05-transatlantic",
+          "stated": "11.9",
+          "expression": {
+            "format": {
+              "places": 1,
+              "value": {
+                "get": {
+                  "from": {
+                    "find": {
+                      "array": {
+                        "pointer": {
+                          "record": "migration",
+                          "path": "/intervals"
+                        }
+                      },
+                      "where": {
+                        "start_year": {
+                          "equals": 1790
+                        }
+                      }
+                    }
+                  },
+                  "key": "net_migration_share_total_growth_pct"
+                }
+              }
+            }
+          },
+          "basis": "Haines 2006 Table Aa15-Aa21 as reported"
+        },
+        {
+          "id": "migration-share-1850-1860",
+          "manuscript": "01-introduction; 05-transatlantic",
+          "stated": "32.3",
+          "expression": {
+            "format": {
+              "places": 1,
+              "value": {
+                "get": {
+                  "from": {
+                    "find": {
+                      "array": {
+                        "pointer": {
+                          "record": "migration",
+                          "path": "/intervals"
+                        }
+                      },
+                      "where": {
+                        "start_year": {
+                          "equals": 1850
+                        }
+                      }
+                    }
+                  },
+                  "key": "net_migration_share_total_growth_pct"
+                }
+              }
+            }
+          },
+          "basis": "Haines 2006 Table Aa15-Aa21 as reported"
+        },
+        {
+          "id": "case-register-records",
+          "manuscript": "04-whose-future-increase",
+          "stated": 7,
+          "expression": {
+            "count": {
+              "array": {
+                "pointer": {
+                  "record": "cases",
+                  "path": "/records"
+                }
+              }
+            }
+          },
+          "basis": "documents in the purposive register"
+        },
+        {
+          "id": "case-register-observations",
+          "manuscript": "04-whose-future-increase",
+          "stated": 21,
+          "expression": {
+            "sum": {
+              "map": {
+                "over": {
+                  "pointer": {
+                    "record": "cases",
+                    "path": "/records"
+                  }
+                },
+                "as": "document",
+                "to": {
+                  "count": {
+                    "array": {
+                      "get": {
+                        "from": {
+                          "ref": "document"
+                        },
+                        "key": "observations",
+                        "default": {
+                          "literal": []
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "basis": "observations across documents"
+        },
+        {
+          "id": "virginia-events",
+          "manuscript": "02-the-future-white",
+          "stated": 4,
+          "expression": {
+            "count": {
+              "array": {
+                "pointer": {
+                  "record": "virginia",
+                  "path": "/events"
+                }
+              }
+            }
+          },
+          "basis": "legal-state events 1924-1930"
+        },
+        {
+          "id": "virginia-1926-not-enacted",
+          "manuscript": "02-the-future-white",
+          "stated": true,
+          "expression": {
+            "any": {
+              "array": {
+                "pointer": {
+                  "record": "virginia",
+                  "path": "/events"
+                }
+              },
+              "where": {
+                "id": {
+                  "startsWith": "VA-1926"
+                },
+                "state": {
+                  "notEquals": "enacted"
+                }
+              }
+            }
+          },
+          "basis": "1926 House amendment state"
+        }
+      ],
+      "resultsPath": "data/derived/claims.json",
+      "tables": [
+        {
+          "id": "decades",
+          "iterate": {
+            "over": {
+              "ref": "decadeStarts"
+            },
+            "as": "start",
+            "index": "i"
+          },
+          "let": {
+            "captive": {
+              "get": {
+                "from": {
+                  "ref": "captiveByDecade"
+                },
+                "key": {
+                  "ref": "i"
+                }
+              }
+            },
+            "total": {
+              "get": {
+                "from": {
+                  "ref": "allByDecade"
+                },
+                "key": {
+                  "ref": "i"
+                }
+              }
+            },
+            "end": {
+              "add": [
+                {
+                  "ref": "start"
+                },
+                9
+              ]
+            }
+          },
+          "csv": {
+            "path": "data/derived/births-1790-1859.csv",
+            "crlfDigest": true,
+            "columns": [
+              {
+                "header": "start_year",
+                "value": {
+                  "ref": "start"
+                }
+              },
+              {
+                "header": "end_year",
+                "value": {
+                  "ref": "end"
+                }
+              },
+              {
+                "header": "modeled_births_into_slavery",
+                "value": {
+                  "ref": "captive"
+                }
+              },
+              {
+                "header": "estimated_all_us_births",
+                "value": {
+                  "ref": "total"
+                }
+              },
+              {
+                "header": "denominator_type",
+                "value": {
+                  "if": {
+                    "cond": {
+                      "equals": [
+                        {
+                          "ref": "i"
+                        },
+                        0
+                      ]
+                    },
+                    "then": "assumed",
+                    "else": "modeled"
+                  }
+                }
+              },
+              {
+                "header": "share_pct",
+                "value": {
+                  "normalize": {
+                    "percent": {
+                      "numerator": {
+                        "ref": "captive"
+                      },
+                      "denominator": {
+                        "ref": "total"
+                      },
+                      "places": 4,
+                      "rounding": "half-even"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "markdown": {
+            "caption": "Births into slavery and estimated U.S. births by decade. The 1790s denominator is assumed.",
+            "columns": [
+              {
+                "header": "Decade",
+                "align": "left",
+                "value": {
+                  "text": [
+                    {
+                      "ref": "start"
+                    },
+                    "–",
+                    {
+                      "substring": {
+                        "value": {
+                          "ref": "end"
+                        },
+                        "start": 2
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "header": "Births into slavery",
+                "align": "right",
+                "value": {
+                  "format": {
+                    "value": {
+                      "ref": "captive"
+                    },
+                    "group": true
+                  }
+                }
+              },
+              {
+                "header": "Estimated U.S. births",
+                "align": "right",
+                "value": {
+                  "format": {
+                    "value": {
+                      "ref": "total"
+                    },
+                    "group": true
+                  }
+                }
+              },
+              {
+                "header": "Denominator",
+                "align": "left",
+                "value": {
+                  "if": {
+                    "cond": {
+                      "equals": [
+                        {
+                          "ref": "i"
+                        },
+                        0
+                      ]
+                    },
+                    "then": "assumed",
+                    "else": "modeled"
+                  }
+                }
+              },
+              {
+                "header": "Share (%)",
+                "align": "right",
+                "value": {
+                  "percent": {
+                    "numerator": {
+                      "ref": "captive"
+                    },
+                    "denominator": {
+                      "ref": "total"
+                    },
+                    "places": 2,
+                    "rounding": "half-even"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "migration",
+          "iterate": {
+            "over": {
+              "pointer": {
+                "record": "migration",
+                "path": "/intervals"
+              }
+            },
+            "as": "row"
+          },
+          "csv": {
+            "path": "data/derived/us-migration-growth-1790-1860.csv",
+            "crlfDigest": true,
+            "columns": [
+              {
+                "header": "start_year",
+                "value": {
+                  "get": {
+                    "from": {
+                      "ref": "row"
+                    },
+                    "key": "start_year"
+                  }
+                }
+              },
+              {
+                "header": "end_year",
+                "value": {
+                  "get": {
+                    "from": {
+                      "ref": "row"
+                    },
+                    "key": "end_year"
+                  }
+                }
+              },
+              {
+                "header": "net_migration_share_total_growth_pct",
+                "value": {
+                  "format": {
+                    "value": {
+                      "get": {
+                        "from": {
+                          "ref": "row"
+                        },
+                        "key": "net_migration_share_total_growth_pct"
+                      }
+                    },
+                    "places": 1
+                  }
+                }
+              },
+              {
+                "header": "source",
+                "value": {
+                  "pointer": {
+                    "record": "migration",
+                    "path": "/source_label"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "sensitivity",
+          "iterate": {
+            "over": {
+              "pointer": {
+                "record": "births",
+                "path": "/sensitivities"
+              }
+            },
+            "as": "row"
+          },
+          "let": {
+            "rate": {
+              "get": {
+                "from": {
+                  "ref": "row"
+                },
+                "key": "rate"
+              }
+            },
+            "assumed": {
+              "floorDivide": {
+                "numerator": {
+                  "multiply": [
+                    {
+                      "ref": "meanPopulation1790s"
+                    },
+                    {
+                      "ref": "rate"
+                    },
+                    10
+                  ]
+                },
+                "denominator": 1000
+              }
+            }
+          },
+          "markdown": {
+            "caption": "Sensitivity of the period shares to the assumed 1790s crude birth rate.",
+            "columns": [
+              {
+                "header": "1790s births per 1,000",
+                "align": "right",
+                "value": {
+                  "ref": "rate"
+                }
+              },
+              {
+                "header": "1790s births",
+                "align": "right",
+                "value": {
+                  "format": {
+                    "value": {
+                      "ref": "assumed"
+                    },
+                    "group": true
+                  }
+                }
+              },
+              {
+                "header": "Share 1790–1849 (%)",
+                "align": "right",
+                "value": {
+                  "percent": {
+                    "numerator": {
+                      "sum": {
+                        "slice": {
+                          "array": {
+                            "ref": "captiveByDecade"
+                          },
+                          "start": 0,
+                          "end": 6
+                        }
+                      }
+                    },
+                    "denominator": {
+                      "sum": {
+                        "slice": {
+                          "array": {
+                            "substitute": {
+                              "array": {
+                                "ref": "allByDecade"
+                              },
+                              "index": 0,
+                              "value": {
+                                "ref": "assumed"
+                              }
+                            }
+                          },
+                          "start": 0,
+                          "end": 6
+                        }
+                      }
+                    },
+                    "places": 2,
+                    "rounding": "half-even"
+                  }
+                }
+              },
+              {
+                "header": "Share 1790–1859 (%)",
+                "align": "right",
+                "value": {
+                  "percent": {
+                    "numerator": {
+                      "sum": {
+                        "slice": {
+                          "array": {
+                            "ref": "captiveByDecade"
+                          },
+                          "start": 0,
+                          "end": 7
+                        }
+                      }
+                    },
+                    "denominator": {
+                      "sum": {
+                        "slice": {
+                          "array": {
+                            "substitute": {
+                              "array": {
+                                "ref": "allByDecade"
+                              },
+                              "index": 0,
+                              "value": {
+                                "ref": "assumed"
+                              }
+                            }
+                          },
+                          "start": 0,
+                          "end": 7
+                        }
+                      }
+                    },
+                    "places": 2,
+                    "rounding": "half-even"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "claims",
+          "iterate": {
+            "over": {
+              "ref": "claimResults"
+            },
+            "as": "c"
+          },
+          "markdown": {
+            "caption": {
+              "text": [
+                "Every quantitative claim in the paper and its derivation (",
+                {
+                  "count": {
+                    "array": {
+                      "ref": "claimResults"
+                    },
+                    "where": {
+                      "agrees": {
+                        "equals": true
+                      }
+                    }
+                  }
+                },
+                " of ",
+                {
+                  "count": {
+                    "array": {
+                      "ref": "claimResults"
+                    }
+                  }
+                },
+                " reproduced)."
+              ]
+            },
+            "columns": [
+              {
+                "header": "Claim",
+                "align": "left",
+                "value": {
+                  "text": [
+                    "`",
+                    {
+                      "get": {
+                        "from": {
+                          "ref": "c"
+                        },
+                        "key": "id"
+                      }
+                    },
+                    "`"
+                  ]
+                }
+              },
+              {
+                "header": "Stated",
+                "align": "right",
+                "value": {
+                  "format": {
+                    "value": {
+                      "get": {
+                        "from": {
+                          "ref": "c"
+                        },
+                        "key": "stated"
+                      }
+                    },
+                    "booleans": [
+                      "True",
+                      "False"
+                    ]
+                  }
+                }
+              },
+              {
+                "header": "Derived",
+                "align": "right",
+                "value": {
+                  "format": {
+                    "value": {
+                      "get": {
+                        "from": {
+                          "ref": "c"
+                        },
+                        "key": "derived"
+                      }
+                    },
+                    "booleans": [
+                      "True",
+                      "False"
+                    ]
+                  }
+                }
+              },
+              {
+                "header": "Basis",
+                "align": "left",
+                "value": {
+                  "get": {
+                    "from": {
+                      "ref": "c"
+                    },
+                    "key": "basis"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "documents": [
+        {
+          "path": "manuscript/90-appendix-a-tables.md",
+          "blocks": [
+            {
+              "heading": {
+                "level": 1,
+                "text": "Appendix A. Reproduced tables",
+                "id": "appendix-a"
+              }
+            },
+            {
+              "paragraph": "Generated from `data/records/` by `@red-cup-engineering/research-claim-reproduction-service` using the specification in `claims/`. Do not edit by hand."
+            },
+            {
+              "table": "decades"
+            },
+            {
+              "table": "sensitivity"
+            },
+            {
+              "table": "claims"
+            }
+          ]
+        }
+      ]
+    },
+    "recordTexts": {
+      "births": "{\n  \"kind\": \"lenticule.science.demography.birth-reconstruction.v1\",\n  \"status\": \"estimated\",\n  \"sources\": {\n    \"hacker\": {\n      \"title\": \"Hacker 2020 Table 1 column 7\",\n      \"url\": \"https://pmc.ncbi.nlm.nih.gov/articles/PMC7716878/\"\n    },\n    \"haines_sutch\": {\n      \"title\": \"Haines Sutch historical annual births Table Aa9-14\",\n      \"url\": \"https://hsus.cambridge.org/HSUSWeb/toc/treeTablePathIdAa9-14.html\"\n    },\n    \"haines_1790s\": {\n      \"title\": \"Haines Table Aa15-21 mid-decade population 1790s\",\n      \"url\": \"https://hsus.cambridge.org/HSUSWeb/toc/treeTablePathIdAa15-21.html\"\n    }\n  },\n  \"source\": {\n    \"births_all_1800_1859_thousands\": [\n      {\n        \"year\": 1800,\n        \"births_thousands\": 290\n      },\n      {\n        \"year\": 1801,\n        \"births_thousands\": 299\n      },\n      {\n        \"year\": 1802,\n        \"births_thousands\": 308\n      },\n      {\n        \"year\": 1803,\n        \"births_thousands\": 317\n      },\n      {\n        \"year\": 1804,\n        \"births_thousands\": 327\n      },\n      {\n        \"year\": 1805,\n        \"births_thousands\": 337\n      },\n      {\n        \"year\": 1806,\n        \"births_thousands\": 347\n      },\n      {\n        \"year\": 1807,\n        \"births_thousands\": 358\n      },\n      {\n        \"year\": 1808,\n        \"births_thousands\": 369\n      },\n      {\n        \"year\": 1809,\n        \"births_thousands\": 380\n      },\n      {\n        \"year\": 1810,\n        \"births_thousands\": 391\n      },\n      {\n        \"year\": 1811,\n        \"births_thousands\": 401\n      },\n      {\n        \"year\": 1812,\n        \"births_thousands\": 411\n      },\n      {\n        \"year\": 1813,\n        \"births_thousands\": 421\n      },\n      {\n        \"year\": 1814,\n        \"births_thousands\": 431\n      },\n      {\n        \"year\": 1815,\n        \"births_thousands\": 441\n      },\n      {\n        \"year\": 1816,\n        \"births_thousands\": 452\n      },\n      {\n        \"year\": 1817,\n        \"births_thousands\": 463\n      },\n      {\n        \"year\": 1818,\n        \"births_thousands\": 476\n      },\n      {\n        \"year\": 1819,\n        \"births_thousands\": 488\n      },\n      {\n        \"year\": 1820,\n        \"births_thousands\": 501\n      },\n      {\n        \"year\": 1821,\n        \"births_thousands\": 516\n      },\n      {\n        \"year\": 1822,\n        \"births_thousands\": 532\n      },\n      {\n        \"year\": 1823,\n        \"births_thousands\": 548\n      },\n      {\n        \"year\": 1824,\n        \"births_thousands\": 564\n      },\n      {\n        \"year\": 1825,\n        \"births_thousands\": 581\n      },\n      {\n        \"year\": 1826,\n        \"births_thousands\": 599\n      },\n      {\n        \"year\": 1827,\n        \"births_thousands\": 618\n      },\n      {\n        \"year\": 1828,\n        \"births_thousands\": 637\n      },\n      {\n        \"year\": 1829,\n        \"births_thousands\": 657\n      },\n      {\n        \"year\": 1830,\n        \"births_thousands\": 677\n      },\n      {\n        \"year\": 1831,\n        \"births_thousands\": 692\n      },\n      {\n        \"year\": 1832,\n        \"births_thousands\": 708\n      },\n      {\n        \"year\": 1833,\n        \"births_thousands\": 724\n      },\n      {\n        \"year\": 1834,\n        \"births_thousands\": 740\n      },\n      {\n        \"year\": 1835,\n        \"births_thousands\": 756\n      },\n      {\n        \"year\": 1836,\n        \"births_thousands\": 772\n      },\n      {\n        \"year\": 1837,\n        \"births_thousands\": 789\n      },\n      {\n        \"year\": 1838,\n        \"births_thousands\": 805\n      },\n      {\n        \"year\": 1839,\n        \"births_thousands\": 820\n      },\n      {\n        \"year\": 1840,\n        \"births_thousands\": 837\n      },\n      {\n        \"year\": 1841,\n        \"births_thousands\": 852\n      },\n      {\n        \"year\": 1842,\n        \"births_thousands\": 867\n      },\n      {\n        \"year\": 1843,\n        \"births_thousands\": 883\n      },\n      {\n        \"year\": 1844,\n        \"births_thousands\": 897\n      },\n      {\n        \"year\": 1845,\n        \"births_thousands\": 913\n      },\n      {\n        \"year\": 1846,\n        \"births_thousands\": 930\n      },\n      {\n        \"year\": 1847,\n        \"births_thousands\": 950\n      },\n      {\n        \"year\": 1848,\n        \"births_thousands\": 972\n      },\n      {\n        \"year\": 1849,\n        \"births_thousands\": 994\n      },\n      {\n        \"year\": 1850,\n        \"births_thousands\": 1017\n      },\n      {\n        \"year\": 1851,\n        \"births_thousands\": 1050\n      },\n      {\n        \"year\": 1852,\n        \"births_thousands\": 1086\n      },\n      {\n        \"year\": 1853,\n        \"births_thousands\": 1122\n      },\n      {\n        \"year\": 1854,\n        \"births_thousands\": 1160\n      },\n      {\n        \"year\": 1855,\n        \"births_thousands\": 1193\n      },\n      {\n        \"year\": 1856,\n        \"births_thousands\": 1223\n      },\n      {\n        \"year\": 1857,\n        \"births_thousands\": 1253\n      },\n      {\n        \"year\": 1858,\n        \"births_thousands\": 1282\n      },\n      {\n        \"year\": 1859,\n        \"births_thousands\": 1308\n      }\n    ],\n    \"captive_births_1790_1859_by_decade\": [\n      403648,\n      583395,\n      759768,\n      1003859,\n      1280680,\n      1539820,\n      1865898\n    ],\n    \"mean_population_1790s\": 4520000\n  },\n  \"assumed_cbr_1790s_per_thousand\": 55,\n  \"calculated\": {\n    \"capt_births_1790_1849\": 5571170,\n    \"capt_births_1790_1859\": 7437068,\n    \"all_births_1800_1849\": 30038000,\n    \"all_births_1800_1859\": 41732000,\n    \"all_births_1790s_default\": 2486000\n  },\n  \"sensitivities\": [\n    {\n      \"rate\": 45,\n      \"share_1790_1849_pct\": 17.37,\n      \"share_1790_1859_pct\": 16.99\n    },\n    {\n      \"rate\": 50,\n      \"share_1790_1849_pct\": 17.25,\n      \"share_1790_1859_pct\": 16.91\n    },\n    {\n      \"rate\": 55,\n      \"share_1790_1849_pct\": 17.13,\n      \"share_1790_1859_pct\": 16.82\n    },\n    {\n      \"rate\": 60,\n      \"share_1790_1849_pct\": 17.01,\n      \"share_1790_1859_pct\": 16.73\n    },\n    {\n      \"rate\": 65,\n      \"share_1790_1849_pct\": 16.89,\n      \"share_1790_1859_pct\": 16.65\n    }\n  ],\n  \"limitations\": [\n    \"1790s total births assumed\",\n    \"changing historical population coverage\",\n    \"Hacker estimates uncertainty independent of sensitivity range\",\n    \"does not measure forced reproduction or individual births directly\"\n  ]\n}\n",
+      "migration": "{\n  \"kind\": \"lenticule.science.demography.growth-components.v1\",\n  \"status\": \"reported-secondary-series\",\n  \"compiled_date\": \"2026-10-17\",\n  \"population\": \"Retrospective United States statistical population (all residents counted by the historical series); not white-specific, not local, not lineage-based.\",\n  \"measure\": \"Net international migration as a percentage of total national population growth over each interval.\",\n  \"source_label\": \"Haines 2006 Table Aa15-Aa21\",\n  \"source\": {\n    \"title\": \"Michael R. Haines, 'Population characteristics', Historical Statistics of the United States, Millennial Edition, Table Aa15-21: Population, by components of change, 1790-2000\",\n    \"publisher\": \"Cambridge University Press\",\n    \"year\": 2006,\n    \"url\": \"https://hsus.cambridge.org/HSUSWeb/toc/treeTablePathIdAa15-21.html\",\n    \"read_status\": \"table values transcribed from the publisher's table; component definitions read\"\n  },\n  \"intervals\": [\n    {\n      \"start_year\": 1790,\n      \"end_year\": 1800,\n      \"net_migration_share_total_growth_pct\": 11.9\n    },\n    {\n      \"start_year\": 1800,\n      \"end_year\": 1810,\n      \"net_migration_share_total_growth_pct\": 13.5\n    },\n    {\n      \"start_year\": 1810,\n      \"end_year\": 1820,\n      \"net_migration_share_total_growth_pct\": 13.7\n    },\n    {\n      \"start_year\": 1820,\n      \"end_year\": 1830,\n      \"net_migration_share_total_growth_pct\": 7.1\n    },\n    {\n      \"start_year\": 1830,\n      \"end_year\": 1840,\n      \"net_migration_share_total_growth_pct\": 16.9\n    },\n    {\n      \"start_year\": 1840,\n      \"end_year\": 1850,\n      \"net_migration_share_total_growth_pct\": 27.0\n    },\n    {\n      \"start_year\": 1850,\n      \"end_year\": 1860,\n      \"net_migration_share_total_growth_pct\": 32.3\n    }\n  ],\n  \"forbidden_inferences\": [\n    \"share of births\",\n    \"white-specific immigration\",\n    \"replacement of a settler lineage\",\n    \"temporary versus permanent migrants\",\n    \"local settlement composition\"\n  ],\n  \"limitations\": [\n    \"Shares are reported values; the underlying component counts are not reproduced here, so the shares cannot be recomputed from this record.\",\n    \"Historical boundary changes (annexation) alter the counted population.\"\n  ]\n}\n",
+      "cases": "{\n  \"kind\": \"lenticule.sociology.antebellum-reproductive-property-case-observations.v1\",\n  \"compiled_date\": \"2026-10-17\",\n  \"type\": \"primary-historical-case-extraction\",\n  \"status\": \"source-qualified-mixed-original-and-secondary\",\n  \"selection_rule\": \"Purposive selection of cases located via Gwendoline Alphonso (2023) plus primary published court decisions, historical archive, and opposing decisions; NOT a random sample of jurisdictions or cases.\",\n  \"universe_not_ascertained\": true,\n  \"copyright\": \"Observed facts and paraphrases of public historical records; modern preprint interpretations attributed, not reproduced wholesale.\",\n  \"records\": [\n    {\n      \"case_id\": \"COV1842\",\n      \"kind\": \"judicial-opinion\",\n      \"case\": \"Covington v. McEntire\",\n      \"jurisdiction\": \"North Carolina\",\n      \"decision_year\": 1842,\n      \"citation\": \"37 N.C. 316 (1842)\",\n      \"source\": \"https://www.casemine.com/judgement/us/59145de2add7b049341ffa35\",\n      \"read_status\": \"historical-judicial-transcription-read\",\n      \"persons\": [\n        {\n          \"name\": \"Binah\",\n          \"role\": \"enslaved mother; legal subject of claim\"\n        },\n        {\n          \"name\": \"Catharine\",\n          \"role\": \"child named in proposed distribution\"\n        },\n        {\n          \"name\": \"Rachel Covington\",\n          \"role\": \"remainder beneficiary, slaveholding claimant\"\n        },\n        {\n          \"name\": \"Prior McEntire\",\n          \"role\": \"executor contesting future issue\"\n        }\n      ],\n      \"facts\": {\n        \"original_will_testator\": \"William McEntire\",\n        \"testator_death_year\": 1832,\n        \"life_tenant\": \"his widow Rebecca McEntire\",\n        \"life_tenant_end_year\": 1842,\n        \"children_born_during_life_tenancy_reported_living\": 4,\n        \"offspring_any_mentioned\": \"four living\",\n        \"payment_proposed_usd\": 55,\n        \"payment_context\": \"proposed residuary distribution rejected in final decree\"\n      },\n      \"legal_rules\": [\n        \"under a life estate and remainder, issue follows the mother to remainder beneficiary unless express exception\",\n        \"different terms for another enslaved woman Nan do not create a Binah exception\"\n      ],\n      \"court_disposition\": \"Rachel Covington receives Binah and her four living children claimed under the remainder gift.\",\n      \"source_locator\": \"case pp 317–321; Gaston J. opinion; proposed division at p 317; holding at pp318–320\",\n      \"observations\": [\n        {\n          \"id\": \"COV-1\",\n          \"predicate\": \"reported-living-children-in-title-dispute\",\n          \"value\": 4,\n          \"location\": \"p317\"\n        },\n        {\n          \"id\": \"COV-2\",\n          \"predicate\": \"named-child\",\n          \"value\": \"Catharine\",\n          \"location\": \"p317\"\n        },\n        {\n          \"id\": \"COV-3\",\n          \"predicate\": \"remainder-beneficiary\",\n          \"value\": \"Rachel Covington\",\n          \"location\": \"pp318–320\"\n        }\n      ],\n      \"limits\": [\n        \"No testimony from Binah or the children\",\n        \"No count of total lifetime births\",\n        \"No evidence of directed conception\",\n        \"Proposed $55 is not an individual sale price\"\n      ]\n    },\n    {\n      \"case_id\": \"NEL1849\",\n      \"kind\": \"judicial-opinion\",\n      \"case\": \"Nelson v. Nelson\",\n      \"jurisdiction\": \"North Carolina\",\n      \"decision_year\": 1849,\n      \"citation\": \"41 N.C. 409 (1849)\",\n      \"source\": \"https://www.casemine.com/judgement/us/5914cf83add7b04934822097\",\n      \"read_status\": \"historical-judicial-transcription-read\",\n      \"persons\": [\n        {\n          \"name\": \"Leah\",\n          \"role\": \"enslaved mother; subject of will\"\n        },\n        {\n          \"name\": \"Anderson\",\n          \"role\": \"Leah's youngest already-born child named in 1843 will\"\n        },\n        {\n          \"name\": \"Elizabeth Nelson\",\n          \"role\": \"slaveholding beneficiary of Leah and Anderson\"\n        }\n      ],\n      \"facts\": {\n        \"testator\": \"James Nelson\",\n        \"will_date\": \"1843-09-12\",\n        \"death_date\": \"1844-01-06\",\n        \"children_born_after_death_reported\": 3,\n        \"known_already_born_child_named\": \"Anderson\",\n        \"period_family_maintenance_usd\": 329.75,\n        \"maintenance_scope\": \"Leah and her family; not isolated pregnancy cost\"\n      },\n      \"legal_rules\": [\n        \"the 1843 bequest of future increase to three daughters interpreted as births within testator's lifetime\",\n        \"children born after the testator's death passed with Leah to Elizabeth\",\n        \"the court balanced the future value of children against expenses of gestation and care\"\n      ],\n      \"court_disposition\": \"Elizabeth Nelson awarded Leah's three post-death children, not divided among her sisters.\",\n      \"source_locator\": \"pp409–418; three children at 412; maintenance at 416; construction pp417–418\",\n      \"observations\": [\n        {\n          \"id\": \"NEL-1\",\n          \"predicate\": \"reported-post-death-children\",\n          \"value\": 3,\n          \"location\": \"p412\"\n        },\n        {\n          \"id\": \"NEL-2\",\n          \"predicate\": \"named-child\",\n          \"value\": \"Anderson\",\n          \"location\": \"p410\"\n        },\n        {\n          \"id\": \"NEL-3\",\n          \"predicate\": \"reported-family-maintenance-expense\",\n          \"value\": 329.75,\n          \"unit\": \"USD contemporaneous\",\n          \"location\": \"p416\"\n        },\n        {\n          \"id\": \"NEL-4\",\n          \"predicate\": \"court-projected-profit-of-future-issue\",\n          \"value\": true,\n          \"location\": \"pp417–418\"\n        }\n      ],\n      \"limits\": [\n        \"Maintenance cost not exclusively attributed to prenatal or childbirth events\",\n        \"Three children is not an annual fertility rate\",\n        \"No statement from Leah or her children\",\n        \"Do not treat imagined profit as realized sale value\"\n      ]\n    },\n    {\n      \"case_id\": \"SMI1839\",\n      \"kind\": \"freedom-petition-court-opinion\",\n      \"case\": \"Smith v. Milman\",\n      \"jurisdiction\": \"Delaware\",\n      \"decision_year\": 1839,\n      \"citation\": \"2 Del. 497 (1839)\",\n      \"source\": \"https://openjurist.org/2/del/497/smith-v-milman-3381841\",\n      \"read_status\": \"historical-judicial-opinion-read\",\n      \"persons\": [\n        {\n          \"name\": \"Stephen\",\n          \"role\": \"freedom petitioner, child of Hessy\"\n        },\n        {\n          \"name\": \"Hessy\",\n          \"role\": \"enslaved mother\"\n        },\n        {\n          \"name\": \"Ann Smith\",\n          \"role\": \"life tenant who executed manumission deed\"\n        },\n        {\n          \"name\": \"Nancy Smith\",\n          \"role\": \"slaveholding claimant whose asserted title rejected\"\n        }\n      ],\n      \"facts\": {\n        \"date\": \"1839-07-05\",\n        \"will_year\": 1791,\n        \"birth_order_of_stephen\": \"disputed; alternative reasonings\"\n      },\n      \"legal_rules\": [\n        \"maternal status decides free/slave status of newborn, not identity of the owner\",\n        \"Delaware distinguished ownership of children under life tenancy from the North Carolina remainder rule\",\n        \"manumission deed of Ann Smith governed Stephen once court classified owner\"\n      ],\n      \"court_disposition\": \"Court ordered Stephen's freedom; Nancy's asserted title rejected under both factual alternatives.\",\n      \"source_locator\": \"2 Del. 497–499, paragraphs 2–6\",\n      \"observations\": [\n        {\n          \"id\": \"SMI-1\",\n          \"predicate\": \"right-to-freedom-recognized\",\n          \"value\": true,\n          \"location\": \"¶¶4–6\"\n        },\n        {\n          \"id\": \"SMI-2\",\n          \"predicate\": \"partus-limited-to-status-not-owner\",\n          \"value\": true,\n          \"location\": \"¶5\"\n        },\n        {\n          \"id\": \"SMI-3\",\n          \"predicate\": \"birth-order-disputed\",\n          \"value\": true,\n          \"location\": \"¶¶2–3\"\n        }\n      ],\n      \"limits\": [\n        \"Outcome is freedom of petitioner Stephen, not abolition of hereditary slavery\",\n        \"Hessy's agency/consent unrecorded\",\n        \"The case expressly notes different rules across states\"\n      ]\n    },\n    {\n      \"case_id\": \"JOH1848\",\n      \"kind\": \"judicial-opinion\",\n      \"case\": \"Johnson's Adm'r v. Johnson's Heirs\",\n      \"jurisdiction\": \"Kentucky\",\n      \"decision_year\": 1848,\n      \"citation\": \"47 Ky. 470 (1848)\",\n      \"source\": \"https://law.counselstack.com/opinion/johnsons-admr-v-johnsons-heirs-kyctapp-1848\",\n      \"read_status\": \"historical-judicial-transcription-read-with-typographic-noise\",\n      \"persons\": [\n        {\n          \"name\": \"Lytha\",\n          \"role\": \"enslaved mother with contingent freedom\"\n        },\n        {\n          \"name\": \"Margaret Johnson\",\n          \"role\": \"life tenant, enslaver\"\n        }\n      ],\n      \"facts\": {\n        \"testator\": \"Job Johnson\",\n        \"children_reported_born_during_life_tenancy\": 7,\n        \"mother_release\": \"Lytha entitled to freedom upon Margaret's death, having reached 21\",\n        \"child_legal_status_at_birth\": \"enslaved\"\n      },\n      \"legal_rules\": [\n        \"prospective conditional emancipation distinct from already-effective emancipation whose enjoyment is deferred\",\n        \"children followed enslaved status of mother when born\",\n        \"no remainder interest existed; widow's lifetime estate carried property claim to children\"\n      ],\n      \"court_disposition\": \"Mother Lytha free upon widow's death; her seven children remained legally enslaved and claimed by Margaret Johnson's estate, not by their mother.\",\n      \"source_locator\": \"47 Ky. 470–474, 470–471 family status, 472–474 ownership and reversal\",\n      \"observations\": [\n        {\n          \"id\": \"JOH-1\",\n          \"predicate\": \"children-reported\",\n          \"value\": 7,\n          \"location\": \"p470\"\n        },\n        {\n          \"id\": \"JOH-2\",\n          \"predicate\": \"mother-emancipated-child-not\",\n          \"value\": true,\n          \"location\": \"pp471–474\"\n        },\n        {\n          \"id\": \"JOH-3\",\n          \"predicate\": \"children-allocated-to-life-tenants-estate\",\n          \"value\": true,\n          \"location\": \"p473\"\n        }\n      ],\n      \"limits\": [\n        \"Do not imply children were granted freedom\",\n        \"Individual children unnamed in available opinion\",\n        \"No evidence of directed pairing or maternal consent\"\n      ]\n    },\n    {\n      \"case_id\": \"BAN1823\",\n      \"kind\": \"reported-judicial-opinion-secondary-extraction\",\n      \"case\": \"Banks' Adm'r v. Marksberry\",\n      \"jurisdiction\": \"Kentucky\",\n      \"decision_year\": 1823,\n      \"citation\": \"13 Ky. 275 (3 Litt. 275)\",\n      \"source\": \"https://www.courtlistener.com/c/ky/13/\",\n      \"secondary_sources\": [\n        \"https://doi.org/10.33774/apsa-2023-2nnzm\",\n        \"https://openjurist.org/2/del/497/smith-v-milman-3381841\"\n      ],\n      \"read_status\": \"original-court-opinion-NOT-retrieved-secondary-extraction-only\",\n      \"persons\": [\n        {\n          \"name\": \"Pen\",\n          \"role\": \"enslaved mother, prospective issue contested in deed\"\n        }\n      ],\n      \"facts\": {\n        \"reported_deed_issue\": \"future children of Pen as assignable property\"\n      },\n      \"legal_rules\": [\n        \"reported recognition of owner-directed conveyance of unconceived future increase\",\n        \"original text must be obtained before exact wording or broad rule claimed\"\n      ],\n      \"court_disposition\": \"Reported affirmation of future issue as transferable under deed; not independently verified from original opinion.\",\n      \"source_locator\": \"Alphonso preprint pp31–32 notes93–94; Delaware Smith v Milman ¶2; CourtListener index 13 Ky 275\",\n      \"observations\": [\n        {\n          \"id\": \"BAN-1\",\n          \"predicate\": \"case-direct-opinion-access\",\n          \"value\": false\n        },\n        {\n          \"id\": \"BAN-2\",\n          \"predicate\": \"secondary-analysis-says-unborn-issue-assignable\",\n          \"value\": true\n        }\n      ],\n      \"limits\": [\n        \"Do not cite as independently verified original\",\n        \"No birth count\",\n        \"No direct witness record\",\n        \"Unknown whether quoted dicta/holding without original opinion inspection\"\n      ]\n    },\n    {\n      \"case_id\": \"JEF1819\",\n      \"kind\": \"enslaver-correspondence\",\n      \"case\": \"Thomas Jefferson to Joel Yancey\",\n      \"jurisdiction\": \"Virginia\",\n      \"decision_year\": 1819,\n      \"citation\": \"Jefferson to Joel Yancey, January 17 1819\",\n      \"source\": \"https://history-on-trial.lib.lehigh.edu/trial/jefferson/race/primary/2\",\n      \"related_sources\": [\n        \"https://www.monticello.org/encyclopedia/the-business-of-slavery-at-monticello\",\n        \"https://founders.archives.gov/documents/Jefferson/03-13-02-0522\"\n      ],\n      \"read_status\": \"contemporary-letter-transcription-read;original-manuscript-not-image-collated\",\n      \"persons\": [\n        {\n          \"name\": \"Thomas Jefferson\",\n          \"role\": \"enslaver/instruction author\"\n        },\n        {\n          \"name\": \"Joel Yancey\",\n          \"role\": \"overseer recipient\"\n        }\n      ],\n      \"facts\": {\n        \"author_recounted_infant_deaths\": 5,\n        \"interval_years_claimed\": 4,\n        \"reproductive_preference\": \"raising a child every two years worth more to owner than mother's labor production\",\n        \"recipient_policy\": \"instruct overseers to prioritize infant care and survival for owner return\"\n      },\n      \"legal_rules\": [],\n      \"court_disposition\": null,\n      \"source_locator\": \"Lehigh transcription item 63; Monticello page footnote10; letter dated 1819-01-17\",\n      \"observations\": [\n        {\n          \"id\": \"JEF-1819-1\",\n          \"predicate\": \"author-reported-infant-deaths\",\n          \"value\": 5,\n          \"location\": \"letter on recent infant mortality\"\n        },\n        {\n          \"id\": \"JEF-1819-2\",\n          \"predicate\": \"author-reported-interval-years\",\n          \"value\": 4\n        },\n        {\n          \"id\": \"JEF-1819-3\",\n          \"predicate\": \"author-directive-reproductive-survival-over-immediate-labor\",\n          \"value\": true\n        }\n      ],\n      \"limits\": [\n        \"Author's stated explanation not verified cause of deaths\",\n        \"No verified evidence of actual implementation\",\n        \"No named compelled conception\",\n        \"No generalizable mortality rate\"\n      ]\n    },\n    {\n      \"case_id\": \"JEF1820\",\n      \"kind\": \"enslaver-correspondence\",\n      \"case\": \"Thomas Jefferson to John Wayles Eppes\",\n      \"jurisdiction\": \"Virginia\",\n      \"decision_year\": 1820,\n      \"citation\": \"Jefferson to Eppes, June 30 1820\",\n      \"source\": \"https://encyclopediavirginia.org/primary-documents/letter-from-thomas-jefferson-to-john-wayles-eppes-june-30-1820/\",\n      \"related_sources\": [\n        \"https://tjrs.monticello.org/letter/380\"\n      ],\n      \"read_status\": \"contemporary-full-letter-transcription-read;archival-excerpt-crosschecked\",\n      \"persons\": [\n        {\n          \"name\": \"Thomas Jefferson\",\n          \"role\": \"enslaver/property transfer author\"\n        },\n        {\n          \"name\": \"John Wayles Eppes\",\n          \"role\": \"recipient involved in property transfer\"\n        }\n      ],\n      \"facts\": {\n        \"proposed_transfer_people\": 20,\n        \"comparison_men_only\": 10,\n        \"valuation_preference\": \"woman who bears future child every two years yields capital addition, as against men's labor output\",\n        \"debt_and_kinship_context\": \"estate debts and intended family property transfer\"\n      },\n      \"legal_rules\": [],\n      \"court_disposition\": null,\n      \"source_locator\": \"Letter June 30, 1820: paragraphs after description of Nicholas debt before Bedford land paragraph\",\n      \"observations\": [\n        {\n          \"id\": \"JEF-1820-1\",\n          \"predicate\": \"author-proposed-persons-transfer\",\n          \"value\": 20\n        },\n        {\n          \"id\": \"JEF-1820-2\",\n          \"predicate\": \"author-claimed-future-child-capital-value\",\n          \"value\": true\n        },\n        {\n          \"id\": \"JEF-1820-3\",\n          \"predicate\": \"estate-succession-property-context\",\n          \"value\": true\n        }\n      ],\n      \"limits\": [\n        \"Proposed 20 is not known completed sale without receipt\",\n        \"No named pregnancy or coerced conception documented\",\n        \"Market value not quantitatively estimated\",\n        \"Use June 30 letter date, not secondary mistaken August date\"\n      ]\n    }\n  ],\n  \"summary_descriptive_not_prevalence\": {\n    \"original_court_opinions_read\": 4,\n    \"original_opinions_secondary_only\": 1,\n    \"enslaver_letters_read_in_transcription\": 2,\n    \"narrow_reported_child_counts\": {\n      \"COV1842\": 4,\n      \"NEL1849\": 3,\n      \"JOH1848\": 7\n    },\n    \"forbidden_inferences\": [\n      \"prevalence of directed breeding\",\n      \"full historic slave infant population\",\n      \"individual consent or maternal preferences\",\n      \"homogeneous national partus inheritance law\",\n      \"fourteen independent children as representative sample\"\n    ]\n  },\n  \"evidence_evaluation\": {\n    \"source_material\": \"Historical court and enslaver accounts are themselves instruments of unequal power; they report ownership claims rather than captive persons' complete lives.\",\n    \"counterevidence\": \"Smith v Milman explicitly separates maternal inherited status from ownership, and orders Stephen free under an existing manumission deed; rules varied across jurisdictions.\",\n    \"secondary_nexis_statistic\": \"Alphonso's report of 212 retrieved cases and nearly 80% in 1830–60 is an UNREPLICATED NexisUNI keyword-search result, not our case-level census.\",\n    \"minimum_next_actions\": [\n      \"Retrieve reporter full text of Banks v Marksberry (1823)\",\n      \"Read Smith v Milman historical full original case scan, compare OCR\",\n      \"Seek original court docket/will manuscripts for named mothers and offspring\",\n      \"Expand freedom petitions and survivor testimony, not merely property disputes\",\n      \"Recover 1820 estate transfer implementation and 1819 infant death records\",\n      \"Distinguish enslaved women's independent family history from enslavers' accounting\"\n    ]\n  },\n  \"software_consumer\": {\n    \"package\": \"@red-cup-engineering/knowledge-system-server/record-reading\",\n    \"api\": \"readJsonRecord(reader,{id,pointers,expectedAddress})\",\n    \"read_authority\": \"host-supplied Science checkout root and exact content identity; no live deployment claim\"\n  }\n}\n",
+      "virginia": "{\n  \"kind\": \"lenticule.science.sociology.racial-eligibility-legislative-events.v1\",\n  \"source_status\": \"mixed-original-enacted-law-and-source-qualified-synthesis\",\n  \"compilation_date\": \"2026-10-17\",\n  \"jurisdiction\": \"Virginia, United States\",\n  \"events\": [\n    {\n      \"id\": \"VA-1924-ENACTED\",\n      \"date\": \"1924-03-20\",\n      \"state\": \"enacted\",\n      \"legal_object\": \"preservation-of-racial-integrity\",\n      \"criterion\": \"supposed no nonwhite ancestry, with up to one-sixteenth Indigenous ancestry exception and otherwise restrictive status and marriage rules\",\n      \"source\": \"https://encyclopediavirginia.org/primary-documents/preservation-of-racial-integrity-1924/\",\n      \"inference\": \"Elite genealogical exception alongside purportedly absolute purity\",\n      \"limitations\": [\n        \"not Indigenous governance identity\",\n        \"administrative application differs across persons\",\n        \"no individual fertility data\"\n      ]\n    },\n    {\n      \"id\": \"VA-1926-INTRODUCED\",\n      \"date\": \"1926-01-14\",\n      \"state\": \"bill-introduced-not-enacted\",\n      \"legal_object\": \"proposed-removal-of-pocahontas-exception\",\n      \"criterion\": \"Norris proposal to eliminate 1924 exception\",\n      \"source\": \"https://encyclopediavirginia.org/entries/racial-integrity-laws-1924-1930/\",\n      \"inference\": \"An attempt to tighten racial-admissibility, not successful statute\",\n      \"limitations\": [\n        \"reported in historical synthesis\",\n        \"proposed policy is not observable legal enforcement\"\n      ]\n    },\n    {\n      \"id\": \"VA-1926-HOUSE\",\n      \"date\": \"1926-03-05\",\n      \"state\": \"house-approved-senate-postponed\",\n      \"legal_object\": \"proposed-revision-to-racial-integrity\",\n      \"criterion\": \"House amendment would allow up to one-eighth Indigenous ancestry, not one-sixteenth, with other conditions; House vote 52–18\",\n      \"source\": \"https://encyclopediavirginia.org/entries/racial-integrity-laws-1924-1930/\",\n      \"later_disposition\": {\n        \"date\": \"1926-03-12\",\n        \"result\": \"Senate voted 20–9 to postpone indefinitely; proposal NOT enacted\"\n      },\n      \"inference\": \"Membership-boundary widening could be entertained to preserve established white-status groups even while enforcing segregation\",\n      \"limitations\": [\n        \"no enacted new 1/8 rule from this bill\",\n        \"original legislative journals not collated\",\n        \"number of people actually spared classification not directly established\"\n      ]\n    },\n    {\n      \"id\": \"VA-1930-ENACTED\",\n      \"date\": \"1930-03-04\",\n      \"state\": \"enacted\",\n      \"legal_object\": \"colored-persons-and-indians-defined-code-section-67\",\n      \"criterion\": \"Any ascertainable African ancestry classified colored; limited reservation-based exception for members of state-allotted Indian tribes, at least 1/4 Indian ancestry and less than 1/16 African ancestry while domiciled on reservation\",\n      \"source\": \"https://encyclopediavirginia.org/primary-documents/colored-persons-and-indians-defined-1930/\",\n      \"policy_implication\": \"Domicile-based rule denied comparable recognition to Indigenous people of same nations living away from reservations.\",\n      \"indigenous_response\": {\n        \"actor\": \"George Major Cook, Pamunkey chief\",\n        \"date\": \"1930-02-01\",\n        \"source\": \"https://encyclopediavirginia.org/entries/cook-george-major-1860-1930/\",\n        \"statement_level\": \"biographer quoting a contemporary speech, underlying hearing not independently read\",\n        \"point\": \"Cook opposed reservation-only exception as excluding tribal citizens off reservations\"\n      },\n      \"limitations\": [\n        \"blood fraction neither genetic science nor Indigenous citizenship\",\n        \"policy implementation effects require actual birth/marriage/identification records\"\n      ]\n    }\n  ],\n  \"conclusions\": [\n    \"No monotonic legal tightening can be inferred from these four event states\",\n    \"1926 1/8 House amendment did not become law\",\n    \"1930 did become law and explicitly conditioned limited Indigenous recognition on state reservation domicile\",\n    \"Elite whites' exceptional distant ancestry and Indigenous collective recognition face different policy conditions\",\n    \"No direct birth or survival counts; no demonstrated white demographic extinction\"\n  ],\n  \"research_question\": \"When the imagined ideal of legally pure whiteness conflicts with elite genealogies and Indigenous nationhood, whose continuing recognition does the state preserve?\",\n  \"references\": [\n    \"https://encyclopediavirginia.org/entries/racial-integrity-laws-1924-1930/\",\n    \"https://encyclopediavirginia.org/primary-documents/colored-persons-and-indians-defined-1930/\",\n    \"https://encyclopediavirginia.org/entries/cook-george-major-1860-1930/\"\n  ],\n  \"consumer\": \"@red-cup-engineering/knowledge-system-server/record-reading; requires authorized source mount\"\n}\n"
+    }
+  },
+  "conformance": {
+    "checks": [
+      {
+        "detail": "4 RDF files match ontology/**/*.ttl",
+        "failures": [],
+        "id": "parsing.rdf-files-parse",
+        "ok": true
+      },
+      {
+        "detail": "2 JSON files match ontology/*.jsonld",
+        "failures": [],
+        "id": "parsing.json-files-parse",
+        "ok": true
+      },
+      {
+        "detail": "header of https://561.group/knowledge/white-repopulation",
+        "failures": [],
+        "id": "rooting.ontology-metadata",
+        "ok": true
+      },
+      {
+        "detail": "root ontology ontology/vendor/561-ns-root.ttl",
+        "failures": [],
+        "id": "rooting.root-declares-namespace",
+        "ok": true
+      },
+      {
+        "detail": "3 graphs judged by ontology/vendor/561-ns-root.shapes.ttl",
+        "failures": [],
+        "id": "rooting.conforms-to-root-shapes",
+        "ok": true
+      },
+      {
+        "detail": "6 record kinds",
+        "failures": [],
+        "id": "rooting.record-kinds-subclass-root",
+        "ok": true
+      },
+      {
+        "detail": "104 terms declared in https://561.group/knowledge/white-repopulation#",
+        "failures": [],
+        "id": "rooting.terms-documented",
+        "ok": true
+      },
+      {
+        "detail": "scheme https://561.group/knowledge/white-repopulation#terms has 37 top concepts",
+        "failures": [],
+        "id": "skos.scheme",
+        "ok": true
+      },
+      {
+        "detail": "38 concepts",
+        "failures": [],
+        "id": "skos.concepts-complete",
+        "ok": true
+      },
+      {
+        "detail": "4 collections",
+        "failures": [],
+        "id": "skos.collections",
+        "ok": true
+      },
+      {
+        "detail": "skos:Concept and skos:Collection are disjoint",
+        "failures": [],
+        "id": "skos.concept-collection-disjoint",
+        "ok": true
+      },
+      {
+        "detail": "21 glossary concepts under https://561.group/knowledge/science-services-section/social-science-services-section/sociology-science-services-section/",
+        "failures": [],
+        "id": "skos.glossary-sources",
+        "ok": true
+      },
+      {
+        "detail": "commits: b2ed3deb14568861b3fcee921c40f2cf11b70cbe",
+        "failures": [],
+        "id": "skos.glossary-single-commit",
+        "ok": true
+      },
+      {
+        "detail": "21 glossary concepts against ontology/white-repopulation.skos.jsonld",
+        "failures": [],
+        "id": "skos.projection-agrees",
+        "ok": true
+      },
+      {
+        "detail": "90 skos:related edges",
+        "failures": [],
+        "id": "skos.related-symmetric",
+        "ok": true
+      },
+      {
+        "detail": "5 closed sets",
+        "failures": [],
+        "id": "closed-sets.enumerations-match-instances",
+        "ok": true
+      },
+      {
+        "detail": "1 label sets",
+        "failures": [],
+        "id": "closed-sets.labels",
+        "ok": true
+      },
+      {
+        "detail": "6 record files, 6 declared kinds",
+        "failures": [],
+        "id": "records.kinds-declared",
+        "ok": true
+      },
+      {
+        "detail": "ontology/records.context.jsonld processes",
+        "failures": [],
+        "id": "records.context-processes",
+        "ok": true
+      },
+      {
+        "detail": "6 records converted through ontology/records.context.jsonld",
+        "failures": [],
+        "id": "records.convert-with-no-unmapped-key",
+        "ok": true
+      },
+      {
+        "detail": "6 records judged by ontology/shapes.ttl",
+        "failures": [],
+        "id": "records.conform-to-shapes",
+        "ok": true
+      },
+      {
+        "detail": "1 graph expectations",
+        "failures": [],
+        "id": "records.graph-expectations",
+        "ok": true
+      }
+    ],
+    "inputs": {
+      "config": "aaeb2a9911994f3315a10068ffab63439a3f9ca4136c56a92e92553db1bfd127",
+      "files": [
+        {
+          "path": "data/records/2026-10-17-antebellum-property-law-case-register.json",
+          "sha256": "c6a9e76b8006573542f8eec6ed9d924d2826666add0dd8a8e95f7c5631bce672"
+        },
+        {
+          "path": "data/records/2026-10-17-captive-birth-shares-source-series.json",
+          "sha256": "bd8787744a644b6ad14aa8455789af7ac323a8aee444b5dfbe0c6a4c2b9c879e"
+        },
+        {
+          "path": "data/records/2026-10-17-everett-directed-reproduction-case-extract.json",
+          "sha256": "66358a56aa6598af27228e77c61d38a811c1b75a0511aa51503921a9a518e0d2"
+        },
+        {
+          "path": "data/records/2026-10-17-virginia-racial-integrity-legislative-sequence.json",
+          "sha256": "670d2f7ef89e3636b1ace3710d8afbc53397398b0f2db9f4621669dd7fa73774"
+        },
+        {
+          "path": "data/records/us-net-migration-share-of-growth-1790-1860.json",
+          "sha256": "a9d94f21bd491ce716237946cc49889989eefed8f0ebd02c301058ad80350257"
+        },
+        {
+          "path": "data/records/white-increase-eugenic-selection-measurements-2026-10-17.json",
+          "sha256": "616758bb1854595b9f7b53b68370f0a5f1e503b31d10da911c29364ed38cf406"
+        },
+        {
+          "path": "ontology/records.context.jsonld",
+          "sha256": "95cc0ff5ede7afd3305a8d9ce646f98efd23e7d49e1e9ce9dd29afbffaffca62"
+        },
+        {
+          "path": "ontology/shapes.ttl",
+          "sha256": "af1c7c59de813943c9914a8ecfa8dd8c78268c3c81ff043fff07a647e847c09c"
+        },
+        {
+          "path": "ontology/vendor/561-ns-root.shapes.ttl",
+          "sha256": "91d89682f05f64fdc7d31fb55e5bf9a45c63978704f81b294a42c7492f103a65"
+        },
+        {
+          "path": "ontology/vendor/561-ns-root.ttl",
+          "sha256": "8b4fcdf4ed472243b09410a1274def23aeb77255f14f042cd31a00aa8329e167"
+        },
+        {
+          "path": "ontology/white-repopulation.skos.jsonld",
+          "sha256": "a4d2fb6ac7ce011502beddef14f52e51ac1b40a59292f2d5e5c070f1f8723a94"
+        },
+        {
+          "path": "ontology/white-repopulation.ttl",
+          "sha256": "60050b70f845faf0a0a0cda09a63122a943577e19f06951fa483abd266336b9e"
+        },
+        {
+          "path": "paper.yaml",
+          "sha256": "a982dcc2ea19ab1e2170b837f4386ea5221450b4e57124d71aa509c7ee437513"
+        }
+      ]
+    },
+    "ok": true,
+    "shapeTests": [
+      {
+        "actual": "conforms",
+        "detail": "no unmapped term, SHACL conforms",
+        "expect": "conforms",
+        "id": "unmodified-2026-10-17-captive-birth-shares-source-series",
+        "ok": true,
+        "reason": "The untouched record takes the same path as every mutated copy and must pass, so a violation below is caused by the mutation.",
+        "record": "data/records/2026-10-17-captive-birth-shares-source-series.json",
+        "via": "any"
+      },
+      {
+        "actual": "conforms",
+        "detail": "no unmapped term, SHACL conforms",
+        "expect": "conforms",
+        "id": "unmodified-2026-10-17-antebellum-property-law-case-register",
+        "ok": true,
+        "reason": "The untouched record takes the same path as every mutated copy and must pass, so a violation below is caused by the mutation.",
+        "record": "data/records/2026-10-17-antebellum-property-law-case-register.json",
+        "via": "any"
+      },
+      {
+        "actual": "conforms",
+        "detail": "no unmapped term, SHACL conforms",
+        "expect": "conforms",
+        "id": "unmodified-2026-10-17-everett-directed-reproduction-case-extract",
+        "ok": true,
+        "reason": "The untouched record takes the same path as every mutated copy and must pass, so a violation below is caused by the mutation.",
+        "record": "data/records/2026-10-17-everett-directed-reproduction-case-extract.json",
+        "via": "any"
+      },
+      {
+        "actual": "conforms",
+        "detail": "no unmapped term, SHACL conforms",
+        "expect": "conforms",
+        "id": "unmodified-2026-10-17-virginia-racial-integrity-legislative-sequence",
+        "ok": true,
+        "reason": "The untouched record takes the same path as every mutated copy and must pass, so a violation below is caused by the mutation.",
+        "record": "data/records/2026-10-17-virginia-racial-integrity-legislative-sequence.json",
+        "via": "any"
+      },
+      {
+        "actual": "conforms",
+        "detail": "no unmapped term, SHACL conforms",
+        "expect": "conforms",
+        "id": "unmodified-us-net-migration-share-of-growth-1790-1860",
+        "ok": true,
+        "reason": "The untouched record takes the same path as every mutated copy and must pass, so a violation below is caused by the mutation.",
+        "record": "data/records/us-net-migration-share-of-growth-1790-1860.json",
+        "via": "any"
+      },
+      {
+        "actual": "conforms",
+        "detail": "no unmapped term, SHACL conforms",
+        "expect": "conforms",
+        "id": "unmodified-white-increase-eugenic-selection-measurements-2026-10-17",
+        "ok": true,
+        "reason": "The untouched record takes the same path as every mutated copy and must pass, so a violation below is caused by the mutation.",
+        "record": "data/records/white-increase-eugenic-selection-measurements-2026-10-17.json",
+        "via": "any"
+      },
+      {
+        "actual": "violates",
+        "detail": "1 SHACL result(s): MinCountConstraintComponent path=https://561.group/ns/limitation focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-captive-birth-shares-source-series",
+        "expect": "violates",
+        "id": "birth-reconstruction-without-limitations",
+        "ok": true,
+        "reason": "A birth reconstruction must state its limitations.",
+        "record": "data/records/2026-10-17-captive-birth-shares-source-series.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "1 SHACL result(s): MinCountConstraintComponent path=https://561.group/knowledge/white-repopulation#sensitivity focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-captive-birth-shares-source-series",
+        "expect": "violates",
+        "id": "birth-reconstruction-without-a-sensitivity",
+        "ok": true,
+        "reason": "A birth reconstruction must carry at least one sensitivity.",
+        "record": "data/records/2026-10-17-captive-birth-shares-source-series.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "2 SHACL result(s): MaxInclusiveConstraintComponent path=https://561.group/knowledge/white-repopulation/measure#share_1790_1849_pct focus=_:; NodeConstraintComponent path=https://561.group/knowledge/white-repopulation#sensitivity focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-captive-birth-shares-source-series",
+        "expect": "violates",
+        "id": "birth-share-over-one-hundred",
+        "ok": true,
+        "reason": "A share expressed in percent cannot exceed 100.",
+        "record": "data/records/2026-10-17-captive-birth-shares-source-series.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "1 SHACL result(s): HasValueConstraintComponent path=https://561.group/knowledge/white-repopulation#universeNotAscertained focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-antebellum-property-law-case-register",
+        "expect": "violates",
+        "id": "case-register-claiming-a-known-universe",
+        "ok": true,
+        "reason": "A case register is a non-exhaustive sample; it may not claim the universe of cases is known.",
+        "record": "data/records/2026-10-17-antebellum-property-law-case-register.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "1 SHACL result(s): MinCountConstraintComponent path=https://561.group/ns/readStatus focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-antebellum-property-law-case-register/COV1842",
+        "expect": "violates",
+        "id": "case-without-read-status",
+        "ok": true,
+        "reason": "Every case must say how much of it was read.",
+        "record": "data/records/2026-10-17-antebellum-property-law-case-register.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "unmapped: https://561.group/knowledge/white-repopulation/field#judicial-memo; 1 SHACL result(s): ClassConstraintComponent path=https://561.group/knowledge/white-repopulation#hasCase focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-antebellum-property-law-case-register",
+        "expect": "violates",
+        "id": "case-with-an-unknown-kind-is-caught-by-the-context-check",
+        "ok": true,
+        "reason": "A case kind the context does not map falls through to the field vocabulary; the context check, not SHACL, catches it.",
+        "record": "data/records/2026-10-17-antebellum-property-law-case-register.json",
+        "via": "context"
+      },
+      {
+        "actual": "violates",
+        "detail": "2 SHACL result(s): MinCountConstraintComponent path=https://561.group/knowledge/white-repopulation#notValidFor focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-everett-directed-reproduction-case-extract/EV-01; NodeConstraintComponent path=https://561.group/knowledge/white-repopulation#testimonyObservation focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-everett-directed-reproduction-case-extract",
+        "expect": "violates",
+        "id": "testimony-observation-without-a-validity-bound",
+        "ok": true,
+        "reason": "Every testimony observation must bound what it is not valid for.",
+        "record": "data/records/2026-10-17-everett-directed-reproduction-case-extract.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "1 SHACL result(s): MinCountConstraintComponent path=https://561.group/ns/unmeasured focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-everett-directed-reproduction-case-extract",
+        "expect": "violates",
+        "id": "testimony-without-unmeasured",
+        "ok": true,
+        "reason": "A testimony extraction must list what it did not measure.",
+        "record": "data/records/2026-10-17-everett-directed-reproduction-case-extract.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "2 SHACL result(s): NodeConstraintComponent path=https://561.group/knowledge/white-repopulation#legislativeEvent focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-virginia-racial-integrity-legislative-sequence; OrConstraintComponent path=- focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-virginia-racial-integrity-legislative-sequence/VA-1926-HOUSE",
+        "expect": "violates",
+        "id": "postponed-bill-without-a-later-disposition",
+        "ok": true,
+        "reason": "A postponed bill must record its later disposition.",
+        "record": "data/records/2026-10-17-virginia-racial-integrity-legislative-sequence.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "2 SHACL result(s): InConstraintComponent path=https://561.group/knowledge/white-repopulation#legislativeState focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-virginia-racial-integrity-legislative-sequence/VA-1924-ENACTED; NodeConstraintComponent path=https://561.group/knowledge/white-repopulation#legislativeEvent focus=https://561.group/knowledge/white-repopulation/record/2026-10-17-virginia-racial-integrity-legislative-sequence",
+        "expect": "violates",
+        "id": "unknown-legislative-state",
+        "ok": true,
+        "reason": "A legislative state must be one of the closed set of legislative states.",
+        "record": "data/records/2026-10-17-virginia-racial-integrity-legislative-sequence.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "2 SHACL result(s): LessThanConstraintComponent path=https://561.group/knowledge/white-repopulation#startYear focus=_:; NodeConstraintComponent path=https://561.group/knowledge/white-repopulation#interval focus=https://561.group/knowledge/white-repopulation/record/us-net-migration-share-of-growth-1790-1860",
+        "expect": "violates",
+        "id": "growth-interval-running-backwards",
+        "ok": true,
+        "reason": "A growth interval must start before it ends.",
+        "record": "data/records/us-net-migration-share-of-growth-1790-1860.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "1 SHACL result(s): MinCountConstraintComponent path=https://561.group/ns/forbiddenInference focus=https://561.group/knowledge/white-repopulation/record/us-net-migration-share-of-growth-1790-1860",
+        "expect": "violates",
+        "id": "growth-without-forbidden-inferences",
+        "ok": true,
+        "reason": "Growth components must state the inferences they forbid.",
+        "record": "data/records/us-net-migration-share-of-growth-1790-1860.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "1 SHACL result(s): SPARQLConstraintComponent path=https://561.group/knowledge/white-repopulation/measure#nc_share_classified_white_cumulative_pct focus=https://561.group/knowledge/white-repopulation/record/white-increase-eugenic-selection-measurements-2026-10-17",
+        "expect": "violates",
+        "id": "measurement-with-an-impossible-percentage",
+        "ok": true,
+        "reason": "A percentage cannot exceed 100.",
+        "record": "data/records/white-increase-eugenic-selection-measurements-2026-10-17.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "1 SHACL result(s): SPARQLConstraintComponent path=- focus=https://561.group/knowledge/white-repopulation/record/white-increase-eugenic-selection-measurements-2026-10-17",
+        "expect": "violates",
+        "id": "measurement-whose-parts-do-not-sum-to-the-total",
+        "ok": true,
+        "reason": "Raw-count parts must sum to their total.",
+        "record": "data/records/white-increase-eugenic-selection-measurements-2026-10-17.json",
+        "via": "shacl"
+      },
+      {
+        "actual": "violates",
+        "detail": "1 SHACL result(s): MinCountConstraintComponent path=https://561.group/knowledge/white-repopulation#notPooled focus=https://561.group/knowledge/white-repopulation/record/white-increase-eugenic-selection-measurements-2026-10-17",
+        "expect": "violates",
+        "id": "measurement-without-its-not-pooled-list",
+        "ok": true,
+        "reason": "A measurement record must list the series it does not pool.",
+        "record": "data/records/white-increase-eugenic-selection-measurements-2026-10-17.json",
+        "via": "shacl"
+      }
+    ],
+    "summary": {
+      "checks": 22,
+      "checksFailed": 0,
+      "shapeTests": 21,
+      "shapeTestsFailed": 0
+    },
+    "tool": "rdf-vocabulary-conformance-service",
+    "version": "0.1.0"
+  },
+  "renderReceipt": {
+    "kind": "manuscript-build-receipt",
+    "version": 1,
+    "toolchain": {
+      "pandoc": {
+        "version": "3.1.3",
+        "versionLine": "pandoc 3.1.3",
+        "features": "-server +lua"
+      },
+      "pdfEngine": {
+        "name": "xelatex",
+        "versionLine": "XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023/Debian)",
+        "texLive": "2023/Debian",
+        "version": "3.141592653-2.6-0.999995"
+      }
+    },
+    "sourceDateEpoch": 1792885975,
+    "startedAt": "2026-10-24T23:57:53.515Z",
+    "endedAt": "2026-10-24T23:58:07.455Z",
+    "inputs": [
+      {
+        "role": "part",
+        "path": "manuscript/01-introduction.md",
+        "ni": "ni:///sha-256;uj_87YYKRDFH1X5qv5WQnXI2LgCD8U61qeUjtRKgf_Q",
+        "bytes": 7340
+      },
+      {
+        "role": "part",
+        "path": "manuscript/02-the-future-white.md",
+        "ni": "ni:///sha-256;LqUCsb5eKReNIGT0LsYGT-2zl9J1-e_voeRuZbUToME",
+        "bytes": 34181
+      },
+      {
+        "role": "part",
+        "path": "manuscript/03-birth-into-captivity.md",
+        "ni": "ni:///sha-256;7PHX1e-oio6NxWpZjrBEQh6n-4Auoz22QtyEpb0sHd8",
+        "bytes": 26273
+      },
+      {
+        "role": "part",
+        "path": "manuscript/04-whose-future-increase.md",
+        "ni": "ni:///sha-256;EY_Mm6PeZw3wJOtZDePdKJ88OaJIGc6UVIFpiXbicWk",
+        "bytes": 22675
+      },
+      {
+        "role": "part",
+        "path": "manuscript/05-transatlantic-population-circuits.md",
+        "ni": "ni:///sha-256;Z1t0f6BPnWJ3VwmZajLdVgmtDEM8EvWc_tEvQBH4MJs",
+        "bytes": 39434
+      },
+      {
+        "role": "part",
+        "path": "manuscript/06-conclusion.md",
+        "ni": "ni:///sha-256;r5ySKKr8RkqcUU4ih5Aco6tIMGfph92B1HKu0RDDM_M",
+        "bytes": 4679
+      },
+      {
+        "role": "part",
+        "path": "manuscript/90-appendix-a-tables.md",
+        "ni": "ni:///sha-256;QKgWaUVNfEoJ6xAIr5eOwxU58U_two8jLrvUpM6Ipao",
+        "bytes": 3612
+      },
+      {
+        "role": "part",
+        "path": "manuscript/91-appendix-b-bibliography.md",
+        "ni": "ni:///sha-256;PM-QC3mWqmwbpUvcCjkypvuwKn9JBWblpoblN9IctLo",
+        "bytes": 355
+      },
+      {
+        "role": "metadata",
+        "path": "paper.yaml",
+        "ni": "ni:///sha-256;qYLcwuoZqx4hcLg39DhupSIUULTlcSTXGqUJx-5DdRM",
+        "bytes": 6478
+      },
+      {
+        "role": "bibliography",
+        "path": "references/references.yaml",
+        "ni": "ni:///sha-256;80BGpYkI7BcJ60wYs1ZQasN-Sek2Epn_Uv930OPm_RQ",
+        "bytes": 20646
+      },
+      {
+        "role": "csl-style",
+        "path": "references/chicago-author-date.csl",
+        "ni": "ni:///sha-256;AC-t541-T-nUKTaha0OoBmsJcBP2JV30Cxv7pmMe_5s",
+        "bytes": 167761
+      },
+      {
+        "role": "resource",
+        "path": "figures/captive-birth-share-by-decade.svg",
+        "ni": "ni:///sha-256;j-VpNyfFxxof9X7qjSAOCYS-0XSrbJts1H66zL2OgL0",
+        "bytes": 10404
+      },
+      {
+        "role": "resource",
+        "path": "figures/captive-birth-share-by-decade.vl.json",
+        "ni": "ni:///sha-256;jV1gkNN7v7KdGcUTxK_pL-54GxVlEZw2MXCGVR3zVaw",
+        "bytes": 6055
+      },
+      {
+        "role": "resource",
+        "path": "figures/net-migration-share-of-growth.svg",
+        "ni": "ni:///sha-256;WflJAr_UeTIsOXW8LfmE5IKAbdxXGn_5HB7y332K5Nk",
+        "bytes": 9713
+      },
+      {
+        "role": "resource",
+        "path": "figures/net-migration-share-of-growth.vl.json",
+        "ni": "ni:///sha-256;fTrbeyWQvZdx9GW8lvR4XvBUFtaKR0mtbZvLOoZodwU",
+        "bytes": 3411
+      }
+    ],
+    "supportFiles": [
+      {
+        "role": "support",
+        "path": "build/.filters/paper-declarations.lua",
+        "ni": "ni:///sha-256;9yGAsi5kiD-w-gyWAnTAVcWbG-PofbeD9E_N4lvlu6Y",
+        "bytes": 5502
+      },
+      {
+        "role": "support",
+        "path": "build/.reproducibility-xelatex.tex",
+        "ni": "ni:///sha-256;jlLR7MLb2oJL6J4_lzGLweuAoU4PB8GkV0_-vgsC-UY",
+        "bytes": 237
+      }
+    ],
+    "invocations": [
+      {
+        "format": "html",
+        "argv": [
+          "pandoc",
+          "--from=markdown+tex_math_single_backslash",
+          "--standalone",
+          "--metadata-file=paper.yaml",
+          "--metadata-file=manuscript/build.yaml",
+          "--to=html5",
+          "--embed-resources",
+          "--toc",
+          "--toc-depth=2",
+          "--resource-path=.:figures",
+          "--bibliography=references/references.yaml",
+          "--csl=references/chicago-author-date.csl",
+          "--lua-filter=build/.filters/paper-declarations.lua",
+          "--citeproc",
+          "--output=build/white-repopulation.html",
+          "manuscript/01-introduction.md",
+          "manuscript/02-the-future-white.md",
+          "manuscript/03-birth-into-captivity.md",
+          "manuscript/04-whose-future-increase.md",
+          "manuscript/05-transatlantic-population-circuits.md",
+          "manuscript/06-conclusion.md",
+          "manuscript/90-appendix-a-tables.md",
+          "manuscript/91-appendix-b-bibliography.md"
+        ],
+        "env": {
+          "FORCE_SOURCE_DATE": "1",
+          "SOURCE_DATE_EPOCH": "1792885975",
+          "TZ": "UTC"
+        },
+        "cwd": ".",
+        "status": 0,
+        "startedAt": "2026-10-24T23:57:53.515Z",
+        "endedAt": "2026-10-24T23:57:56.032Z"
+      },
+      {
+        "format": "docx",
+        "argv": [
+          "pandoc",
+          "--from=markdown+tex_math_single_backslash",
+          "--standalone",
+          "--metadata-file=paper.yaml",
+          "--metadata-file=manuscript/build.yaml",
+          "--to=docx",
+          "--toc",
+          "--toc-depth=2",
+          "--resource-path=.:figures",
+          "--bibliography=references/references.yaml",
+          "--csl=references/chicago-author-date.csl",
+          "--lua-filter=build/.filters/paper-declarations.lua",
+          "--citeproc",
+          "--output=build/white-repopulation.docx",
+          "manuscript/01-introduction.md",
+          "manuscript/02-the-future-white.md",
+          "manuscript/03-birth-into-captivity.md",
+          "manuscript/04-whose-future-increase.md",
+          "manuscript/05-transatlantic-population-circuits.md",
+          "manuscript/06-conclusion.md",
+          "manuscript/90-appendix-a-tables.md",
+          "manuscript/91-appendix-b-bibliography.md"
+        ],
+        "env": {
+          "FORCE_SOURCE_DATE": "1",
+          "SOURCE_DATE_EPOCH": "1792885975",
+          "TZ": "UTC"
+        },
+        "cwd": ".",
+        "status": 0,
+        "startedAt": "2026-10-24T23:57:56.033Z",
+        "endedAt": "2026-10-24T23:57:58.702Z"
+      },
+      {
+        "format": "jats",
+        "argv": [
+          "pandoc",
+          "--from=markdown+tex_math_single_backslash",
+          "--standalone",
+          "--metadata-file=paper.yaml",
+          "--metadata-file=manuscript/build.yaml",
+          "--to=jats_archiving",
+          "--toc",
+          "--toc-depth=2",
+          "--resource-path=.:figures",
+          "--bibliography=references/references.yaml",
+          "--csl=references/chicago-author-date.csl",
+          "--lua-filter=build/.filters/paper-declarations.lua",
+          "--citeproc",
+          "--output=build/white-repopulation.jats.xml",
+          "manuscript/01-introduction.md",
+          "manuscript/02-the-future-white.md",
+          "manuscript/03-birth-into-captivity.md",
+          "manuscript/04-whose-future-increase.md",
+          "manuscript/05-transatlantic-population-circuits.md",
+          "manuscript/06-conclusion.md",
+          "manuscript/90-appendix-a-tables.md",
+          "manuscript/91-appendix-b-bibliography.md"
+        ],
+        "env": {
+          "FORCE_SOURCE_DATE": "1",
+          "SOURCE_DATE_EPOCH": "1792885975",
+          "TZ": "UTC"
+        },
+        "cwd": ".",
+        "status": 0,
+        "startedAt": "2026-10-24T23:57:58.703Z",
+        "endedAt": "2026-10-24T23:58:01.130Z"
+      },
+      {
+        "format": "pdf",
+        "argv": [
+          "pandoc",
+          "--from=markdown+tex_math_single_backslash",
+          "--standalone",
+          "--metadata-file=paper.yaml",
+          "--metadata-file=manuscript/build.yaml",
+          "--to=pdf",
+          "--pdf-engine=xelatex",
+          "--include-in-header=build/.reproducibility-xelatex.tex",
+          "--toc",
+          "--toc-depth=2",
+          "--resource-path=.:figures",
+          "--bibliography=references/references.yaml",
+          "--csl=references/chicago-author-date.csl",
+          "--lua-filter=build/.filters/paper-declarations.lua",
+          "--citeproc",
+          "--output=build/white-repopulation.pdf",
+          "manuscript/01-introduction.md",
+          "manuscript/02-the-future-white.md",
+          "manuscript/03-birth-into-captivity.md",
+          "manuscript/04-whose-future-increase.md",
+          "manuscript/05-transatlantic-population-circuits.md",
+          "manuscript/06-conclusion.md",
+          "manuscript/90-appendix-a-tables.md",
+          "manuscript/91-appendix-b-bibliography.md"
+        ],
+        "env": {
+          "FORCE_SOURCE_DATE": "1",
+          "SOURCE_DATE_EPOCH": "1792885975",
+          "TZ": "UTC"
+        },
+        "cwd": ".",
+        "status": 0,
+        "startedAt": "2026-10-24T23:58:01.131Z",
+        "endedAt": "2026-10-24T23:58:07.454Z"
+      }
+    ],
+    "outputs": [
+      {
+        "format": "html",
+        "path": "build/white-repopulation.html",
+        "ni": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+        "bytes": 223930,
+        "mediaType": "text/html",
+        "reproducibility": "byte-identical"
+      },
+      {
+        "format": "docx",
+        "path": "build/white-repopulation.docx",
+        "ni": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+        "bytes": 122031,
+        "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "reproducibility": "byte-identical"
+      },
+      {
+        "format": "jats",
+        "path": "build/white-repopulation.jats.xml",
+        "ni": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+        "bytes": 207328,
+        "mediaType": "application/jats+xml",
+        "reproducibility": "byte-identical"
+      },
+      {
+        "format": "pdf",
+        "path": "build/white-repopulation.pdf",
+        "ni": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+        "bytes": 275770,
+        "mediaType": "application/pdf",
+        "reproducibility": "byte-identical-with-pinned-toolchain"
+      }
+    ],
+    "provenance": {
+      "agents": [
+        {
+          "id": "pandoc",
+          "name": "pandoc 3.1.3",
+          "kind": "software"
+        },
+        {
+          "id": "xelatex",
+          "name": "XeTeX 3.141592653-2.6-0.999995 (TeX Live 2023/Debian)",
+          "kind": "software"
+        }
+      ],
+      "activities": [
+        {
+          "id": "render-html",
+          "label": "pandoc 3.1.3 projection to html",
+          "startedAt": "2026-10-24T23:57:53.515Z",
+          "endedAt": "2026-10-24T23:57:56.032Z",
+          "used": [
+            "manuscript/01-introduction.md",
+            "manuscript/02-the-future-white.md",
+            "manuscript/03-birth-into-captivity.md",
+            "manuscript/04-whose-future-increase.md",
+            "manuscript/05-transatlantic-population-circuits.md",
+            "manuscript/06-conclusion.md",
+            "manuscript/90-appendix-a-tables.md",
+            "manuscript/91-appendix-b-bibliography.md",
+            "paper.yaml",
+            "references/references.yaml",
+            "references/chicago-author-date.csl",
+            "figures/captive-birth-share-by-decade.svg",
+            "figures/captive-birth-share-by-decade.vl.json",
+            "figures/net-migration-share-of-growth.svg",
+            "figures/net-migration-share-of-growth.vl.json"
+          ],
+          "generated": [
+            "build/white-repopulation.html"
+          ],
+          "wasAssociatedWith": [
+            {
+              "agent": "pandoc",
+              "role": "renderer"
+            }
+          ]
+        },
+        {
+          "id": "render-docx",
+          "label": "pandoc 3.1.3 projection to docx",
+          "startedAt": "2026-10-24T23:57:56.033Z",
+          "endedAt": "2026-10-24T23:57:58.702Z",
+          "used": [
+            "manuscript/01-introduction.md",
+            "manuscript/02-the-future-white.md",
+            "manuscript/03-birth-into-captivity.md",
+            "manuscript/04-whose-future-increase.md",
+            "manuscript/05-transatlantic-population-circuits.md",
+            "manuscript/06-conclusion.md",
+            "manuscript/90-appendix-a-tables.md",
+            "manuscript/91-appendix-b-bibliography.md",
+            "paper.yaml",
+            "references/references.yaml",
+            "references/chicago-author-date.csl",
+            "figures/captive-birth-share-by-decade.svg",
+            "figures/captive-birth-share-by-decade.vl.json",
+            "figures/net-migration-share-of-growth.svg",
+            "figures/net-migration-share-of-growth.vl.json"
+          ],
+          "generated": [
+            "build/white-repopulation.docx"
+          ],
+          "wasAssociatedWith": [
+            {
+              "agent": "pandoc",
+              "role": "renderer"
+            }
+          ]
+        },
+        {
+          "id": "render-jats",
+          "label": "pandoc 3.1.3 projection to jats",
+          "startedAt": "2026-10-24T23:57:58.703Z",
+          "endedAt": "2026-10-24T23:58:01.130Z",
+          "used": [
+            "manuscript/01-introduction.md",
+            "manuscript/02-the-future-white.md",
+            "manuscript/03-birth-into-captivity.md",
+            "manuscript/04-whose-future-increase.md",
+            "manuscript/05-transatlantic-population-circuits.md",
+            "manuscript/06-conclusion.md",
+            "manuscript/90-appendix-a-tables.md",
+            "manuscript/91-appendix-b-bibliography.md",
+            "paper.yaml",
+            "references/references.yaml",
+            "references/chicago-author-date.csl",
+            "figures/captive-birth-share-by-decade.svg",
+            "figures/captive-birth-share-by-decade.vl.json",
+            "figures/net-migration-share-of-growth.svg",
+            "figures/net-migration-share-of-growth.vl.json"
+          ],
+          "generated": [
+            "build/white-repopulation.jats.xml"
+          ],
+          "wasAssociatedWith": [
+            {
+              "agent": "pandoc",
+              "role": "renderer"
+            }
+          ]
+        },
+        {
+          "id": "render-pdf",
+          "label": "pandoc 3.1.3 projection to pdf",
+          "startedAt": "2026-10-24T23:58:01.131Z",
+          "endedAt": "2026-10-24T23:58:07.454Z",
+          "used": [
+            "manuscript/01-introduction.md",
+            "manuscript/02-the-future-white.md",
+            "manuscript/03-birth-into-captivity.md",
+            "manuscript/04-whose-future-increase.md",
+            "manuscript/05-transatlantic-population-circuits.md",
+            "manuscript/06-conclusion.md",
+            "manuscript/90-appendix-a-tables.md",
+            "manuscript/91-appendix-b-bibliography.md",
+            "paper.yaml",
+            "references/references.yaml",
+            "references/chicago-author-date.csl",
+            "figures/captive-birth-share-by-decade.svg",
+            "figures/captive-birth-share-by-decade.vl.json",
+            "figures/net-migration-share-of-growth.svg",
+            "figures/net-migration-share-of-growth.vl.json",
+            "build/.filters/paper-declarations.lua",
+            "build/.reproducibility-xelatex.tex"
+          ],
+          "generated": [
+            "build/white-repopulation.pdf"
+          ],
+          "wasAssociatedWith": [
+            {
+              "agent": "pandoc",
+              "role": "renderer"
+            },
+            {
+              "agent": "xelatex",
+              "role": "typesetter"
+            }
+          ]
+        }
+      ],
+      "entities": [
+        {
+          "id": "manuscript/01-introduction.md",
+          "path": "manuscript/01-introduction.md",
+          "ni": "ni:///sha-256;uj_87YYKRDFH1X5qv5WQnXI2LgCD8U61qeUjtRKgf_Q",
+          "bytes": 7340,
+          "mediaType": "text/markdown"
+        },
+        {
+          "id": "manuscript/02-the-future-white.md",
+          "path": "manuscript/02-the-future-white.md",
+          "ni": "ni:///sha-256;LqUCsb5eKReNIGT0LsYGT-2zl9J1-e_voeRuZbUToME",
+          "bytes": 34181,
+          "mediaType": "text/markdown"
+        },
+        {
+          "id": "manuscript/03-birth-into-captivity.md",
+          "path": "manuscript/03-birth-into-captivity.md",
+          "ni": "ni:///sha-256;7PHX1e-oio6NxWpZjrBEQh6n-4Auoz22QtyEpb0sHd8",
+          "bytes": 26273,
+          "mediaType": "text/markdown"
+        },
+        {
+          "id": "manuscript/04-whose-future-increase.md",
+          "path": "manuscript/04-whose-future-increase.md",
+          "ni": "ni:///sha-256;EY_Mm6PeZw3wJOtZDePdKJ88OaJIGc6UVIFpiXbicWk",
+          "bytes": 22675,
+          "mediaType": "text/markdown"
+        },
+        {
+          "id": "manuscript/05-transatlantic-population-circuits.md",
+          "path": "manuscript/05-transatlantic-population-circuits.md",
+          "ni": "ni:///sha-256;Z1t0f6BPnWJ3VwmZajLdVgmtDEM8EvWc_tEvQBH4MJs",
+          "bytes": 39434,
+          "mediaType": "text/markdown"
+        },
+        {
+          "id": "manuscript/06-conclusion.md",
+          "path": "manuscript/06-conclusion.md",
+          "ni": "ni:///sha-256;r5ySKKr8RkqcUU4ih5Aco6tIMGfph92B1HKu0RDDM_M",
+          "bytes": 4679,
+          "mediaType": "text/markdown"
+        },
+        {
+          "id": "manuscript/90-appendix-a-tables.md",
+          "path": "manuscript/90-appendix-a-tables.md",
+          "ni": "ni:///sha-256;QKgWaUVNfEoJ6xAIr5eOwxU58U_two8jLrvUpM6Ipao",
+          "bytes": 3612,
+          "mediaType": "text/markdown"
+        },
+        {
+          "id": "manuscript/91-appendix-b-bibliography.md",
+          "path": "manuscript/91-appendix-b-bibliography.md",
+          "ni": "ni:///sha-256;PM-QC3mWqmwbpUvcCjkypvuwKn9JBWblpoblN9IctLo",
+          "bytes": 355,
+          "mediaType": "text/markdown"
+        },
+        {
+          "id": "paper.yaml",
+          "path": "paper.yaml",
+          "ni": "ni:///sha-256;qYLcwuoZqx4hcLg39DhupSIUULTlcSTXGqUJx-5DdRM",
+          "bytes": 6478,
+          "mediaType": "application/yaml"
+        },
+        {
+          "id": "references/references.yaml",
+          "path": "references/references.yaml",
+          "ni": "ni:///sha-256;80BGpYkI7BcJ60wYs1ZQasN-Sek2Epn_Uv930OPm_RQ",
+          "bytes": 20646,
+          "mediaType": "application/yaml"
+        },
+        {
+          "id": "references/chicago-author-date.csl",
+          "path": "references/chicago-author-date.csl",
+          "ni": "ni:///sha-256;AC-t541-T-nUKTaha0OoBmsJcBP2JV30Cxv7pmMe_5s",
+          "bytes": 167761,
+          "mediaType": "application/vnd.citationstyles.style+xml"
+        },
+        {
+          "id": "figures/captive-birth-share-by-decade.svg",
+          "path": "figures/captive-birth-share-by-decade.svg",
+          "ni": "ni:///sha-256;j-VpNyfFxxof9X7qjSAOCYS-0XSrbJts1H66zL2OgL0",
+          "bytes": 10404,
+          "mediaType": "image/svg+xml"
+        },
+        {
+          "id": "figures/captive-birth-share-by-decade.vl.json",
+          "path": "figures/captive-birth-share-by-decade.vl.json",
+          "ni": "ni:///sha-256;jV1gkNN7v7KdGcUTxK_pL-54GxVlEZw2MXCGVR3zVaw",
+          "bytes": 6055,
+          "mediaType": "application/json"
+        },
+        {
+          "id": "figures/net-migration-share-of-growth.svg",
+          "path": "figures/net-migration-share-of-growth.svg",
+          "ni": "ni:///sha-256;WflJAr_UeTIsOXW8LfmE5IKAbdxXGn_5HB7y332K5Nk",
+          "bytes": 9713,
+          "mediaType": "image/svg+xml"
+        },
+        {
+          "id": "figures/net-migration-share-of-growth.vl.json",
+          "path": "figures/net-migration-share-of-growth.vl.json",
+          "ni": "ni:///sha-256;fTrbeyWQvZdx9GW8lvR4XvBUFtaKR0mtbZvLOoZodwU",
+          "bytes": 3411,
+          "mediaType": "application/json"
+        },
+        {
+          "id": "build/.filters/paper-declarations.lua",
+          "path": "build/.filters/paper-declarations.lua",
+          "ni": "ni:///sha-256;9yGAsi5kiD-w-gyWAnTAVcWbG-PofbeD9E_N4lvlu6Y",
+          "bytes": 5502,
+          "mediaType": "text/x-lua"
+        },
+        {
+          "id": "build/.reproducibility-xelatex.tex",
+          "path": "build/.reproducibility-xelatex.tex",
+          "ni": "ni:///sha-256;jlLR7MLb2oJL6J4_lzGLweuAoU4PB8GkV0_-vgsC-UY",
+          "bytes": 237,
+          "mediaType": "application/x-tex"
+        },
+        {
+          "id": "build/white-repopulation.html",
+          "path": "build/white-repopulation.html",
+          "ni": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+          "bytes": 223930,
+          "mediaType": "text/html",
+          "wasDerivedFrom": [
+            "manuscript/01-introduction.md",
+            "manuscript/02-the-future-white.md",
+            "manuscript/03-birth-into-captivity.md",
+            "manuscript/04-whose-future-increase.md",
+            "manuscript/05-transatlantic-population-circuits.md",
+            "manuscript/06-conclusion.md",
+            "manuscript/90-appendix-a-tables.md",
+            "manuscript/91-appendix-b-bibliography.md",
+            "paper.yaml",
+            "references/references.yaml",
+            "references/chicago-author-date.csl",
+            "figures/captive-birth-share-by-decade.svg",
+            "figures/captive-birth-share-by-decade.vl.json",
+            "figures/net-migration-share-of-growth.svg",
+            "figures/net-migration-share-of-growth.vl.json"
+          ]
+        },
+        {
+          "id": "build/white-repopulation.docx",
+          "path": "build/white-repopulation.docx",
+          "ni": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+          "bytes": 122031,
+          "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "wasDerivedFrom": [
+            "manuscript/01-introduction.md",
+            "manuscript/02-the-future-white.md",
+            "manuscript/03-birth-into-captivity.md",
+            "manuscript/04-whose-future-increase.md",
+            "manuscript/05-transatlantic-population-circuits.md",
+            "manuscript/06-conclusion.md",
+            "manuscript/90-appendix-a-tables.md",
+            "manuscript/91-appendix-b-bibliography.md",
+            "paper.yaml",
+            "references/references.yaml",
+            "references/chicago-author-date.csl",
+            "figures/captive-birth-share-by-decade.svg",
+            "figures/captive-birth-share-by-decade.vl.json",
+            "figures/net-migration-share-of-growth.svg",
+            "figures/net-migration-share-of-growth.vl.json"
+          ]
+        },
+        {
+          "id": "build/white-repopulation.jats.xml",
+          "path": "build/white-repopulation.jats.xml",
+          "ni": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+          "bytes": 207328,
+          "mediaType": "application/jats+xml",
+          "wasDerivedFrom": [
+            "manuscript/01-introduction.md",
+            "manuscript/02-the-future-white.md",
+            "manuscript/03-birth-into-captivity.md",
+            "manuscript/04-whose-future-increase.md",
+            "manuscript/05-transatlantic-population-circuits.md",
+            "manuscript/06-conclusion.md",
+            "manuscript/90-appendix-a-tables.md",
+            "manuscript/91-appendix-b-bibliography.md",
+            "paper.yaml",
+            "references/references.yaml",
+            "references/chicago-author-date.csl",
+            "figures/captive-birth-share-by-decade.svg",
+            "figures/captive-birth-share-by-decade.vl.json",
+            "figures/net-migration-share-of-growth.svg",
+            "figures/net-migration-share-of-growth.vl.json"
+          ]
+        },
+        {
+          "id": "build/white-repopulation.pdf",
+          "path": "build/white-repopulation.pdf",
+          "ni": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+          "bytes": 275770,
+          "mediaType": "application/pdf",
+          "wasDerivedFrom": [
+            "manuscript/01-introduction.md",
+            "manuscript/02-the-future-white.md",
+            "manuscript/03-birth-into-captivity.md",
+            "manuscript/04-whose-future-increase.md",
+            "manuscript/05-transatlantic-population-circuits.md",
+            "manuscript/06-conclusion.md",
+            "manuscript/90-appendix-a-tables.md",
+            "manuscript/91-appendix-b-bibliography.md",
+            "paper.yaml",
+            "references/references.yaml",
+            "references/chicago-author-date.csl",
+            "figures/captive-birth-share-by-decade.svg",
+            "figures/captive-birth-share-by-decade.vl.json",
+            "figures/net-migration-share-of-growth.svg",
+            "figures/net-migration-share-of-growth.vl.json",
+            "build/.filters/paper-declarations.lua",
+            "build/.reproducibility-xelatex.tex"
+          ]
+        }
+      ]
+    }
+  },
+  "people": {
+    "agents": [
+      {
+        "id": "agent/morgan-sennhauser",
+        "name": "Morgan Sennhauser",
+        "kind": "person"
+      },
+      {
+        "id": "agent/lenticule-science",
+        "name": "Lenticule Science",
+        "kind": "organization"
+      },
+      {
+        "id": "agent/codex-6-1",
+        "name": "Codex 6.1",
+        "kind": "ai-system",
+        "actedOnBehalfOf": "agent/morgan-sennhauser"
+      },
+      {
+        "id": "agent/claude",
+        "name": "Claude (Anthropic)",
+        "kind": "ai-system",
+        "actedOnBehalfOf": "agent/morgan-sennhauser"
+      }
+    ],
+    "activities": [],
+    "entities": []
+  },
+  "baseIri": "https://561.group/knowledge/white-repopulation/build/",
+  "metadata": {
+    "paperYaml": "# The one source of publication metadata for White Repopulation.\n# CITATION.cff, .zenodo.json, codemeta.json and metadata/scholarly-article.jsonld\n# are generated from this file by @red-cup-engineering/research-release-metadata-service\n# (`make metadata`); `make metadata-check` fails if any of them drifts from it.\n# The schema is that service's schemas/paper.schema.json.\nid: white-repopulation\ntitle: \"White Repopulation: Reproduction without Preservation\"\nsubtitle: \"The future white, captive births, and the transatlantic reproduction of settler rule\"\nversion: \"0.2.0\"\nyear: 2026\ndate-released: \"2026-10-24\"\nstatus: released\npublication-type: preprint\npeer-reviewed: false\naccess-right: open\nlanguage: en-US\nabstract: >-\n  Settler institutions in the United States have described their future as the\n  increase of a white population. That description joins four histories that\n  move independently: the births and survival of people counted as white; the\n  changing rules for who counts; eligibility to found a preferred future\n  population; and the reproduction of property, jurisdiction and labor\n  relations. This study separates them and asks which one institutions\n  preserved when they conflicted. Four documentary and quantitative strands\n  answer in turn. Franklin's population arithmetic, race-suicide pronatalism\n  and Virginia's racial-integrity law show a purity ideal that bent when its\n  rigid application threatened elite genealogies. A reconstruction of births,\n  1790–1859, finds that roughly one U.S. birth in six (17.20% in 1800–1849)\n  was a birth into hereditary slavery, a reproduction of property that\n  conferred no membership. Antebellum property law divided a child's status,\n  title and anticipated issue across time. Transatlantic sending, receiving\n  and policy-borrowing cases show settler growth drawing on selected,\n  indebted and assisted migrants through case-specific institutions rather\n  than one coordinated design. Across the strands, institutions\n  preserved the authority to classify and to appropriate reproduction more\n  reliably than the reproductive opportunities of every person classified\n  white. The stronger proposition, that a deferred ideal can exhaust the\n  population it claims to protect, remains a conditional hypothesis; the paper\n  states the cohort and institutional evidence that would test it.\nkeywords:\n  - settler colonialism\n  - social reproduction\n  - historical sociology\n  - historical demography\n  - racial formation\n  - slavery\n  - eugenics\n  - reproductive futurity\n  - migration\nsubjects:\n  - term: Sociology\n    scheme: OECD FORD\n    identifier: \"5.4\"\n  - term: History and archaeology\n    scheme: OECD FORD\n    identifier: \"6.1\"\npublisher:\n  name: Lenticule Science\n  url: https://github.com/lenticule-science\nrepository-code: https://github.com/lenticule-science/white-repopulation\nlicense:\n  text: CC-BY-4.0\n  code: MIT\n  data: CC-BY-4.0\n  scope: >-\n    Quoted historical documents, archival transcriptions and third-party works\n    keep their own rights; the licenses above cover only original authored\n    synthesis, code and derived tables.\nauthors:\n  - given: Morgan\n    family: Sennhauser\n    affiliation: Lenticule Science\n    role: accountable-author\n    ai: false\n  - name: Codex 6.1\n    affiliation: Disclosed AI research collaborator\n    role: ai-research-collaborator\n    ai: true\n    disclosure: >-\n      Codex 6.1 is an AI system. It is credited for the research and drafting\n      work it performed at the request of the accountable author. It cannot\n      hold scholarly, legal or ethical accountability for the work; the human\n      author does.\ncontributors:\n  - name: Claude (Anthropic)\n    ai: true\n    role: integration, reproducible-build and release engineering\n    zenodo-type: Other\n    disclosure: >-\n      Claude is an AI system. It assembled the integrated edition, wrote the\n      introduction and conclusion from the parts' findings, and built the\n      reproduction, metadata, ontology, provenance and release pipeline.\nacknowledgements:\n  - name: Anonymous contributor\n    role: research direction\nai-disclosure:\n  statement: >-\n    AI systems performed most source retrieval, drafting, quantitative\n    reconstruction and release engineering under direction of the accountable\n    author. Every quantitative claim is recomputed from the archived records by\n    the claim specification in claims/; every source carries a reading grade recording how\n    much of it was actually read. Readers should weigh claims by those grades.\ncare:\n  collective-benefit: >-\n    The study concerns people whose reproduction was appropriated by settler\n    institutions, and Indigenous nations whose recognition those institutions\n    conditioned. Findings are released openly so descendant communities and\n    their scholars can use, contest and correct them without cost.\n  authority-to-control: >-\n    No Indigenous data are collected. Where the paper discusses Indigenous\n    political continuity (for example Pamunkey opposition to Virginia's 1930\n    law), it relies on published scholarship and public records, and treats\n    colonial administrative recognition as distinct from Indigenous\n    self-determination. Requests from a named nation concerning those passages\n    are handled under docs/data-governance.md.\n  responsibility: >-\n    Source records state what each document can and cannot show, including\n    the bias of court and enslaver records that seldom preserve the voices of\n    enslaved mothers and children.\n  ethics: >-\n    Persons named in historical records are not reduced to counts; the paper\n    does not reproduce identifying detail beyond what its published sources\n    already make public.\nrelated-identifiers:\n  - relation: isSupplementedBy\n    identifier: https://github.com/lenticule-science/sociology-science-services-section\n    scheme: url\nmessage: >-\n  Please cite the versioned release of this preprint. It is not peer\n  reviewed, and no DOI is assigned until an archived release mints one.\nlimitations:\n  - \"historical births: retrospective modeled estimates; 1790s denominator assumed; no measured prevalence of coerced conception\"\n  - \"historical migration: all-population national rates; not white-specific or local lineage survival\"\n  - \"legal cases: purposive judicial comparison; title and status variation, not population frequency\"\n  - \"self-consuming futurity: a historical hypothesis, not a demonstrated causal demographic law\"\n",
+    "files": {
+      "CITATION.cff": "cff-version: 1.2.0\nmessage: \"Please cite the versioned release of this preprint. It is not peer reviewed, and no DOI is assigned until an archived release mints one. AI disclosure: AI systems performed most source retrieval, drafting, quantitative reconstruction and release engineering under direction of the accountable author. Every quantitative claim is recomputed from the archived records by the claim specification in claims/; every source carries a reading grade recording how much of it was actually read. Readers should weigh claims by those grades. Codex 6.1: Codex 6.1 is an AI system. It is credited for the research and drafting work it performed at the request of the accountable author. It cannot hold scholarly, legal or ethical accountability for the work; the human author does. Claude (Anthropic): Claude is an AI system. It assembled the integrated edition, wrote the introduction and conclusion from the parts' findings, and built the reproduction, metadata, ontology, provenance and release pipeline. Accountable author: Morgan Sennhauser.\"\ntitle: \"White Repopulation: Reproduction without Preservation\"\nversion: 0.2.0\ndate-released: \"2026-10-24\"\nabstract: \"Settler institutions in the United States have described their future as the increase of a white population. That description joins four histories that move independently: the births and survival of people counted as white; the changing rules for who counts; eligibility to found a preferred future population; and the reproduction of property, jurisdiction and labor relations. This study separates them and asks which one institutions preserved when they conflicted. Four documentary and quantitative strands answer in turn. Franklin's population arithmetic, race-suicide pronatalism and Virginia's racial-integrity law show a purity ideal that bent when its rigid application threatened elite genealogies. A reconstruction of births, 1790–1859, finds that roughly one U.S. birth in six (17.20% in 1800–1849) was a birth into hereditary slavery, a reproduction of property that conferred no membership. Antebellum property law divided a child's status, title and anticipated issue across time. Transatlantic sending, receiving and policy-borrowing cases show settler growth drawing on selected, indebted and assisted migrants through case-specific institutions rather than one coordinated design. Across the strands, institutions preserved the authority to classify and to appropriate reproduction more reliably than the reproductive opportunities of every person classified white. The stronger proposition, that a deferred ideal can exhaust the population it claims to protect, remains a conditional hypothesis; the paper states the cohort and institutional evidence that would test it.\"\nauthors:\n  - family-names: Sennhauser\n    given-names: Morgan\n    affiliation: Lenticule Science\n  - name: Codex 6.1 (disclosed AI research collaborator)\nkeywords:\n  - settler colonialism\n  - social reproduction\n  - historical sociology\n  - historical demography\n  - racial formation\n  - slavery\n  - eugenics\n  - reproductive futurity\n  - migration\nlicense:\n  - CC-BY-4.0\n  - MIT\nrepository-code: https://github.com/lenticule-science/white-repopulation\npreferred-citation:\n  type: report\n  authors:\n    - family-names: Sennhauser\n      given-names: Morgan\n      affiliation: Lenticule Science\n    - name: Codex 6.1 (disclosed AI research collaborator)\n  title: \"White Repopulation: Reproduction without Preservation\"\n  year: 2026\n  institution:\n    name: Lenticule Science\n    website: https://github.com/lenticule-science\n  version: 0.2.0\n  notes: \"Subtitle: The future white, captive births, and the transatlantic reproduction of settler rule. Not peer reviewed. Anonymous contributor acknowledged for research direction. No DOI assigned. CARE authority-to-control: No Indigenous data are collected. Where the paper discusses Indigenous political continuity (for example Pamunkey opposition to Virginia's 1930 law), it relies on published scholarship and public records, and treats colonial administrative recognition as distinct from Indigenous self-determination. Requests from a named nation concerning those passages are handled under docs/data-governance.md. CARE responsibility: Source records state what each document can and cannot show, including the bias of court and enslaver records that seldom preserve the voices of enslaved mothers and children. CARE ethics: Persons named in historical records are not reduced to counts; the paper does not reproduce identifying detail beyond what its published sources already make public. CARE collective-benefit: The study concerns people whose reproduction was appropriated by settler institutions, and Indigenous nations whose recognition those institutions conditioned. Findings are released openly so descendant communities and their scholars can use, contest and correct them without cost.\"\n",
+      ".zenodo.json": "{\n  \"upload_type\": \"publication\",\n  \"publication_type\": \"preprint\",\n  \"title\": \"White Repopulation: Reproduction without Preservation\",\n  \"publication_date\": \"2026-10-24\",\n  \"description\": \"<p>The future white, captive births, and the transatlantic reproduction of settler rule</p>\\n<p>Settler institutions in the United States have described their future as the increase of a white population. That description joins four histories that move independently: the births and survival of people counted as white; the changing rules for who counts; eligibility to found a preferred future population; and the reproduction of property, jurisdiction and labor relations. This study separates them and asks which one institutions preserved when they conflicted. Four documentary and quantitative strands answer in turn. Franklin's population arithmetic, race-suicide pronatalism and Virginia's racial-integrity law show a purity ideal that bent when its rigid application threatened elite genealogies. A reconstruction of births, 1790–1859, finds that roughly one U.S. birth in six (17.20% in 1800–1849) was a birth into hereditary slavery, a reproduction of property that conferred no membership. Antebellum property law divided a child's status, title and anticipated issue across time. Transatlantic sending, receiving and policy-borrowing cases show settler growth drawing on selected, indebted and assisted migrants through case-specific institutions rather than one coordinated design. Across the strands, institutions preserved the authority to classify and to appropriate reproduction more reliably than the reproductive opportunities of every person classified white. The stronger proposition, that a deferred ideal can exhaust the population it claims to protect, remains a conditional hypothesis; the paper states the cohort and institutional evidence that would test it.</p>\\n<p>Evidence limits: historical births: retrospective modeled estimates; 1790s denominator assumed; no measured prevalence of coerced conception; historical migration: all-population national rates; not white-specific or local lineage survival; legal cases: purposive judicial comparison; title and status variation, not population frequency; self-consuming futurity: a historical hypothesis, not a demonstrated causal demographic law</p>\",\n  \"creators\": [\n    {\n      \"name\": \"Sennhauser, Morgan\",\n      \"affiliation\": \"Lenticule Science\"\n    }\n  ],\n  \"contributors\": [\n    {\n      \"name\": \"Codex 6.1\",\n      \"type\": \"Other\",\n      \"affiliation\": \"disclosed AI research collaborator (credited contributor; carries no accountability)\"\n    },\n    {\n      \"name\": \"Claude (Anthropic)\",\n      \"type\": \"Other\",\n      \"affiliation\": \"disclosed AI research collaborator (credited contributor; carries no accountability)\"\n    },\n    {\n      \"name\": \"Anonymous contributor\",\n      \"type\": \"Other\"\n    }\n  ],\n  \"keywords\": [\n    \"settler colonialism\",\n    \"social reproduction\",\n    \"historical sociology\",\n    \"historical demography\",\n    \"racial formation\",\n    \"slavery\",\n    \"eugenics\",\n    \"reproductive futurity\",\n    \"migration\"\n  ],\n  \"subjects\": [\n    {\n      \"term\": \"Sociology\",\n      \"identifier\": \"5.4\",\n      \"scheme\": \"OECD FORD\"\n    },\n    {\n      \"term\": \"History and archaeology\",\n      \"identifier\": \"6.1\",\n      \"scheme\": \"OECD FORD\"\n    }\n  ],\n  \"license\": \"cc-by-4.0\",\n  \"access_right\": \"open\",\n  \"version\": \"0.2.0\",\n  \"language\": \"eng\",\n  \"imprint_publisher\": \"Lenticule Science\",\n  \"related_identifiers\": [\n    {\n      \"identifier\": \"https://github.com/lenticule-science/sociology-science-services-section\",\n      \"relation\": \"isSupplementedBy\",\n      \"scheme\": \"url\"\n    },\n    {\n      \"identifier\": \"https://github.com/lenticule-science/white-repopulation\",\n      \"relation\": \"isSupplementedBy\",\n      \"scheme\": \"url\"\n    }\n  ],\n  \"notes\": \"<p>Not peer reviewed.</p>\\n<p>AI disclosure: AI systems performed most source retrieval, drafting, quantitative reconstruction and release engineering under direction of the accountable author. Every quantitative claim is recomputed from the archived records by the claim specification in claims/; every source carries a reading grade recording how much of it was actually read. Readers should weigh claims by those grades. Codex 6.1: Codex 6.1 is an AI system. It is credited for the research and drafting work it performed at the request of the accountable author. It cannot hold scholarly, legal or ethical accountability for the work; the human author does. Claude (Anthropic): Claude is an AI system. It assembled the integrated edition, wrote the introduction and conclusion from the parts' findings, and built the reproduction, metadata, ontology, provenance and release pipeline. Accountable author: Morgan Sennhauser.</p>\\n<p>Licence scope: Quoted historical documents, archival transcriptions and third-party works keep their own rights; the licenses above cover only original authored synthesis, code and derived tables.</p>\\n<p>CARE authority-to-control: No Indigenous data are collected. Where the paper discusses Indigenous political continuity (for example Pamunkey opposition to Virginia's 1930 law), it relies on published scholarship and public records, and treats colonial administrative recognition as distinct from Indigenous self-determination. Requests from a named nation concerning those passages are handled under docs/data-governance.md.</p>\\n<p>CARE responsibility: Source records state what each document can and cannot show, including the bias of court and enslaver records that seldom preserve the voices of enslaved mothers and children.</p>\\n<p>CARE ethics: Persons named in historical records are not reduced to counts; the paper does not reproduce identifying detail beyond what its published sources already make public.</p>\\n<p>CARE collective-benefit: The study concerns people whose reproduction was appropriated by settler institutions, and Indigenous nations whose recognition those institutions conditioned. Findings are released openly so descendant communities and their scholars can use, contest and correct them without cost.</p>\"\n}\n",
+      "codemeta.json": "{\n  \"@context\": \"https://w3id.org/codemeta/3.0\",\n  \"@type\": \"SoftwareSourceCode\",\n  \"name\": \"White Repopulation: Reproduction without Preservation\",\n  \"alternativeHeadline\": \"The future white, captive births, and the transatlantic reproduction of settler rule\",\n  \"description\": \"Settler institutions in the United States have described their future as the increase of a white population. That description joins four histories that move independently: the births and survival of people counted as white; the changing rules for who counts; eligibility to found a preferred future population; and the reproduction of property, jurisdiction and labor relations. This study separates them and asks which one institutions preserved when they conflicted. Four documentary and quantitative strands answer in turn. Franklin's population arithmetic, race-suicide pronatalism and Virginia's racial-integrity law show a purity ideal that bent when its rigid application threatened elite genealogies. A reconstruction of births, 1790–1859, finds that roughly one U.S. birth in six (17.20% in 1800–1849) was a birth into hereditary slavery, a reproduction of property that conferred no membership. Antebellum property law divided a child's status, title and anticipated issue across time. Transatlantic sending, receiving and policy-borrowing cases show settler growth drawing on selected, indebted and assisted migrants through case-specific institutions rather than one coordinated design. Across the strands, institutions preserved the authority to classify and to appropriate reproduction more reliably than the reproductive opportunities of every person classified white. The stronger proposition, that a deferred ideal can exhaust the population it claims to protect, remains a conditional hypothesis; the paper states the cohort and institutional evidence that would test it.\",\n  \"version\": \"0.2.0\",\n  \"datePublished\": \"2026-10-24\",\n  \"codeRepository\": \"https://github.com/lenticule-science/white-repopulation\",\n  \"license\": [\n    \"https://spdx.org/licenses/CC-BY-4.0\",\n    \"https://spdx.org/licenses/MIT\"\n  ],\n  \"author\": [\n    {\n      \"@type\": \"Person\",\n      \"givenName\": \"Morgan\",\n      \"familyName\": \"Sennhauser\",\n      \"name\": \"Morgan Sennhauser\",\n      \"affiliation\": {\n        \"@type\": \"Organization\",\n        \"name\": \"Lenticule Science\"\n      },\n      \"jobTitle\": \"accountable-author\"\n    }\n  ],\n  \"contributor\": [\n    {\n      \"@type\": \"SoftwareApplication\",\n      \"name\": \"Codex 6.1\",\n      \"description\": \"AI system credited as a collaborator (ai-research-collaborator). Codex 6.1 is an AI system. It is credited for the research and drafting work it performed at the request of the accountable author. It cannot hold scholarly, legal or ethical accountability for the work; the human author does. It is credited for its contribution and cannot accept scholarly, legal or ethical accountability, which rests with the accountable human author.\"\n    },\n    {\n      \"@type\": \"SoftwareApplication\",\n      \"name\": \"Claude (Anthropic)\",\n      \"description\": \"AI system credited as a collaborator (integration, reproducible-build and release engineering). Claude is an AI system. It assembled the integrated edition, wrote the introduction and conclusion from the parts' findings, and built the reproduction, metadata, ontology, provenance and release pipeline. It is credited for its contribution and cannot accept scholarly, legal or ethical accountability, which rests with the accountable human author.\"\n    },\n    {\n      \"@type\": \"Person\",\n      \"name\": \"Anonymous contributor\",\n      \"description\": \"Acknowledged for research direction.\"\n    }\n  ],\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Lenticule Science\",\n    \"url\": \"https://github.com/lenticule-science\"\n  },\n  \"keywords\": [\n    \"settler colonialism\",\n    \"social reproduction\",\n    \"historical sociology\",\n    \"historical demography\",\n    \"racial formation\",\n    \"slavery\",\n    \"eugenics\",\n    \"reproductive futurity\",\n    \"migration\"\n  ],\n  \"inLanguage\": \"en-US\",\n  \"developmentStatus\": \"https://www.repostatus.org/#active\",\n  \"isAccessibleForFree\": true,\n  \"relatedLink\": [\n    \"https://github.com/lenticule-science/sociology-science-services-section\"\n  ],\n  \"additionalProperty\": [\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"ai-disclosure\",\n      \"value\": \"AI systems performed most source retrieval, drafting, quantitative reconstruction and release engineering under direction of the accountable author. Every quantitative claim is recomputed from the archived records by the claim specification in claims/; every source carries a reading grade recording how much of it was actually read. Readers should weigh claims by those grades. Codex 6.1: Codex 6.1 is an AI system. It is credited for the research and drafting work it performed at the request of the accountable author. It cannot hold scholarly, legal or ethical accountability for the work; the human author does. Claude (Anthropic): Claude is an AI system. It assembled the integrated edition, wrote the introduction and conclusion from the parts' findings, and built the reproduction, metadata, ontology, provenance and release pipeline. Accountable author: Morgan Sennhauser.\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"care-authority-to-control\",\n      \"value\": \"No Indigenous data are collected. Where the paper discusses Indigenous political continuity (for example Pamunkey opposition to Virginia's 1930 law), it relies on published scholarship and public records, and treats colonial administrative recognition as distinct from Indigenous self-determination. Requests from a named nation concerning those passages are handled under docs/data-governance.md.\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"care-responsibility\",\n      \"value\": \"Source records state what each document can and cannot show, including the bias of court and enslaver records that seldom preserve the voices of enslaved mothers and children.\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"care-ethics\",\n      \"value\": \"Persons named in historical records are not reduced to counts; the paper does not reproduce identifying detail beyond what its published sources already make public.\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"care-collective-benefit\",\n      \"value\": \"The study concerns people whose reproduction was appropriated by settler institutions, and Indigenous nations whose recognition those institutions conditioned. Findings are released openly so descendant communities and their scholars can use, contest and correct them without cost.\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"evidence-limit\",\n      \"value\": \"historical births: retrospective modeled estimates; 1790s denominator assumed; no measured prevalence of coerced conception\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"evidence-limit\",\n      \"value\": \"historical migration: all-population national rates; not white-specific or local lineage survival\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"evidence-limit\",\n      \"value\": \"legal cases: purposive judicial comparison; title and status variation, not population frequency\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"evidence-limit\",\n      \"value\": \"self-consuming futurity: a historical hypothesis, not a demonstrated causal demographic law\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"license-scope\",\n      \"value\": \"Quoted historical documents, archival transcriptions and third-party works keep their own rights; the licenses above cover only original authored synthesis, code and derived tables.\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"accountable-author\",\n      \"value\": \"Morgan Sennhauser\"\n    }\n  ]\n}\n",
+      "scholarly-article.jsonld": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"ScholarlyArticle\",\n  \"headline\": \"White Repopulation: Reproduction without Preservation\",\n  \"name\": \"White Repopulation: Reproduction without Preservation\",\n  \"alternativeHeadline\": \"The future white, captive births, and the transatlantic reproduction of settler rule\",\n  \"description\": \"Settler institutions in the United States have described their future as the increase of a white population. That description joins four histories that move independently: the births and survival of people counted as white; the changing rules for who counts; eligibility to found a preferred future population; and the reproduction of property, jurisdiction and labor relations. This study separates them and asks which one institutions preserved when they conflicted. Four documentary and quantitative strands answer in turn. Franklin's population arithmetic, race-suicide pronatalism and Virginia's racial-integrity law show a purity ideal that bent when its rigid application threatened elite genealogies. A reconstruction of births, 1790–1859, finds that roughly one U.S. birth in six (17.20% in 1800–1849) was a birth into hereditary slavery, a reproduction of property that conferred no membership. Antebellum property law divided a child's status, title and anticipated issue across time. Transatlantic sending, receiving and policy-borrowing cases show settler growth drawing on selected, indebted and assisted migrants through case-specific institutions rather than one coordinated design. Across the strands, institutions preserved the authority to classify and to appropriate reproduction more reliably than the reproductive opportunities of every person classified white. The stronger proposition, that a deferred ideal can exhaust the population it claims to protect, remains a conditional hypothesis; the paper states the cohort and institutional evidence that would test it.\",\n  \"abstract\": \"Settler institutions in the United States have described their future as the increase of a white population. That description joins four histories that move independently: the births and survival of people counted as white; the changing rules for who counts; eligibility to found a preferred future population; and the reproduction of property, jurisdiction and labor relations. This study separates them and asks which one institutions preserved when they conflicted. Four documentary and quantitative strands answer in turn. Franklin's population arithmetic, race-suicide pronatalism and Virginia's racial-integrity law show a purity ideal that bent when its rigid application threatened elite genealogies. A reconstruction of births, 1790–1859, finds that roughly one U.S. birth in six (17.20% in 1800–1849) was a birth into hereditary slavery, a reproduction of property that conferred no membership. Antebellum property law divided a child's status, title and anticipated issue across time. Transatlantic sending, receiving and policy-borrowing cases show settler growth drawing on selected, indebted and assisted migrants through case-specific institutions rather than one coordinated design. Across the strands, institutions preserved the authority to classify and to appropriate reproduction more reliably than the reproductive opportunities of every person classified white. The stronger proposition, that a deferred ideal can exhaust the population it claims to protect, remains a conditional hypothesis; the paper states the cohort and institutional evidence that would test it.\",\n  \"version\": \"0.2.0\",\n  \"datePublished\": \"2026-10-24\",\n  \"creativeWorkStatus\": \"Published\",\n  \"genre\": \"preprint\",\n  \"author\": [\n    {\n      \"@type\": \"Person\",\n      \"givenName\": \"Morgan\",\n      \"familyName\": \"Sennhauser\",\n      \"name\": \"Morgan Sennhauser\",\n      \"affiliation\": {\n        \"@type\": \"Organization\",\n        \"name\": \"Lenticule Science\"\n      },\n      \"jobTitle\": \"accountable-author\"\n    }\n  ],\n  \"contributor\": [\n    {\n      \"@type\": \"SoftwareApplication\",\n      \"name\": \"Codex 6.1\",\n      \"description\": \"AI system credited as a collaborator (ai-research-collaborator). Codex 6.1 is an AI system. It is credited for the research and drafting work it performed at the request of the accountable author. It cannot hold scholarly, legal or ethical accountability for the work; the human author does. It is credited for its contribution and cannot accept scholarly, legal or ethical accountability, which rests with the accountable human author.\"\n    },\n    {\n      \"@type\": \"SoftwareApplication\",\n      \"name\": \"Claude (Anthropic)\",\n      \"description\": \"AI system credited as a collaborator (integration, reproducible-build and release engineering). Claude is an AI system. It assembled the integrated edition, wrote the introduction and conclusion from the parts' findings, and built the reproduction, metadata, ontology, provenance and release pipeline. It is credited for its contribution and cannot accept scholarly, legal or ethical accountability, which rests with the accountable human author.\"\n    },\n    {\n      \"@type\": \"Person\",\n      \"name\": \"Anonymous contributor\",\n      \"description\": \"Acknowledged for research direction.\"\n    }\n  ],\n  \"creditText\": \"AI systems performed most source retrieval, drafting, quantitative reconstruction and release engineering under direction of the accountable author. Every quantitative claim is recomputed from the archived records by the claim specification in claims/; every source carries a reading grade recording how much of it was actually read. Readers should weigh claims by those grades. Codex 6.1: Codex 6.1 is an AI system. It is credited for the research and drafting work it performed at the request of the accountable author. It cannot hold scholarly, legal or ethical accountability for the work; the human author does. Claude (Anthropic): Claude is an AI system. It assembled the integrated edition, wrote the introduction and conclusion from the parts' findings, and built the reproduction, metadata, ontology, provenance and release pipeline. Accountable author: Morgan Sennhauser. Licence scope: Quoted historical documents, archival transcriptions and third-party works keep their own rights; the licenses above cover only original authored synthesis, code and derived tables.\",\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Lenticule Science\",\n    \"url\": \"https://github.com/lenticule-science\"\n  },\n  \"license\": [\n    \"https://spdx.org/licenses/CC-BY-4.0\",\n    \"https://spdx.org/licenses/MIT\"\n  ],\n  \"isAccessibleForFree\": true,\n  \"inLanguage\": \"en-US\",\n  \"keywords\": [\n    \"settler colonialism\",\n    \"social reproduction\",\n    \"historical sociology\",\n    \"historical demography\",\n    \"racial formation\",\n    \"slavery\",\n    \"eugenics\",\n    \"reproductive futurity\",\n    \"migration\"\n  ],\n  \"about\": [\n    {\n      \"@type\": \"DefinedTerm\",\n      \"name\": \"Sociology\",\n      \"termCode\": \"5.4\",\n      \"inDefinedTermSet\": \"OECD FORD\"\n    },\n    {\n      \"@type\": \"DefinedTerm\",\n      \"name\": \"History and archaeology\",\n      \"termCode\": \"6.1\",\n      \"inDefinedTermSet\": \"OECD FORD\"\n    }\n  ],\n  \"isBasedOn\": [\n    \"https://github.com/lenticule-science/white-repopulation\"\n  ],\n  \"additionalProperty\": [\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"care-authority-to-control\",\n      \"value\": \"No Indigenous data are collected. Where the paper discusses Indigenous political continuity (for example Pamunkey opposition to Virginia's 1930 law), it relies on published scholarship and public records, and treats colonial administrative recognition as distinct from Indigenous self-determination. Requests from a named nation concerning those passages are handled under docs/data-governance.md.\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"care-responsibility\",\n      \"value\": \"Source records state what each document can and cannot show, including the bias of court and enslaver records that seldom preserve the voices of enslaved mothers and children.\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"care-ethics\",\n      \"value\": \"Persons named in historical records are not reduced to counts; the paper does not reproduce identifying detail beyond what its published sources already make public.\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"care-collective-benefit\",\n      \"value\": \"The study concerns people whose reproduction was appropriated by settler institutions, and Indigenous nations whose recognition those institutions conditioned. Findings are released openly so descendant communities and their scholars can use, contest and correct them without cost.\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"evidence-limit\",\n      \"value\": \"historical births: retrospective modeled estimates; 1790s denominator assumed; no measured prevalence of coerced conception\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"evidence-limit\",\n      \"value\": \"historical migration: all-population national rates; not white-specific or local lineage survival\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"evidence-limit\",\n      \"value\": \"legal cases: purposive judicial comparison; title and status variation, not population frequency\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"evidence-limit\",\n      \"value\": \"self-consuming futurity: a historical hypothesis, not a demonstrated causal demographic law\"\n    },\n    {\n      \"@type\": \"PropertyValue\",\n      \"name\": \"peer-reviewed\",\n      \"value\": false\n    }\n  ]\n}\n"
+    }
+  },
+  "references": {
+    "cited": [
+      "abs2024",
+      "alphonso2023",
+      "brophy-troutman2016",
+      "caron2008",
+      "case-banks-marksberry1823",
+      "case-covington-mcentire1842",
+      "case-johnson-johnson1848",
+      "case-nelson-nelson1849",
+      "case-smith-milman1839",
+      "census-nonhispanic-white2024",
+      "clymer2012",
+      "coleman2013",
+      "constitution1787",
+      "cook-george-major1930",
+      "cooper2017",
+      "djeliid2024",
+      "everett-randolph1936",
+      "franklin1751",
+      "fraser2016",
+      "gibson-jung2002",
+      "ginsburgh-jackson2019",
+      "guglielmo2003",
+      "hacker-haines-jaremski2021",
+      "hacker-roberts2019",
+      "hacker2003",
+      "hacker2020",
+      "haines-hacker2006",
+      "haines-sutch2006",
+      "haines1994",
+      "haines2006",
+      "harris1993",
+      "jefferson-eppes1820",
+      "jefferson-yancey1819",
+      "kearney-levine-pardue2022",
+      "maillard2007",
+      "morgan2021",
+      "murray2022",
+      "national-archives1850",
+      "nc-eugenics-board1966",
+      "nearing1911",
+      "nicholls2026",
+      "olson2025",
+      "pemberton2008",
+      "perez-pereira2022",
+      "reader2023",
+      "roosevelt1913",
+      "solinger2017",
+      "statistics-canada2024",
+      "stubblefield2007",
+      "tabery-et-al2023",
+      "virginia-assembly1662",
+      "virginia-assembly1924",
+      "virginia-code1930",
+      "virginia-humanities1926",
+      "wanamaker2014",
+      "wolfe2006",
+      "wulf2023",
+      "younis2026"
+    ],
+    "available": [
+      "abs2024",
+      "alphonso2023",
+      "brophy-troutman2016",
+      "caron2008",
+      "case-banks-marksberry1823",
+      "case-covington-mcentire1842",
+      "case-johnson-johnson1848",
+      "case-nelson-nelson1849",
+      "case-smith-milman1839",
+      "census-nonhispanic-white2024",
+      "clymer2012",
+      "coleman2013",
+      "constitution1787",
+      "cook-george-major1930",
+      "cooper2017",
+      "djeliid2024",
+      "everett-randolph1936",
+      "franklin1751",
+      "fraser2016",
+      "gibson-jung2002",
+      "ginsburgh-jackson2019",
+      "guglielmo2003",
+      "hacker-haines-jaremski2021",
+      "hacker-roberts2019",
+      "hacker2003",
+      "hacker2020",
+      "haines-hacker2006",
+      "haines-sutch2006",
+      "haines1994",
+      "haines2006",
+      "harris1993",
+      "jefferson-eppes1820",
+      "jefferson-yancey1819",
+      "kearney-levine-pardue2022",
+      "maillard2007",
+      "morgan2021",
+      "murray2022",
+      "national-archives1850",
+      "nc-eugenics-board1966",
+      "nearing1911",
+      "nicholls2026",
+      "olson2025",
+      "pemberton2008",
+      "perez-pereira2022",
+      "reader2023",
+      "roosevelt1913",
+      "solinger2017",
+      "statistics-canada2024",
+      "stubblefield2007",
+      "tabery-et-al2023",
+      "virginia-assembly1662",
+      "virginia-assembly1924",
+      "virginia-code1930",
+      "virginia-humanities1926",
+      "wanamaker2014",
+      "wolfe2006",
+      "wulf2023",
+      "younis2026"
+    ]
+  }
+}

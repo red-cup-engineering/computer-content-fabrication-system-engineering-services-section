@@ -1,0 +1,523 @@
+{
+  "type": "FabricationOrderAdmission",
+  "version": 1,
+  "orderId": "ni:///sha-256;5DnwL3q9e5bnMGXXriXwpsSZjA2GO8vnSVqb4LNhK-M",
+  "artifactId": "research-paper-e0db9341518726ee",
+  "kind": "research-paper",
+  "order": {
+    "type": "FabricationOrder",
+    "version": 1,
+    "kind": "research-paper",
+    "buyer": {
+      "id": "lenticule-science"
+    },
+    "inputs": {
+      "title": "White Repopulation: Reproduction without Preservation",
+      "subtitle": "The future white, captive births, and the transatlantic reproduction of settler rule",
+      "thesis": "Institutions preserved the authority to classify and to appropriate reproduction more reliably than the reproductive opportunities of every person classified white.",
+      "authors": [
+        {
+          "name": "Morgan Sennhauser",
+          "role": "accountable-human-author"
+        }
+      ],
+      "sourceBundle": {
+        "locator": "https://github.com/lenticule-science/white-repopulation/releases/download/v0.2.0/white-repopulation-data.tar.gz",
+        "digest": "sha256:b7f9b3cc515838b779d3da85c9851d4351628e7c02c1210c2d1721cd9a4fbfb7"
+      },
+      "license": "CC-BY-4.0",
+      "language": "en-US",
+      "keywords": [
+        "settler colonialism",
+        "social reproduction",
+        "historical demography"
+      ]
+    },
+    "budget": {
+      "amount": "$100.00"
+    },
+    "placedAt": "2026-10-24T00:00:00Z"
+  },
+  "orderDocument": "{\n  \"budget\": {\n    \"amount\": \"$100.00\"\n  },\n  \"buyer\": {\n    \"id\": \"lenticule-science\"\n  },\n  \"inputs\": {\n    \"authors\": [\n      {\n        \"name\": \"Morgan Sennhauser\",\n        \"role\": \"accountable-human-author\"\n      }\n    ],\n    \"keywords\": [\n      \"settler colonialism\",\n      \"social reproduction\",\n      \"historical demography\"\n    ],\n    \"language\": \"en-US\",\n    \"license\": \"CC-BY-4.0\",\n    \"sourceBundle\": {\n      \"digest\": \"sha256:b7f9b3cc515838b779d3da85c9851d4351628e7c02c1210c2d1721cd9a4fbfb7\",\n      \"locator\": \"https://github.com/lenticule-science/white-repopulation/releases/download/v0.2.0/white-repopulation-data.tar.gz\"\n    },\n    \"subtitle\": \"The future white, captive births, and the transatlantic reproduction of settler rule\",\n    \"thesis\": \"Institutions preserved the authority to classify and to appropriate reproduction more reliably than the reproductive opportunities of every person classified white.\",\n    \"title\": \"White Repopulation: Reproduction without Preservation\"\n  },\n  \"kind\": \"research-paper\",\n  \"placedAt\": \"2026-10-24T00:00:00Z\",\n  \"type\": \"FabricationOrder\",\n  \"version\": 1\n}\n",
+  "quote": {
+    "type": "FabricationQuote",
+    "version": 1,
+    "kind": "research-paper",
+    "price": {
+      "currency": "USD",
+      "amount": "$100.00",
+      "cents": 10000
+    },
+    "turnaround": {
+      "seconds": 259200,
+      "label": "within 72 hours of an activated order"
+    },
+    "deliverables": [
+      {
+        "projection": "pdf",
+        "mediaType": "application/pdf"
+      },
+      {
+        "projection": "html",
+        "mediaType": "text/html"
+      },
+      {
+        "projection": "docx",
+        "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      },
+      {
+        "projection": "jats",
+        "mediaType": "application/jats+xml"
+      },
+      {
+        "projection": "claims",
+        "mediaType": "application/json"
+      },
+      {
+        "projection": "provenance",
+        "mediaType": "application/ld+json"
+      }
+    ],
+    "assays": [
+      "claims-reproduce",
+      "conformance-passes",
+      "render-receipt-closes",
+      "metadata-consistent",
+      "references-resolve"
+    ]
+  },
+  "specification": {
+    "type": "ArtifactFabricationSpecification",
+    "version": 2,
+    "source": {
+      "type": "ArtifactFabricationSource",
+      "version": 1,
+      "identity": {
+        "type": "ArtifactFabricationSourceIdentity",
+        "id": "fabrication-order-e0db9341518726ee"
+      },
+      "provenance": {
+        "type": "ArtifactFabricationSourceProvenance",
+        "locator": "order:lenticule-science/e0db9341518726ee",
+        "digest": "sha256:e0db9341518726ee6b609ed8e3f8352200650b413b5cc45033aff6dbfc8c4430",
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      }
+    },
+    "artifact": {
+      "type": "FabricatedArtifactIdentity",
+      "version": 1,
+      "id": "research-paper-e0db9341518726ee",
+      "kind": "research-paper"
+    },
+    "claims": [
+      {
+        "type": "ArtifactFabricationClaim",
+        "version": 1,
+        "id": "rests-no-unreproducible-claim",
+        "kind": "world",
+        "statement": "The prohibition no-unreproducible-claim follows from the constraints it names.",
+        "status": "derived",
+        "quantity": null,
+        "basis": {
+          "type": "ArtifactFabricationDerivedBasis",
+          "premises": [
+            {
+              "type": "ArtifactFabricationPremise",
+              "kind": "constraint",
+              "ref": "claims-are-reproducible"
+            }
+          ],
+          "derivation": "The prohibition states the negation of what a named constraint permits."
+        },
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        },
+        "groundedOn": []
+      }
+    ],
+    "requirements": [
+      {
+        "type": "ArtifactFabricationRequirement",
+        "version": 2,
+        "id": "documents-delivered",
+        "statement": "Deliver the paper whose title the order states as PDF, HTML, DOCX and JATS from one reproducible render.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationRequirement",
+        "version": 2,
+        "id": "claims-delivered",
+        "statement": "Deliver the claims record reproduced from supplied data in support of the thesis the order states.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationRequirement",
+        "version": 2,
+        "id": "provenance-delivered",
+        "statement": "Deliver a PROV-O provenance record that closes over the render and conformance.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      }
+    ],
+    "prohibitions": [
+      {
+        "type": "ArtifactFabricationProhibition",
+        "version": 2,
+        "id": "no-unreproducible-claim",
+        "statement": "No quantitative claim may appear that the claims record does not reproduce.",
+        "parameters": [],
+        "claimIds": [
+          "rests-no-unreproducible-claim"
+        ],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      }
+    ],
+    "openQuestions": [],
+    "constraints": [
+      {
+        "type": "ArtifactFabricationConstraint",
+        "version": 2,
+        "id": "content-address-identity",
+        "kind": "law",
+        "authority": "IETF RFC 6920",
+        "revision": "2013",
+        "locator": "https://www.rfc-editor.org/rfc/rfc6920",
+        "applicability": "Every delivered byte string.",
+        "statement": "A delivered artifact is named by the sha-256 ni name of its bytes; equal bytes have equal names, so acceptance is evidence about those bytes alone.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationConstraint",
+        "version": 2,
+        "id": "claims-are-reproducible",
+        "kind": "law",
+        "authority": "561 Group research-claim-reproduction-service",
+        "revision": "0.1.0",
+        "locator": "@red-cup-engineering/research-claim-reproduction-service",
+        "applicability": "Every quantitative statement in the paper.",
+        "statement": "A quantitative claim is admitted only as the deterministic result of a stated computation over supplied data.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationConstraint",
+        "version": 2,
+        "id": "prov-o-provenance",
+        "kind": "standard",
+        "authority": "W3C",
+        "revision": "PROV-O Recommendation 2013-04-30",
+        "locator": "https://www.w3.org/TR/prov-o/",
+        "applicability": "The provenance deliverable.",
+        "statement": "Provenance is stated as agents, activities and ni-addressed entities, and every reference closes.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationConstraint",
+        "version": 2,
+        "id": "jats-document-model",
+        "kind": "standard",
+        "authority": "NISO",
+        "revision": "JATS 1.3 (ANSI/NISO Z39.96-2021)",
+        "locator": "https://www.niso.org/publications/z3996-2021-jats",
+        "applicability": "The JATS deliverable.",
+        "statement": "The JATS deliverable is an article in the NISO JATS model.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationConstraint",
+        "version": 2,
+        "id": "signcell-acceptance",
+        "kind": "standard",
+        "authority": "561 Group SignCell",
+        "revision": "0.12",
+        "locator": "@red-cup-engineering/signcell/cell",
+        "applicability": "Acceptance.",
+        "statement": "Acceptance is a SignCell cell per assay: subject the artifact ni, predicate the assay id, witnesses the assay evidence.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      }
+    ],
+    "projections": [
+      {
+        "type": "ArtifactFabricationProjection",
+        "version": 1,
+        "id": "pdf",
+        "target": "paper.pdf",
+        "configuration": {
+          "mediaType": "application/pdf"
+        },
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationProjection",
+        "version": 1,
+        "id": "html",
+        "target": "paper.html",
+        "configuration": {
+          "mediaType": "text/html"
+        },
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationProjection",
+        "version": 1,
+        "id": "docx",
+        "target": "paper.docx",
+        "configuration": {
+          "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationProjection",
+        "version": 1,
+        "id": "jats",
+        "target": "paper.jats.xml",
+        "configuration": {
+          "mediaType": "application/jats+xml"
+        },
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationProjection",
+        "version": 1,
+        "id": "claims",
+        "target": "claims.json",
+        "configuration": {
+          "mediaType": "application/json"
+        },
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationProjection",
+        "version": 1,
+        "id": "provenance",
+        "target": "prov.jsonld",
+        "configuration": {
+          "mediaType": "application/ld+json"
+        },
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      }
+    ],
+    "acceptanceObligations": [
+      {
+        "type": "ArtifactFabricationAcceptanceObligation",
+        "version": 2,
+        "id": "claims-reproduce",
+        "kind": "assay",
+        "statement": "Every stated claim re-derives from the supplied data to the delivered claims record.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationAcceptanceObligation",
+        "version": 2,
+        "id": "conformance-passes",
+        "kind": "assay",
+        "statement": "The ontology and record files conform to their vocabulary: the conformance report is clean.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationAcceptanceObligation",
+        "version": 2,
+        "id": "render-receipt-closes",
+        "kind": "assay",
+        "statement": "The render receipt names every delivered document by its ni name and its PROV fragment closes.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationAcceptanceObligation",
+        "version": 2,
+        "id": "metadata-consistent",
+        "kind": "assay",
+        "statement": "CITATION.cff, .zenodo.json, codemeta.json and the ScholarlyArticle JSON-LD agree with paper.yaml.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      },
+      {
+        "type": "ArtifactFabricationAcceptanceObligation",
+        "version": 2,
+        "id": "references-resolve",
+        "kind": "assay",
+        "statement": "Every citekey the manuscript cites resolves in the delivered references.",
+        "parameters": [],
+        "claimIds": [],
+        "sourceSpan": {
+          "type": "ArtifactFabricationSourceSpan",
+          "startLine": 1,
+          "endLine": 35
+        }
+      }
+    ],
+    "traceability": [
+      {
+        "type": "ArtifactFabricationTrace",
+        "version": 1,
+        "requirementId": "documents-delivered",
+        "constraintIds": [
+          "content-address-identity",
+          "jats-document-model"
+        ],
+        "projectionIds": [
+          "docx",
+          "html",
+          "jats",
+          "pdf"
+        ],
+        "acceptanceObligationIds": [
+          "metadata-consistent",
+          "references-resolve",
+          "render-receipt-closes"
+        ]
+      },
+      {
+        "type": "ArtifactFabricationTrace",
+        "version": 1,
+        "requirementId": "claims-delivered",
+        "constraintIds": [
+          "claims-are-reproducible",
+          "content-address-identity"
+        ],
+        "projectionIds": [
+          "claims"
+        ],
+        "acceptanceObligationIds": [
+          "claims-reproduce"
+        ]
+      },
+      {
+        "type": "ArtifactFabricationTrace",
+        "version": 1,
+        "requirementId": "provenance-delivered",
+        "constraintIds": [
+          "prov-o-provenance",
+          "signcell-acceptance"
+        ],
+        "projectionIds": [
+          "provenance"
+        ],
+        "acceptanceObligationIds": [
+          "conformance-passes",
+          "render-receipt-closes"
+        ]
+      },
+      {
+        "type": "ArtifactFabricationTrace",
+        "version": 1,
+        "requirementId": "no-unreproducible-claim",
+        "constraintIds": [
+          "claims-are-reproducible"
+        ],
+        "projectionIds": [
+          "claims",
+          "pdf"
+        ],
+        "acceptanceObligationIds": [
+          "claims-reproduce"
+        ]
+      }
+    ],
+    "specificationDigest": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w"
+  }
+}

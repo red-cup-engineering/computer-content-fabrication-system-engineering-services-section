@@ -1,0 +1,34 @@
+{
+  "type": "FabricationOrderCandidate",
+  "version": 1,
+  "kind": "research-paper",
+  "buyer": {
+    "id": "lenticule-science"
+  },
+  "inputs": {
+    "title": "White Repopulation: Reproduction without Preservation",
+    "subtitle": "The future white, captive births, and the transatlantic reproduction of settler rule",
+    "thesis": "Institutions preserved the authority to classify and to appropriate reproduction more reliably than the reproductive opportunities of every person classified white.",
+    "authors": [
+      {
+        "name": "Morgan Sennhauser",
+        "role": "accountable-human-author"
+      }
+    ],
+    "sourceBundle": {
+      "locator": "https://github.com/lenticule-science/white-repopulation/releases/download/v0.2.0/white-repopulation-data.tar.gz",
+      "digest": "sha256:b7f9b3cc515838b779d3da85c9851d4351628e7c02c1210c2d1721cd9a4fbfb7"
+    },
+    "license": "CC-BY-4.0",
+    "language": "en-US",
+    "keywords": [
+      "settler colonialism",
+      "social reproduction",
+      "historical demography"
+    ]
+  },
+  "budget": {
+    "amount": "$100.00"
+  },
+  "placedAt": "2026-10-24T00:00:00Z"
+}

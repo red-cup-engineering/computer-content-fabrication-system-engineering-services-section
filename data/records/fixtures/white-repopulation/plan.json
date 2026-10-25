@@ -1,0 +1,323 @@
+{
+  "type": "FabricationPlan",
+  "version": 1,
+  "artifactId": "research-paper-e0db9341518726ee",
+  "kind": "research-paper",
+  "specificationDigest": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+  "realizationPlan": {
+    "type": "ArtifactFabricationRealizationPlan",
+    "version": 1,
+    "artifactId": "research-paper-e0db9341518726ee",
+    "specificationDigest": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+    "projectionIds": [
+      "claims",
+      "docx",
+      "html",
+      "jats",
+      "pdf",
+      "provenance"
+    ],
+    "acceptanceObligationIds": [
+      "claims-reproduce",
+      "conformance-passes",
+      "metadata-consistent",
+      "references-resolve",
+      "render-receipt-closes"
+    ],
+    "traceability": [
+      {
+        "type": "ArtifactFabricationTrace",
+        "version": 1,
+        "requirementId": "documents-delivered",
+        "constraintIds": [
+          "content-address-identity",
+          "jats-document-model"
+        ],
+        "projectionIds": [
+          "docx",
+          "html",
+          "jats",
+          "pdf"
+        ],
+        "acceptanceObligationIds": [
+          "metadata-consistent",
+          "references-resolve",
+          "render-receipt-closes"
+        ]
+      },
+      {
+        "type": "ArtifactFabricationTrace",
+        "version": 1,
+        "requirementId": "claims-delivered",
+        "constraintIds": [
+          "claims-are-reproducible",
+          "content-address-identity"
+        ],
+        "projectionIds": [
+          "claims"
+        ],
+        "acceptanceObligationIds": [
+          "claims-reproduce"
+        ]
+      },
+      {
+        "type": "ArtifactFabricationTrace",
+        "version": 1,
+        "requirementId": "provenance-delivered",
+        "constraintIds": [
+          "prov-o-provenance",
+          "signcell-acceptance"
+        ],
+        "projectionIds": [
+          "provenance"
+        ],
+        "acceptanceObligationIds": [
+          "conformance-passes",
+          "render-receipt-closes"
+        ]
+      },
+      {
+        "type": "ArtifactFabricationTrace",
+        "version": 1,
+        "requirementId": "no-unreproducible-claim",
+        "constraintIds": [
+          "claims-are-reproducible"
+        ],
+        "projectionIds": [
+          "claims",
+          "pdf"
+        ],
+        "acceptanceObligationIds": [
+          "claims-reproduce"
+        ]
+      }
+    ]
+  },
+  "steps": [
+    {
+      "ordinal": 1,
+      "id": "author-manuscript",
+      "producer": {
+        "id": "agent",
+        "package": "@red-cup-engineering/agent-harness-computer-system-engineering-services-section",
+        "operation": "carrier/agency-carrier",
+        "role": "Authors the manuscript, claims specification, figure specifications and references from the order.",
+        "source": "agent-harness"
+      },
+      "summary": "Write manuscript, claims specification, figure specifications and references to the section plan.",
+      "consumes": [
+        "order"
+      ],
+      "produces": [
+        "manuscript",
+        "claims-spec",
+        "figure-specs",
+        "bibliography",
+        "paper-yaml"
+      ],
+      "dependsOn": []
+    },
+    {
+      "ordinal": 2,
+      "id": "reproduce-claims",
+      "producer": {
+        "id": "claims",
+        "package": "@red-cup-engineering/research-claim-reproduction-service",
+        "operation": "reproduce-paper-claims",
+        "role": "Re-derives every stated claim from the supplied data.",
+        "source": "registry"
+      },
+      "summary": "Re-derive every stated claim from the supplied data.",
+      "consumes": [
+        "claims-spec"
+      ],
+      "produces": [
+        "claims"
+      ],
+      "dependsOn": [
+        "author-manuscript"
+      ]
+    },
+    {
+      "ordinal": 3,
+      "id": "render-figures",
+      "producer": {
+        "id": "figures",
+        "package": "@red-cup-engineering/chart-specification-rendering-service",
+        "operation": "render-chart-specifications",
+        "role": "Renders each Vega-Lite figure specification to deterministic SVG.",
+        "source": "registry"
+      },
+      "summary": "Render figure specifications to SVG.",
+      "consumes": [
+        "figure-specs"
+      ],
+      "produces": [
+        "figures"
+      ],
+      "dependsOn": [
+        "author-manuscript"
+      ]
+    },
+    {
+      "ordinal": 4,
+      "id": "resolve-references",
+      "producer": {
+        "id": "references",
+        "package": "@red-cup-engineering/csl-yaml-services-section",
+        "operation": "project-bibliography-records-as-csl-yaml",
+        "role": "Projects bibliography records to CSL YAML for citation resolution.",
+        "source": "registry"
+      },
+      "summary": "Project bibliography records to CSL YAML.",
+      "consumes": [
+        "bibliography"
+      ],
+      "produces": [
+        "csl-references"
+      ],
+      "dependsOn": [
+        "author-manuscript"
+      ]
+    },
+    {
+      "ordinal": 5,
+      "id": "project-metadata",
+      "producer": {
+        "id": "metadata",
+        "package": "@red-cup-engineering/research-release-metadata-service",
+        "operation": "project-citation-cff",
+        "role": "Projects paper.yaml to CITATION.cff, .zenodo.json, codemeta and ScholarlyArticle JSON-LD.",
+        "source": "registry"
+      },
+      "summary": "Project release metadata from paper.yaml.",
+      "consumes": [
+        "paper-yaml"
+      ],
+      "produces": [
+        "release-metadata"
+      ],
+      "dependsOn": [
+        "author-manuscript"
+      ]
+    },
+    {
+      "ordinal": 6,
+      "id": "check-ontology",
+      "producer": {
+        "id": "conformance",
+        "package": "rdf-vocabulary-conformance-service",
+        "operation": "check-vocabulary-conformance",
+        "role": "Checks ontology and record files against their vocabulary.",
+        "source": "python"
+      },
+      "summary": "Check ontology and record files for vocabulary conformance.",
+      "consumes": [
+        "manuscript"
+      ],
+      "produces": [
+        "conformance-report"
+      ],
+      "dependsOn": [
+        "author-manuscript"
+      ]
+    },
+    {
+      "ordinal": 7,
+      "id": "render-manuscript",
+      "producer": {
+        "id": "render",
+        "package": "@red-cup-engineering/project-document-through-pandoc-service",
+        "operation": "render-manuscript",
+        "role": "Renders the manuscript to PDF, HTML, DOCX and JATS with a reproducible build receipt.",
+        "source": "registry"
+      },
+      "summary": "Render the manuscript to every document medium with its build receipt.",
+      "consumes": [
+        "manuscript",
+        "claims",
+        "figures",
+        "csl-references",
+        "release-metadata"
+      ],
+      "produces": [
+        "pdf",
+        "html",
+        "docx",
+        "jats",
+        "render-receipt"
+      ],
+      "dependsOn": [
+        "reproduce-claims",
+        "render-figures",
+        "resolve-references",
+        "project-metadata"
+      ]
+    },
+    {
+      "ordinal": 8,
+      "id": "compose-provenance",
+      "producer": {
+        "id": "provenance",
+        "package": "@red-cup-engineering/prov-o-provenance-service",
+        "operation": "compose-provenance-manifest",
+        "role": "Composes the render receipt with the declared people and projects PROV-O.",
+        "source": "registry"
+      },
+      "summary": "Compose the render receipt with the declared people as PROV-O.",
+      "consumes": [
+        "render-receipt"
+      ],
+      "produces": [
+        "provenance"
+      ],
+      "dependsOn": [
+        "render-manuscript",
+        "check-ontology"
+      ]
+    }
+  ],
+  "agentSteps": [
+    "author-manuscript"
+  ],
+  "deliverables": [
+    {
+      "projection": "pdf",
+      "mediaType": "application/pdf",
+      "target": "paper.pdf"
+    },
+    {
+      "projection": "html",
+      "mediaType": "text/html",
+      "target": "paper.html"
+    },
+    {
+      "projection": "docx",
+      "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "target": "paper.docx"
+    },
+    {
+      "projection": "jats",
+      "mediaType": "application/jats+xml",
+      "target": "paper.jats.xml"
+    },
+    {
+      "projection": "claims",
+      "mediaType": "application/json",
+      "target": "claims.json"
+    },
+    {
+      "projection": "provenance",
+      "mediaType": "application/ld+json",
+      "target": "prov.jsonld"
+    }
+  ],
+  "assays": [
+    "claims-reproduce",
+    "conformance-passes",
+    "render-receipt-closes",
+    "metadata-consistent",
+    "references-resolve"
+  ],
+  "planDigest": "ni:///sha-256;wv53pKnxAc8qqLc_ERXqAZ_ourskDL_Qd4VKpX3VukQ"
+}

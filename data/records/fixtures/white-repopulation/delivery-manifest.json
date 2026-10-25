@@ -1,0 +1,62 @@
+{
+  "type": "FabricationDeliveryManifest",
+  "version": 1,
+  "artifactId": "research-paper-e0db9341518726ee",
+  "specificationDigest": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+  "producer": {
+    "id": "lenticule-science-release-v0.2.0",
+    "revision": "white-repopulation@v0.2.0",
+    "kind": "organization"
+  },
+  "release": "https://github.com/lenticule-science/white-repopulation/releases/tag/v0.2.0",
+  "outputs": [
+    {
+      "projection": "pdf",
+      "mediaType": "application/pdf",
+      "locator": "https://github.com/lenticule-science/white-repopulation/releases/download/v0.2.0/white-repopulation.pdf",
+      "sha256": "3383dbc3d8d3d721a4396ce2748da725859281ddc92a8eaa81ee65e1e6382f93",
+      "ni": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+      "size": 275770
+    },
+    {
+      "projection": "html",
+      "mediaType": "text/html",
+      "locator": "https://github.com/lenticule-science/white-repopulation/releases/download/v0.2.0/white-repopulation.html",
+      "sha256": "e7d156ff78f002d6344b176d16a8a4ef8e168d4a68f2995cecc758043df3b36b",
+      "ni": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+      "size": 223930
+    },
+    {
+      "projection": "docx",
+      "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "locator": "https://github.com/lenticule-science/white-repopulation/releases/download/v0.2.0/white-repopulation.docx",
+      "sha256": "9683fe34e5968bfd2c239855fa656a8cd41553c46846febcc77d74c1cddcd3a2",
+      "ni": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+      "size": 122031
+    },
+    {
+      "projection": "jats",
+      "mediaType": "application/jats+xml",
+      "locator": "https://github.com/lenticule-science/white-repopulation/releases/download/v0.2.0/white-repopulation.jats.xml",
+      "sha256": "01db37ec62bdaf2dc55efefb683b30b8db0f0a60925b38a678e5f056b9800394",
+      "ni": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+      "size": 207328
+    },
+    {
+      "projection": "provenance",
+      "mediaType": "application/ld+json",
+      "locator": "https://github.com/lenticule-science/white-repopulation/releases/download/v0.2.0/prov.jsonld",
+      "sha256": "143426652a1fdd6e8ef0795992c9d42927a539b4628b948810a818cbdbc1be68",
+      "ni": "ni:///sha-256;FDQmZSof3W6O8HlZksnUKSelObRii5SIEKgYy9vBvmg",
+      "size": 27252
+    },
+    {
+      "projection": "claims",
+      "mediaType": "application/json",
+      "locator": "https://github.com/lenticule-science/white-repopulation/releases/download/v0.2.0/white-repopulation-data.tar.gz#data/derived/claims.json",
+      "sha256": "2ab8ff128de0ff898cb8740014a7519f24f0fa087e86b8670deb96a15f879caf",
+      "ni": "ni:///sha-256;Krj_Eo3g_4mMuHQAFKdRnyTw-gh-hrhnDeuWoV-HnK8",
+      "size": 5488
+    }
+  ]
+}

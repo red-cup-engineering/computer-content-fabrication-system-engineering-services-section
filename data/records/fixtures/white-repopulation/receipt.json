@@ -1,0 +1,698 @@
+{
+  "type": "FabricationDeliveryReceipt",
+  "version": 1,
+  "artifactId": "research-paper-e0db9341518726ee",
+  "kind": "research-paper",
+  "orderId": "ni:///sha-256;5DnwL3q9e5bnMGXXriXwpsSZjA2GO8vnSVqb4LNhK-M",
+  "specificationDigest": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+  "receipt": {
+    "type": "ArtifactFabricationRealizationReceipt",
+    "version": 1,
+    "artifactId": "research-paper-e0db9341518726ee",
+    "specificationDigest": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+    "realizations": [
+      {
+        "type": "ArtifactFabricationRealizationEvidence",
+        "version": 1,
+        "projectionId": "claims",
+        "evidence": {
+          "type": "ArtifactFabricationEvidence",
+          "locator": "claims.json",
+          "digest": "ni:///sha-256;Krj_Eo3g_4mMuHQAFKdRnyTw-gh-hrhnDeuWoV-HnK8"
+        }
+      },
+      {
+        "type": "ArtifactFabricationRealizationEvidence",
+        "version": 1,
+        "projectionId": "docx",
+        "evidence": {
+          "type": "ArtifactFabricationEvidence",
+          "locator": "paper.docx",
+          "digest": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I"
+        }
+      },
+      {
+        "type": "ArtifactFabricationRealizationEvidence",
+        "version": 1,
+        "projectionId": "html",
+        "evidence": {
+          "type": "ArtifactFabricationEvidence",
+          "locator": "paper.html",
+          "digest": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s"
+        }
+      },
+      {
+        "type": "ArtifactFabricationRealizationEvidence",
+        "version": 1,
+        "projectionId": "jats",
+        "evidence": {
+          "type": "ArtifactFabricationEvidence",
+          "locator": "paper.jats.xml",
+          "digest": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q"
+        }
+      },
+      {
+        "type": "ArtifactFabricationRealizationEvidence",
+        "version": 1,
+        "projectionId": "pdf",
+        "evidence": {
+          "type": "ArtifactFabricationEvidence",
+          "locator": "paper.pdf",
+          "digest": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M"
+        }
+      },
+      {
+        "type": "ArtifactFabricationRealizationEvidence",
+        "version": 1,
+        "projectionId": "provenance",
+        "evidence": {
+          "type": "ArtifactFabricationEvidence",
+          "locator": "prov.jsonld",
+          "digest": "ni:///sha-256;FDQmZSof3W6O8HlZksnUKSelObRii5SIEKgYy9vBvmg"
+        }
+      }
+    ],
+    "acceptances": [
+      {
+        "type": "ArtifactFabricationRealizationEvidence",
+        "version": 1,
+        "acceptanceObligationId": "claims-reproduce",
+        "evidence": {
+          "type": "ArtifactFabricationEvidence",
+          "locator": "signcell:claims-reproduce",
+          "digest": "ni:///sha-256;TQzjt1sSfR6U5gDfVYBVdR6bZvhDTC0KCx1DuoYg4Ss"
+        }
+      },
+      {
+        "type": "ArtifactFabricationRealizationEvidence",
+        "version": 1,
+        "acceptanceObligationId": "conformance-passes",
+        "evidence": {
+          "type": "ArtifactFabricationEvidence",
+          "locator": "signcell:conformance-passes",
+          "digest": "ni:///sha-256;uBfgKZ57k0UJaDI0hJM8u-mMjomRGcGIKsEzhuJ3wQU"
+        }
+      },
+      {
+        "type": "ArtifactFabricationRealizationEvidence",
+        "version": 1,
+        "acceptanceObligationId": "metadata-consistent",
+        "evidence": {
+          "type": "ArtifactFabricationEvidence",
+          "locator": "signcell:metadata-consistent",
+          "digest": "ni:///sha-256;t-ZvLSYhqOHskHBeUN-wn71aMfTPYFnCVqlh31OAJsI"
+        }
+      },
+      {
+        "type": "ArtifactFabricationRealizationEvidence",
+        "version": 1,
+        "acceptanceObligationId": "references-resolve",
+        "evidence": {
+          "type": "ArtifactFabricationEvidence",
+          "locator": "signcell:references-resolve",
+          "digest": "ni:///sha-256;3mzbBiaRv8n2l3fLtUHM979RPvdTSqXOEagvgQSmU90"
+        }
+      },
+      {
+        "type": "ArtifactFabricationRealizationEvidence",
+        "version": 1,
+        "acceptanceObligationId": "render-receipt-closes",
+        "evidence": {
+          "type": "ArtifactFabricationEvidence",
+          "locator": "signcell:render-receipt-closes",
+          "digest": "ni:///sha-256;BuGautBUg3BhO-glVes6i6xFQZ3EeMVpwDSa36EMJsQ"
+        }
+      }
+    ],
+    "traceability": [
+      {
+        "type": "ArtifactFabricationTrace",
+        "version": 1,
+        "requirementId": "documents-delivered",
+        "constraintIds": [
+          "content-address-identity",
+          "jats-document-model"
+        ],
+        "projectionIds": [
+          "docx",
+          "html",
+          "jats",
+          "pdf"
+        ],
+        "acceptanceObligationIds": [
+          "metadata-consistent",
+          "references-resolve",
+          "render-receipt-closes"
+        ]
+      },
+      {
+        "type": "ArtifactFabricationTrace",
+        "version": 1,
+        "requirementId": "claims-delivered",
+        "constraintIds": [
+          "claims-are-reproducible",
+          "content-address-identity"
+        ],
+        "projectionIds": [
+          "claims"
+        ],
+        "acceptanceObligationIds": [
+          "claims-reproduce"
+        ]
+      },
+      {
+        "type": "ArtifactFabricationTrace",
+        "version": 1,
+        "requirementId": "provenance-delivered",
+        "constraintIds": [
+          "prov-o-provenance",
+          "signcell-acceptance"
+        ],
+        "projectionIds": [
+          "provenance"
+        ],
+        "acceptanceObligationIds": [
+          "conformance-passes",
+          "render-receipt-closes"
+        ]
+      },
+      {
+        "type": "ArtifactFabricationTrace",
+        "version": 1,
+        "requirementId": "no-unreproducible-claim",
+        "constraintIds": [
+          "claims-are-reproducible"
+        ],
+        "projectionIds": [
+          "claims",
+          "pdf"
+        ],
+        "acceptanceObligationIds": [
+          "claims-reproduce"
+        ]
+      }
+    ]
+  },
+  "receiptDigest": "ni:///sha-256;fXbZFI7ZyqpAcgpkzRoUvswr1NTcOoXuUS61EhpMd5Y",
+  "outputs": [
+    {
+      "projection": "claims",
+      "mediaType": "application/json",
+      "ni": "ni:///sha-256;Krj_Eo3g_4mMuHQAFKdRnyTw-gh-hrhnDeuWoV-HnK8",
+      "size": 5488
+    },
+    {
+      "projection": "docx",
+      "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "ni": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+      "size": 122031
+    },
+    {
+      "projection": "html",
+      "mediaType": "text/html",
+      "ni": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+      "size": 223930
+    },
+    {
+      "projection": "jats",
+      "mediaType": "application/jats+xml",
+      "ni": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+      "size": 207328
+    },
+    {
+      "projection": "pdf",
+      "mediaType": "application/pdf",
+      "ni": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+      "size": 275770
+    },
+    {
+      "projection": "provenance",
+      "mediaType": "application/ld+json",
+      "ni": "ni:///sha-256;FDQmZSof3W6O8HlZksnUKSelObRii5SIEKgYy9vBvmg",
+      "size": 27252
+    }
+  ],
+  "cells": [
+    {
+      "subject": "ni:///sha-256;Krj_Eo3g_4mMuHQAFKdRnyTw-gh-hrhnDeuWoV-HnK8",
+      "predicate": "claims-reproduce",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "claims-reproduce",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "total": 26,
+            "agreed": 26
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+      "predicate": "claims-reproduce",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "claims-reproduce",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "total": 26,
+            "agreed": 26
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;FDQmZSof3W6O8HlZksnUKSelObRii5SIEKgYy9vBvmg",
+      "predicate": "conformance-passes",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "conformance-passes",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "findings": 0
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+      "predicate": "render-receipt-closes",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "render-receipt-closes",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "documents": [
+              "pdf",
+              "html",
+              "docx",
+              "jats"
+            ],
+            "provenanceCanonicalNi": "ni:///sha-256;X4AJi292uZ2GS_att53mi53mUbqL-4gdiOOwByWxGuM",
+            "tripleCount": 281
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+      "predicate": "render-receipt-closes",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "render-receipt-closes",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "documents": [
+              "pdf",
+              "html",
+              "docx",
+              "jats"
+            ],
+            "provenanceCanonicalNi": "ni:///sha-256;X4AJi292uZ2GS_att53mi53mUbqL-4gdiOOwByWxGuM",
+            "tripleCount": 281
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+      "predicate": "render-receipt-closes",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "render-receipt-closes",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "documents": [
+              "pdf",
+              "html",
+              "docx",
+              "jats"
+            ],
+            "provenanceCanonicalNi": "ni:///sha-256;X4AJi292uZ2GS_att53mi53mUbqL-4gdiOOwByWxGuM",
+            "tripleCount": 281
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+      "predicate": "render-receipt-closes",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "render-receipt-closes",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "documents": [
+              "pdf",
+              "html",
+              "docx",
+              "jats"
+            ],
+            "provenanceCanonicalNi": "ni:///sha-256;X4AJi292uZ2GS_att53mi53mUbqL-4gdiOOwByWxGuM",
+            "tripleCount": 281
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;FDQmZSof3W6O8HlZksnUKSelObRii5SIEKgYy9vBvmg",
+      "predicate": "render-receipt-closes",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "render-receipt-closes",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "documents": [
+              "pdf",
+              "html",
+              "docx",
+              "jats"
+            ],
+            "provenanceCanonicalNi": "ni:///sha-256;X4AJi292uZ2GS_att53mi53mUbqL-4gdiOOwByWxGuM",
+            "tripleCount": 281
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+      "predicate": "metadata-consistent",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "metadata-consistent",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "files": [
+              ".zenodo.json",
+              "CITATION.cff",
+              "codemeta.json",
+              "scholarly-article.jsonld"
+            ]
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+      "predicate": "metadata-consistent",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "metadata-consistent",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "files": [
+              ".zenodo.json",
+              "CITATION.cff",
+              "codemeta.json",
+              "scholarly-article.jsonld"
+            ]
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+      "predicate": "metadata-consistent",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "metadata-consistent",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "files": [
+              ".zenodo.json",
+              "CITATION.cff",
+              "codemeta.json",
+              "scholarly-article.jsonld"
+            ]
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+      "predicate": "metadata-consistent",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "metadata-consistent",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "files": [
+              ".zenodo.json",
+              "CITATION.cff",
+              "codemeta.json",
+              "scholarly-article.jsonld"
+            ]
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+      "predicate": "references-resolve",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "references-resolve",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "cited": 58
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+      "predicate": "references-resolve",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "references-resolve",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "cited": 58
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+      "predicate": "references-resolve",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "references-resolve",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "cited": 58
+          }
+        }
+      ],
+      "against": []
+    },
+    {
+      "subject": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+      "predicate": "references-resolve",
+      "object": "ni:///sha-256;8F578IOAE40ShQlpNQ9lIwLpn453v9JYJbT0IYxbT0w",
+      "for": [
+        {
+          "assay": "references-resolve",
+          "ok": true,
+          "reasons": [],
+          "facts": {
+            "cited": 58
+          }
+        }
+      ],
+      "against": []
+    }
+  ],
+  "assayDigest": "ni:///sha-256;vtZFs1EoOMd758LlYYcGbZdl9g8dUsceaDDgrBiVohI",
+  "provenance": {
+    "manifest": {
+      "baseIri": "https://561.group/fabrication/research-paper-e0db9341518726ee/",
+      "agents": [
+        {
+          "id": "agent/lenticule-science",
+          "name": "lenticule-science",
+          "kind": "person"
+        },
+        {
+          "id": "agent/lenticule-science-release-v0.2.0",
+          "name": "lenticule-science-release-v0.2.0 white-repopulation@v0.2.0",
+          "kind": "organization",
+          "actedOnBehalfOf": "agent/lenticule-science"
+        }
+      ],
+      "activities": [
+        {
+          "id": "fabricate-research-paper-e0db9341518726ee",
+          "label": "Fabricate research-paper",
+          "startedAt": "2026-10-24T23:40:34.019Z",
+          "endedAt": "2026-10-24T23:41:05.246Z",
+          "used": [
+            "order.json"
+          ],
+          "generated": [
+            "paper.pdf",
+            "paper.html",
+            "paper.docx",
+            "paper.jats.xml",
+            "prov.jsonld",
+            "claims.json"
+          ],
+          "wasAssociatedWith": [
+            {
+              "agent": "agent/lenticule-science-release-v0.2.0",
+              "role": "fabricator"
+            }
+          ]
+        }
+      ],
+      "entities": [
+        {
+          "id": "claims.json",
+          "path": "claims.json",
+          "ni": "ni:///sha-256;Krj_Eo3g_4mMuHQAFKdRnyTw-gh-hrhnDeuWoV-HnK8",
+          "bytes": 5488,
+          "mediaType": "application/json",
+          "wasDerivedFrom": [
+            "order.json"
+          ],
+          "wasAttributedTo": [
+            "agent/lenticule-science-release-v0.2.0"
+          ]
+        },
+        {
+          "id": "order.json",
+          "path": "order.json",
+          "ni": "ni:///sha-256;4NuTQVGHJu5rYJ7Y4_g1IgBlC0E7XMRQM6_22_yMRDA",
+          "bytes": 1117,
+          "mediaType": "application/json",
+          "wasDerivedFrom": [],
+          "wasAttributedTo": [
+            "agent/lenticule-science"
+          ]
+        },
+        {
+          "id": "paper.docx",
+          "path": "paper.docx",
+          "ni": "ni:///sha-256;loP-NOWWi_0sI5hV-mVqjNQVU8RoRv68x310wc3c06I",
+          "bytes": 122031,
+          "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "wasDerivedFrom": [
+            "order.json"
+          ],
+          "wasAttributedTo": [
+            "agent/lenticule-science-release-v0.2.0"
+          ]
+        },
+        {
+          "id": "paper.html",
+          "path": "paper.html",
+          "ni": "ni:///sha-256;59FW_3jwAtY0SxdtFqik744WjUpo8plc7MdYBD3zs2s",
+          "bytes": 223930,
+          "mediaType": "text/html",
+          "wasDerivedFrom": [
+            "order.json"
+          ],
+          "wasAttributedTo": [
+            "agent/lenticule-science-release-v0.2.0"
+          ]
+        },
+        {
+          "id": "paper.jats.xml",
+          "path": "paper.jats.xml",
+          "ni": "ni:///sha-256;Ads37GK9ry3FXv77aDswuNsPCmCSWzimeOXwVrmAA5Q",
+          "bytes": 207328,
+          "mediaType": "application/jats+xml",
+          "wasDerivedFrom": [
+            "order.json"
+          ],
+          "wasAttributedTo": [
+            "agent/lenticule-science-release-v0.2.0"
+          ]
+        },
+        {
+          "id": "paper.pdf",
+          "path": "paper.pdf",
+          "ni": "ni:///sha-256;M4Pbw9jT1yGkOWzidI2nJYWSgd3JKo6qge5l4eY4L5M",
+          "bytes": 275770,
+          "mediaType": "application/pdf",
+          "wasDerivedFrom": [
+            "order.json"
+          ],
+          "wasAttributedTo": [
+            "agent/lenticule-science-release-v0.2.0"
+          ]
+        },
+        {
+          "id": "prov.jsonld",
+          "path": "prov.jsonld",
+          "ni": "ni:///sha-256;FDQmZSof3W6O8HlZksnUKSelObRii5SIEKgYy9vBvmg",
+          "bytes": 27252,
+          "mediaType": "application/ld+json",
+          "wasDerivedFrom": [
+            "order.json"
+          ],
+          "wasAttributedTo": [
+            "agent/lenticule-science-release-v0.2.0"
+          ]
+        }
+      ]
+    },
+    "canonicalNi": "ni:///sha-256;QB1gv0kLCs3cNmBH26JWIQHZZ91TPd8r6TFzk1Yy9Kg",
+    "tripleCount": 70,
+    "closed": true
+  },
+  "marketOutcome": {
+    "type": "FabricationMarketOutcome",
+    "version": 1,
+    "lot": "urn:work-lot:fabrication:research-paper-e0db9341518726ee",
+    "provider": "lenticule-science-release-v0.2.0",
+    "taskClass": "fabrication.research-paper",
+    "outcome": "accepted",
+    "receipt": "ni:///sha-256;fXbZFI7ZyqpAcgpkzRoUvswr1NTcOoXuUS61EhpMd5Y",
+    "evidence": "assay ni:///sha-256;vtZFs1EoOMd758LlYYcGbZdl9g8dUsceaDDgrBiVohI"
+  }
+}
