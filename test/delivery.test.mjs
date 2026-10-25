@@ -46,6 +46,16 @@ test("a delivery with a failed assay is refused, naming each failure", async () 
   assert.deepEqual(refused.detail.failures.map(({ assay: id }) => id), ["svg-byte-deterministic"]);
 });
 
+test("an opposed witness cannot turn a Craft-issued positive assay into an accepted delivery", async () => {
+  const { admission, delivery, assay } = await chart();
+  const conflicted = { ...assay, cells: assay.cells.map((item) => item.predicate === "svg-safe"
+    ? { ...item, against: [{ assay: "svg-safe", ok: false, reasons: ["independent opposition"], facts: {} }] }
+    : item) };
+  const received = await receiveFabricationDelivery({ admission, delivery, assay: conflicted, receivedAt: RECEIVED });
+  assert.equal(received.type, "FabricationDeliveryRefusal");
+  assert.equal(received.code, "INVALID_ASSAY", "the independent receiver still checks evidence rather than trusting the producer's positive verdict");
+});
+
 test("an assay of other bytes, another artifact, or with cells that do not show its verdict is refused", async () => {
   const { admission, delivery, assay } = await chart();
   const { delivery: other } = await chart(true);

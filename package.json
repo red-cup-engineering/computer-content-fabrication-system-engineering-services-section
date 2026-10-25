@@ -1,6 +1,6 @@
 {
   "name": "@red-cup-engineering/computer-content-fabrication-system-engineering-services-section",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "type": "module",
   "license": "MIT",
@@ -89,7 +89,8 @@
     "@red-cup-engineering/prov-o-provenance-service": "0.2.0",
     "@red-cup-engineering/research-claim-reproduction-service": "0.1.0",
     "@red-cup-engineering/research-release-metadata-service": "0.1.0",
-    "@red-cup-engineering/signcell": "0.12.3"
+    "@red-cup-engineering/signcell": "0.12.3",
+    "@red-cup-engineering/signcraft": "0.6.0"
   },
   "peerDependencies": {
     "@red-cup-engineering/ebook-engineering-services-section": "0.3.4",

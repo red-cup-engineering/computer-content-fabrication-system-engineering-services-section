@@ -2,7 +2,7 @@
 
 The commerce-and-acceptance layer of on-demand content: a buyer activates a need, the section admits the order, quotes it, plans its fabrication from upstream house services, assays what an executor delivers, and receives it only if every assay held. It produces nothing itself. Production is the agent-harness carrier's; the pieces of a paper, a chart or a proof are the upstream producer services'. What this section owns is the order, the plan, the acceptance and the record.
 
-It sits in Red Cup Engineering's computer systems section, downstream of SignCell: every delivered artifact is named by its RFC 6920 `ni` name (`addressContent` for bytes, `semanticId` for JSON), and every acceptance result is a SignCell cell whose subject is that name.
+Its assay computation sits downstream of SignCraft: each explicitly sided witness is settled and read through SignCraft's existing membrane and settlement APIs. Every delivered artifact is named by its RFC 6920 `ni` name (`addressContent` for bytes, `semanticId` for JSON), and every assay result remains a SignCell cell whose subject is that name. Each traced projection retains its own cell occurrence and address order even when projections share the same artifact bytes. Delivery receiving independently admits and checks those cells through its existing SignCell dependency before accepting a delivery.
 
 ## Kinds
 

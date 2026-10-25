@@ -11,7 +11,8 @@
  * so the cell's value is its presence: a passed assay reads held (told true), a failed one denied (told false).
  * An assay that fails is a verdict, not a refusal; a malformed delivery is a refusal.
  */
-import { address, cell, truthReading } from "@red-cup-engineering/signcell/cell";
+import { tellingOf } from "@red-cup-engineering/signcraft/membrane";
+import { cones, documentOfSettlement, settleCells } from "@red-cup-engineering/signcraft/settle";
 import { semanticId } from "@red-cup-engineering/computer-content-address-engineering-services-section/semiotic-content-address";
 import { projectionsOfAssay, readAdmission } from "./admission.mjs";
 import { admitOutput } from "./address.mjs";
@@ -21,6 +22,16 @@ import { deepFreeze, refuse, refusingAsync } from "./refusal.mjs";
 
 const isRecord = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const plain = (value) => JSON.parse(JSON.stringify(value));
+
+/** Let SignCraft settle and read one explicitly sided, witnessed assay proposition.
+ * Each traced projection is read separately: equal artifact addresses do not
+ * erase the projection multiplicity or order required by delivery receiving. */
+function assayCell(subject, predicate, object, witness, ok) {
+  const telling = tellingOf({ utterance: [{ subject, object }, predicate], side: ok ? "for" : "against" }, witness);
+  const settlement = settleCells([telling]);
+  const { spine } = documentOfSettlement(settlement);
+  return { cell: spine.cells[0], address: spine.addresses[0].key, reading: cones(settlement)[0].adjudicate };
+}
 
 /** Check a delivery candidate's frame against the admission and admit every output. */
 export function admitDelivery(delivery, specification, profile) {
@@ -67,9 +78,9 @@ export async function assayFabricatedArtifact(request, { profiles = kindProfiles
       catch (error) { result = { ok: false, reasons: [`the assay raised ${error?.name ?? "Error"}: ${String(error?.message ?? error).slice(0, 300)}`], facts: {} }; }
       const witness = plain({ assay: id, ok: result.ok, reasons: result.reasons, facts: result.facts });
       const projections = projectionsOfAssay(specification, id);
-      const issued = projections.map((projection) => cell(outputs.get(projection).ni, id, specification.specificationDigest, result.ok ? { for: [witness] } : { against: [witness] }));
-      cells.push(...issued);
-      verdicts.push({ assay: id, ok: result.ok, reasons: result.reasons, projections, cells: issued.map((item) => address(item)), reading: issued.length === 0 ? null : truthReading(issued[0]) });
+      const issued = projections.map((projection) => assayCell(outputs.get(projection).ni, id, specification.specificationDigest, witness, result.ok));
+      cells.push(...issued.map((item) => item.cell));
+      verdicts.push({ assay: id, ok: result.ok, reasons: result.reasons, projections, cells: issued.map((item) => item.address), reading: issued.length === 0 ? null : issued[0].reading });
     }
     const summary = [...outputs.values()].map(({ projection, mediaType, ni, size }) => ({ projection, mediaType, ni, size })).sort((a, b) => a.projection.localeCompare(b.projection));
     const body = {
