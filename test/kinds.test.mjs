@@ -11,9 +11,9 @@ const KINDS = ["corpus-research-paper", "ebook", "fiction-serial", "lean-proof",
 
 test("the section ships exactly its nine kind profiles, each valid against the profile schema", () => {
   assert.deepEqual(kindIds().sort(), KINDS);
-  const schema = JSON.parse(readFileSync(new URL("../data/records/schema/kind-profile.schema.json", import.meta.url), "utf8"));
-  for (const name of readdirSync(new URL("../data/records/kinds/", import.meta.url))) {
-    const profile = JSON.parse(readFileSync(new URL(`../data/records/kinds/${name}`, import.meta.url), "utf8"));
+  const schema = JSON.parse(readFileSync(new URL("../content/schema/kind-profile.schema.json", import.meta.url), "utf8"));
+  for (const name of readdirSync(new URL("../content/kinds/", import.meta.url))) {
+    const profile = JSON.parse(readFileSync(new URL(`../content/kinds/${name}`, import.meta.url), "utf8"));
     assert.equal(validateJsonSchema(profile, schema).valid, true, name);
     assert.deepEqual(profileProblems(profile), [], name);
   }

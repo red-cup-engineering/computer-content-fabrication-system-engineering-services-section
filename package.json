@@ -43,8 +43,8 @@
     "./metroplat-operations": "./src/metroplat-operations.mjs",
     "./executor": "./src/executor.mjs",
     "./kinds": "./src/kinds.mjs",
-    "./kind-profile.schema.json": "./data/records/schema/kind-profile.schema.json",
-    "./kinds/*.json": "./data/records/kinds/*.json"
+    "./kind-profile.schema.json": "./content/schema/kind-profile.schema.json",
+    "./kinds/*.json": "./content/kinds/*.json"
   },
   "bin": {
     "admit-fabrication-order": "scripts/admit-fabrication-order.mjs",
@@ -68,9 +68,8 @@
     "index.mjs",
     "src",
     "scripts",
-    "data/records/kinds",
-    "data/records/schema",
-    "data/records/fixtures",
+    "content/kinds",
+    "content/schema",
     "docs",
     "LICENSE",
     "README.md"
