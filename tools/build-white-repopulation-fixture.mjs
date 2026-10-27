@@ -4,7 +4,7 @@
 //
 //   node tools/build-white-repopulation-fixture.mjs --release <dir of the v0.2.0 release assets>
 //        --tree <the v0.2.0 source tree (git archive v0.2.0)> --conformance <check-vocabulary-conformance report json>
-//        [--out data/records/fixtures/white-repopulation]
+//        --out <dir, e.g. test/fixtures/white-repopulation>
 //
 // The release assets are https://github.com/lenticule-science/white-repopulation/releases/download/v0.2.0/<asset>.
 // The delivery is the real bytes; every assay runs on them, with the evidence the paper's own build
@@ -21,8 +21,8 @@ import { planFabrication } from "../src/plan.mjs";
 import { assayFabricatedArtifact } from "../src/assay.mjs";
 import { receiveFabricationDelivery } from "../src/delivery.mjs";
 
-const { values } = parseArgs({ options: { release: { type: "string" }, tree: { type: "string" }, conformance: { type: "string" }, out: { type: "string", default: new URL("../data/records/fixtures/white-repopulation", import.meta.url).pathname } } });
-for (const key of ["release", "tree", "conformance"]) if (values[key] === undefined) { process.stderr.write("usage: build-white-repopulation-fixture --release <dir> --tree <dir> --conformance <report.json> [--out <dir>]\n"); process.exit(2); }
+const { values } = parseArgs({ options: { release: { type: "string" }, tree: { type: "string" }, conformance: { type: "string" }, out: { type: "string" } } });
+for (const key of ["release", "tree", "conformance", "out"]) if (values[key] === undefined) { process.stderr.write("usage: build-white-repopulation-fixture --release <dir> --tree <dir> --conformance <report.json> --out <dir>\n"); process.exit(2); }
 
 const RELEASE_URL = "https://github.com/lenticule-science/white-repopulation/releases/download/v0.2.0";
 const asset = (name) => readFileSync(join(values.release, name));

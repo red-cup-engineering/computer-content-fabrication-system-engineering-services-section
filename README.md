@@ -6,7 +6,7 @@ Its assay computation sits downstream of SignCraft: each explicitly sided witnes
 
 ## Kinds
 
-A kind is data: `data/records/kinds/<kind>.json`, validated against `data/records/schema/kind-profile.schema.json`. A profile names the input schema, the upstream producer services the kind composes, the plan steps that order them, the deliverables (media types), the acceptance assays, the price and the turnaround. The operations read profiles; no operation names a kind except to bind its assays.
+A kind is data: `content/kinds/<kind>.json`, validated against `content/schema/kind-profile.schema.json`. A profile names the input schema, the upstream producer services the kind composes, the plan steps that order them, the deliverables (media types), the acceptance assays, the price and the turnaround. The operations read profiles; no operation names a kind except to bind its assays.
 
 | Kind | Price | Turnaround | Deliverables | Composes |
 | --- | --- | --- | --- | --- |
@@ -64,7 +64,7 @@ None is built here. `dispatchFabricationWork` is a port, `carrierExecutor` adapt
 
 ## Reference fixture
 
-`data/records/fixtures/white-repopulation/` is the White Repopulation v0.2.0 paper ([lenticule-science/white-repopulation](https://github.com/lenticule-science/white-repopulation)) as a worked `research-paper` order: `order.json`, `admission.json` (the specification), `plan.json`, `delivery-manifest.json` (the six outputs by `ni`), `evidence.json`, `assay.json` (sixteen SignCell cells), `receipt.json`. The outputs are the release assets, downloaded from `releases/download/v0.2.0/<asset>`, checked against the release's `SHA256SUMS` and addressed by `ni`. All five assays held on them: the 26 stated claims reproduce, the vocabulary conformance report is clean (22 checks), the render receipt names the delivered PDF, HTML, DOCX and JATS and its provenance closes and equals the delivered `prov.jsonld`, the four release metadata files agree with `paper.yaml`, and every citation resolves. `tools/build-white-repopulation-fixture.mjs` rebuilds it; `WR_RELEASE_DIR=<dir> npm test` replays the assay on the downloaded bytes.
+`test/fixtures/white-repopulation/` is the White Repopulation v0.2.0 paper ([lenticule-science/white-repopulation](https://github.com/lenticule-science/white-repopulation)) as a worked `research-paper` order: `order.json`, `admission.json` (the specification), `plan.json`, `delivery-manifest.json` (the six outputs by `ni`), `evidence.json`, `assay.json` (sixteen SignCell cells), `receipt.json`. The outputs are the release assets, downloaded from `releases/download/v0.2.0/<asset>`, checked against the release's `SHA256SUMS` and addressed by `ni`. All five assays held on them: the 26 stated claims reproduce, the vocabulary conformance report is clean (22 checks), the render receipt names the delivered PDF, HTML, DOCX and JATS and its provenance closes and equals the delivered `prov.jsonld`, the four release metadata files agree with `paper.yaml`, and every citation resolves. `tools/build-white-repopulation-fixture.mjs` rebuilds it; `WR_RELEASE_DIR=<dir> npm test` replays the assay on the downloaded bytes.
 
 ## Sale
 

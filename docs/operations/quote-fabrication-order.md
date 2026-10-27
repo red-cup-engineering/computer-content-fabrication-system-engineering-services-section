@@ -35,4 +35,4 @@ pure; replay safe; coordination-free; deterministic.
 
 ## Witness
 
-The profile record it reads (`data/records/kinds/<kind>.json`); `test/order.test.mjs`.
+The profile record it reads (`content/kinds/<kind>.json`); `test/order.test.mjs`.

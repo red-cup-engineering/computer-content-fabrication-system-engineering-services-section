@@ -1,6 +1,6 @@
 /**
- * Kind profiles: the data in `data/records/kinds/*.json`, validated against
- * `data/records/schema/kind-profile.schema.json` and cross-checked once, at load. Operations read
+ * Kind profiles: the data in `content/kinds/*.json`, validated against
+ * `content/schema/kind-profile.schema.json` and cross-checked once, at load. Operations read
  * profiles through this module; no operation names a kind in code except to bind that kind's assays.
  */
 import { readFileSync, readdirSync } from "node:fs";
@@ -9,8 +9,8 @@ import { validateJsonSchema } from "@red-cup-engineering/json-schema-services-se
 import { centsOf } from "./money.mjs";
 import { deepFreeze } from "./refusal.mjs";
 
-const KINDS_DIRECTORY = new URL("../data/records/kinds/", import.meta.url);
-const PROFILE_SCHEMA = JSON.parse(readFileSync(new URL("../data/records/schema/kind-profile.schema.json", import.meta.url), "utf8"));
+const KINDS_DIRECTORY = new URL("../content/kinds/", import.meta.url);
+const PROFILE_SCHEMA = JSON.parse(readFileSync(new URL("../content/schema/kind-profile.schema.json", import.meta.url), "utf8"));
 
 /** Structural cross-checks the JSON Schema cannot state: a profile that fails any of them is a defect in the data. */
 export function profileProblems(profile) {

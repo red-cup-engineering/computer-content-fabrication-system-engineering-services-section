@@ -12,7 +12,7 @@ import { readAdmission } from "../src/admission.mjs";
 import { admitFabricationOrder } from "../src/order.mjs";
 import { planFabrication } from "../src/plan.mjs";
 
-const DIR = new URL("../data/records/fixtures/white-repopulation/", import.meta.url);
+const DIR = new URL("../test/fixtures/white-repopulation/", import.meta.url);
 const read = (name) => readFileSync(new URL(name, DIR));
 const json = (name) => JSON.parse(read(name).toString("utf8"));
 const [order, admission, plan, manifest, evidence, assay, receipt] = ["order.json", "admission.json", "plan.json", "delivery-manifest.json", "evidence.json", "assay.json", "receipt.json"].map(json);
