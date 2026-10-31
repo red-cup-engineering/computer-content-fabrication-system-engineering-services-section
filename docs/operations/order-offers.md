@@ -12,7 +12,7 @@ An offer is a buyer's order for one kind: it admits the order (`admitFabrication
 
 ## Refusals
 
-Those of `admitFabricationOrder` and `planFabrication`, in the house shape `{ ok: false, refusal: { reason, message, path } }`.
+Those of `admitFabricationOrder` and `planFabrication`, in the Group shape `{ ok: false, refusal: { reason, message, path } }`.
 
 ## Precondition / postcondition
 
