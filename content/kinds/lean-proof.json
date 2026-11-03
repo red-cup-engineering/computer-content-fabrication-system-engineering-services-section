@@ -177,7 +177,7 @@
     {
       "id": "lean-check-admission",
       "kind": "standard",
-      "authority": "561 Group lean-system-services-section",
+      "authority": "561 Group lean-engineering-services-section",
       "revision": "0.2.2",
       "locator": "@red-cup-engineering/lean-system-services-section/check/admission",
       "applicability": "The check deliverable.",
